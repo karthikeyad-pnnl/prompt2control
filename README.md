@@ -101,3 +101,13 @@ See [`requirements.txt`](requirements.txt)
 The research described herein was funded by the *Generative AI for Science, Energy, and Security* Science & Technology Investment under the Laboratory Directed Research and Development Program at PNNL, a multiprogram national laboratory operated by Battelle for the U.S. Department of Energy.  
 
 This work was also supported by the Center for AI and the Center for Continuum Computing at PNNL.
+
+---
+## 📖 Citation
+
+If you use this work, please cite our preprint:
+
+Wan, H., Lu, X., Devaprasad, K., Hinkle, L., & Chen, Y.
+Automating Modelica Control Module Generation Using Large Language Models: Pipeline, Performance, and Productivity Gains
+arXiv:2509.14623, 2025.
+https://arxiv.org/abs/2509.14623
