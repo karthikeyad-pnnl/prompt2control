@@ -8,24 +8,26 @@ from ModuleEvaluate import ModelicaModuleComparator
 API_KEY = "" # Your API key for Claude Depot
 BASE_URL = "" # Base URL for the API
 FOLDER_PATH = "CDL"
+# MODEL = 'claude-sonnet-4-6-birthright'
+MODEL = 'text-embedding-3-small-birthright'
 
 def main():
-    
+
     # Initialize the generator with the dummy LLM and specify paths.
     system_message_1 = """
             You are a code generator. Only return valid Modelica code with no natural language, no explanations, and no comments.
 
             Follow these additional modeling and layout conventions:
 
-            - Use only modules from Buildings.Controls.OBC.CDL or the Modelica Standard Library.
+            - Use only modules from Buildings.Controls.OBC.CDL.
             - For any temperature-related `input` or `parameter`, use: 
             `final unit="K", displayUnit="degC", final quantity="ThermodynamicTemperature"`.
-            - For Boolean or normalized output signals (e.g., y = 0 or 1), use: 
+            - For normalized output signals (e.g., y = 0 or 1), use: 
             `final min=0, final max=1, final unit="1"`.
 
             Graphic layout guidance:
             - Use the order of `connect()` statements in the `equation` section to infer logic flow: upstream instances appear earlier as sources, downstream ones appear later as targets.
-            - Reflect this left-to-right logic flow in the `annotation` section by placing upstream components to the left and downstream components to the right.
+            - Reflect this left-to-right logic flow in the respective `annotation` statements for each block instance by placing upstream components to the left and downstream components to the right.
             - Ensure all instances are positioned with unique `(x, y)` coordinates to avoid overlapping.
             - Use clear spacing between instances to improve readability in the `diagram` layer.
             - Annotate instances with their names where appropriate to enhance visual understanding.
@@ -33,25 +35,25 @@ def main():
 
     system_message_2 = "You are an expert Builidng Control engineer. Respond in structured, clear text."
     system_message_3 = "You are an expert to evaluate Modelica models. You can only answer yes or no."
-    
+
     ##User Input
     #change model name as needed
-    llm_1 = ClaudeDepotLLM(model="claude-sonnet-4-20250514-v1-project", api_key=API_KEY, system_message=system_message_1)
-    llm_2 = ClaudeDepotLLM(model="claude-sonnet-4-20250514-v1-project", api_key=API_KEY, system_message=system_message_2)
-    llm_3 = ClaudeDepotLLM(model="claude-sonnet-4-20250514-v1-project", api_key=API_KEY, system_message=system_message_3)
-    lib_build = '...\\modelica-buildings\\Buildings' #Path to the Modelica Buildings library
-    example_path = lib_build + '\\Controls\\OBC\\CDL\\Examples' # Path to the CDL Examples package in the Buildings library
-    cdl_root ='...\\CDL'                    # Path to the CDL library 
-    lib_root = '...\\modelica-buildings' # Library parent path
+    llm_1 = ClaudeDepotLLM(model=MODEL, api_key=API_KEY, system_message=system_message_1, base_url=BASE_URL)
+    llm_2 = ClaudeDepotLLM(model=MODEL, api_key=API_KEY, system_message=system_message_2, base_url=BASE_URL)
+    llm_3 = ClaudeDepotLLM(model=MODEL, api_key=API_KEY, system_message=system_message_3, base_url=BASE_URL)
+    lib_build = '..\\..\\buildings_library\\modelica-buildings\\Buildings' #Path to the Modelica Buildings library. Used in 6 locations (1 time locally).
+    example_path = lib_build + '\\Controls\\OBC\\CDL\\Examples' # Path to the CDL Examples package in the Buildings library. Used in 7 locations.
+    cdl_root ='...\\CDL'                    # Path to the CDL library
+    lib_root = lib_build + '\\..\\' # Library parent path. Used in 6 locations (1 local).
     output_dir='.'                               # Save files to
-    os.environ["MODELICAPATH"] = os.path.dirname('...\\modelica-buildings') # Set the Modelica path to the Buildings library
+    os.environ["MODELICAPATH"] = os.path.dirname(lib_root) # Set the Modelica path to the Buildings library
 
 
     evaluate = ModelicaModuleComparator()
     quest = evaluate.load_json_metadata("test.json") # Test Cases
     generator = ModuleGenerator(
             llm1=llm_1,
-            llm2=llm_2, 
+            llm2=llm_2,
             llm3=llm_3,
             base_library_paths=[lib_build],              # Load the Modelica Standard Library
             output_dir=output_dir,                               # Save files to current directory
@@ -60,7 +62,7 @@ def main():
             cdl_root=cdl_root,
             lib_root = lib_root
         )
-    
+
     generator.setup_openmodelica()
     for item in quest:
         generator.keep_only_package_mo()
@@ -69,7 +71,7 @@ def main():
         prompt_text=item['prompt']
         generator.title = title
         generator.prompt_text = prompt_text
-        _ = generator.identify_modules()  
+        _ = generator.identify_modules()
         _ = generator.generate_code_iterate()
         _ = generator.save_modelica_file()
         generator.copy_to_library()
@@ -78,5 +80,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
