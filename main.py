@@ -20,7 +20,7 @@ def main():
             Follow these additional modeling and layout conventions:
 
             - Use only modules from Buildings.Controls.OBC.CDL.
-            - For any temperature-related `input` or `parameter`, use: 
+            - For any temperature-related `input` or `parameter`, use:
             `final unit="K", displayUnit="degC", final quantity="ThermodynamicTemperature"`.
             - For normalized output signals (e.g., y = 0 or 1), use: 
             `final min=0, final max=1, final unit="1"`.
@@ -41,16 +41,18 @@ def main():
     llm_1 = ClaudeDepotLLM(model=MODEL, api_key=API_KEY, system_message=system_message_1, base_url=BASE_URL)
     llm_2 = ClaudeDepotLLM(model=MODEL, api_key=API_KEY, system_message=system_message_2, base_url=BASE_URL)
     llm_3 = ClaudeDepotLLM(model=MODEL, api_key=API_KEY, system_message=system_message_3, base_url=BASE_URL)
-    lib_build = '..\\..\\buildings_library\\modelica-buildings\\Buildings' #Path to the Modelica Buildings library. Used in 6 locations (1 time locally).
-    example_path = lib_build + '\\Controls\\OBC\\CDL\\Examples' # Path to the CDL Examples package in the Buildings library. Used in 7 locations.
-    cdl_root ='...\\CDL'                    # Path to the CDL library
-    lib_root = lib_build + '\\..\\' # Library parent path. Used in 6 locations (1 local).
-    output_dir='.'                               # Save files to
-    os.environ["MODELICAPATH"] = os.path.dirname(lib_root) # Set the Modelica path to the Buildings library
+
+    lib_build = os.path.abspath(os.path.join('..', '..', 'buildings_library', 'modelica-buildings', 'Buildings'))
+    example_path = os.path.normpath(os.path.join(lib_build, 'Controls', 'OBC', 'CDL', 'Examples'))
+    cdl_root = os.path.abspath(os.path.join(example_path, '..'))
+    lib_root = os.path.normpath(os.path.join(lib_build, '..'))
+    output_dir = os.path.abspath('.')
+    os.environ['MODELICAPATH'] = os.path.dirname(lib_root)
 
 
     evaluate = ModelicaModuleComparator()
-    quest = evaluate.load_json_metadata("test.json") # Test Cases
+    quest_file = os.path.abspath("./test.json")
+    quest = evaluate.load_json_metadata(quest_file) # Test Cases
     generator = ModuleGenerator(
             llm1=llm_1,
             llm2=llm_2,
