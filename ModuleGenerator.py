@@ -7,6 +7,7 @@ from OMPython import OMCSessionZMQ
 import shutil
 import DyMat as dymat
 from convert import MatToTextExporter
+
 def load_simulation_variables(mat_file_path, variable_names=None, max_samples=100):
     """
     Load selected variables from a Modelica .mat result file.
@@ -41,14 +42,14 @@ class ModuleGenerator:
         self.llm2 = llm2 #code improvement
         self.llm3 = llm3 #code evaluate yes/no
         self.base_library_paths = base_library_paths if base_library_paths else []
-        self.output_dir = output_dir
-        self.library_dir = library_dir
-        self.cdl_list = cdl_list
-        self.cdl_root = cdl_root
+        self.output_dir = os.path.abspath(output_dir)
+        self.library_dir = os.path.abspath(library_dir)
+        self.cdl_list = os.path.abspath(cdl_list)
+        self.cdl_root = os.path.abspath(cdl_root)
         self.prompt_text = prompt_text
         self.title = title
         self.omc = None  # Will hold the OpenModelica OMC session after setup.
-        self.lib_root = lib_root
+        self.lib_root = os.path.abspath(lib_root)
 
     def load_available_modules(self, file_path):
         """
@@ -56,6 +57,7 @@ class ModuleGenerator:
         The file is expected to contain module definitions or listings. 
         Returns a dictionary mapping module names to their code (or description).
         """
+        file_path = os.path.abspath(file_path)
         with open(file_path, "r", encoding="utf-8") as f:
             available_modules = f.read()
         return available_modules
@@ -75,6 +77,8 @@ class ModuleGenerator:
         basic_logic_prompt = ChatPromptTemplate.from_template("""
                             Given the following control task, and available CDL module name, list the **CDL modules** you would use in bullet 
                             points with no explanations, no comments. As few as possible CDL modules should be used to achieve the task.
+                            Return only a list of the module names as Python list of items, with each item representing a module, but
+                            without the square brackets for the list.
 
                             Task:
                             {task}
@@ -83,6 +87,7 @@ class ModuleGenerator:
                             {txt}
                             """)
         step1_prompt = basic_logic_prompt.format(task=prompt_text, txt=available_modules)
+        # print("Prompt for module identification:\n", step1_prompt)
         step1_result = self.llm2.invoke(step1_prompt)
         step1_result_clean = StrOutputParser().invoke(step1_result)
         module_list = [line.replace("•", "").replace("-", "").strip()
@@ -151,7 +156,6 @@ class ModuleGenerator:
         :param safe_title: Name of the model (same as the class name, typically).
         :return: Path of the copied file within the library directory.
         """
-        import shutil
         if mo_path is None:
             mo_path = os.path.join(self.output_dir, f"{self.title}.mo")
         safe_title = self.title
@@ -164,7 +168,7 @@ class ModuleGenerator:
         order_file = os.path.join(dest_dir, "package.order")
         if os.path.exists(order_file):
             # Append the model name if not already listed
-            with open(order_file, 'r+') as f:
+            with open(order_file, 'r+', encoding='utf-8') as f:
                 lines = [line.strip() for line in f.readlines() if line.strip()]
                 if safe_title not in lines:
                     lines.append(safe_title)
@@ -172,7 +176,7 @@ class ModuleGenerator:
                     f.write("\n".join(lines) + "\n")
         else:
             # No package.order exists, create one with this model
-            with open(order_file, 'w') as f:
+            with open(order_file, 'w', encoding='utf-8') as f:
                 f.write(safe_title + "\n")
         return dest_path
 
@@ -185,16 +189,18 @@ class ModuleGenerator:
         self.omc = OMCSessionZMQ()
 
         # Load standard Modelica library
-        success_modelica = self.omc.sendExpression('loadModel(Modelica)')
-        error_modelica = self.omc.sendExpression("getErrorString()")
+        error_modelica = self.omc.sendExpression('loadModel(Modelica)')
+        success_modelica = 'error' not in str(error_modelica).lower()
         print("✅ Success loading Modelica:", success_modelica)
         print("📄 Modelica load message:\n", error_modelica)
 
         # Load Buildings library
-        success_buildings = self.omc.sendExpression(f'loadFile("{self.lib_root}/Buildings/package.mo")')
-        print(self.omc.sendExpression("getErrorString()"))
-        error_buildings = self.omc.sendExpression("getErrorString()")
+        buildings_package = os.path.join(self.lib_root, "Buildings", "package.mo")
+        error_buildings = self.omc.sendExpression(f'loadFile("{buildings_package.replace("'",'').replace('\\','/')}")') # Path seperators are replaced since OMC expects UNIX style paths
+        success_buildings = 'error' not in str(error_buildings).lower()
         print("✅ Success loading Buildings:", success_buildings)
+        if not success_buildings:
+            raise RuntimeError(f"Failed to load Buildings library at {buildings_package}. Check the OMC error message for details: {error_buildings}")
         print("📄 Buildings load message:\n", error_buildings)
 
     def check_and_fix_model(self, filepath=None, max_attempts=3):
@@ -205,22 +211,27 @@ class ModuleGenerator:
         :param max_attempts: Maximum number of fix attempts if errors persist.
         :return: True if the model compiled successfully (possibly after fixes), False if not.
         """
-        localpath = f"{self.title}.mo"
+        localpath = os.path.abspath(os.path.join(self.output_dir, f"{self.title}.mo"))
         if filepath is None:
-            filepath = os.path.join(self.output_dir, f"{self.title}.mo")
+            filepath = os.path.abspath(os.path.join(self.output_dir, f"{self.title}.mo"))
+        else:
+            filepath = os.path.abspath(filepath)
         if self.omc is None:
             raise RuntimeError("OMC session not initialized. Call setup_openmodelica() first.")
         for attempt in range(1, max_attempts+1):
             # Try loading/compiling the Modelica file
-            self.omc.sendExpression(f'loadFile("{filepath}")')
-            error_log = self.omc.sendExpression("getErrorString()")
-            if not error_log or "Error" not in error_log:
+            try:
+                self.omc.sendExpression(f'loadFile("{filepath.replace("'",'').replace('\\','/')}")')
+                error_log = ''
+            except Exception as e:
+                error_log = e
+            if not error_log or "error" not in str(error_log).lower():
                 # No compile errors (success)
                 print(f"Model compiled successfully on attempt {attempt}.")
                 return True
             # If error encountered, use LLM to attempt a fix
             print(f"Attempt {attempt}: Compilation error detected, using LLM to suggest a fix.")
-            with open(filepath, 'r') as f:
+            with open(filepath, 'r', encoding='utf-8') as f:
                 code_content = f.read()
             fix_prompt = (
                 "The following Modelica code has compilation errors:\n"
@@ -236,10 +247,10 @@ class ModuleGenerator:
             lines = clean_modelica_code(lines, title=safe_title)
             final_cleaned_code = "\n".join(lines)
             # Overwrite the file with the fixed code for the next iteration
-            with open(filepath, 'w') as f:
+            with open(filepath, 'w', encoding='utf-8') as f:
                 f.write(final_cleaned_code)
-            with open(localpath, 'w') as f:
-                    f.write(final_cleaned_code)
+            with open(localpath, 'w', encoding='utf-8') as f:
+                f.write(final_cleaned_code)
             # (Loop will retry compilation with the new code in the next iteration)
         # If all attempts fail, return False
         return False
@@ -247,8 +258,10 @@ class ModuleGenerator:
 
     def simulate_and_fix_model(self, filepath=None, max_attempts=5, startTime=0, stopTime=1200):
         if filepath is None:
-            filepath = os.path.join(self.library_dir, f"{self.title}.mo")
-        localpath = f"{self.title}.mo"
+            filepath = os.path.abspath(os.path.join(self.library_dir, f"{self.title}.mo"))
+        else:
+            filepath = os.path.abspath(filepath)
+        localpath = os.path.abspath(os.path.join(self.output_dir, f"{self.title}.mo"))
         prompt_text = self.prompt_text
         model_name = os.path.splitext(os.path.basename(filepath))[0]
         full_model_class = f"Buildings.Controls.OBC.CDL.Examples.{model_name}"
@@ -257,22 +270,29 @@ class ModuleGenerator:
             print(f"Attempt {attempt}: Loading and simulating model ...")
 
             # Load package
-            self.omc.sendExpression(f'loadFile("{self.lib_root}/Buildings/Controls/OBC/CDL/Examples/{model_name}.mo")')
-            error_msg = self.omc.sendExpression("getErrorString()")
-            
-            if "Error" in error_msg:
+            model_path = os.path.normpath(os.path.join(self.lib_root, "Buildings", "Controls", "OBC", "CDL", "Examples", f"{model_name}.mo"))
+            try:
+                self.omc.sendExpression(f'loadFile("{model_path.replace("'",'').replace('\\','/')}")')
+                error_msg = ''
+            except Exception as e:
+                error_msg = str(e)
+
+            if "error" in error_msg.lower():
                 print("Cannot load file; Error: ", error_msg)
                 return False
 
             # Simulate
             cmd = f'simulate({full_model_class}, startTime={startTime}, stopTime={stopTime})'
-            result = self.omc.sendExpression(cmd)
-            print("Simulation result:", result)
-            error_msg = self.omc.sendExpression("getErrorString()")
+            try:
+                result = self.omc.sendExpression(cmd)
+                print("Simulation result:", result)
+            except Exception as e:
+                error_msg = str(e)
 
-            if "Error" in error_msg:
+            if "error" in error_msg.lower():
                 print(f"Simulation error on attempt {attempt}: {error_msg}")
-                model_code = open(filepath, 'r').read()
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    model_code = f.read()
                 prompt = ChatPromptTemplate.from_template("""
                                     Based on these relevant CDL modules:
                                     {modules}
@@ -294,16 +314,17 @@ class ModuleGenerator:
                 })
                 fixed_code = str(final_result)
                 cleaned = "\n".join(clean_modelica_code(fixed_code.strip().splitlines(), title=self.title))
-                with open(filepath, 'w') as f:
+                with open(filepath, 'w', encoding='utf-8') as f:
                     f.write(cleaned)
-                with open(localpath, 'w') as f:
+                with open(localpath, 'w', encoding='utf-8') as f:
                     f.write(cleaned)
                 continue  # retry outer loop
 
             # --- Check if simulation result meets control goals ---
             try:
                 result_path = full_model_class + "_res.mat"
-                model_code = open(filepath, 'r').read()
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    model_code = f.read()
                 clean_temp_files()
                 output_path = full_model_class + "sim_res.txt"
                 exporter = MatToTextExporter(result_path, output_path)
