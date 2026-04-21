@@ -15,20 +15,23 @@ class ClaudeDepotLLM():
         self.base_url = base_url
         self.api_key = api_key
         self.system_message = system_message if system_message is not None else "You are a code generator. Only return valid Modelica code with no natural language, no explanations, and no comments."
+        self.client = openai.OpenAI(api_key=self.api_key, base_url=self.base_url)
+        self.messages = [
+            {"role": "system", "content": self.system_message}
+        ]
 
     def invoke(self, prompt: str, stop: Optional[List[str]] = None):
-        client = openai.OpenAI(api_key=self.api_key, base_url=self.base_url)
 
-        response = client.chat.completions.create(
+        self.messages.append({"role": "user", "content": prompt})
+        response = self.client.chat.completions.create(
             model=self.model,
-            messages=[
-                {"role": "system", "content": self.system_message},
-                {"role": "user", "content": prompt}
-            ]
+            messages=self.messages
         )
 
-        # data = response.model_dump_json()
-        return response.choices[0].message.content
+        response_message = response.choices[0].message.content
+        self.messages.append({"role": "assistant", "content": response_message})
+
+        return response_message
 
     @property
     def _llm_type(self) -> str:
@@ -36,10 +39,23 @@ class ClaudeDepotLLM():
 
 # Example usage
 if __name__ == "__main__":
-    llm = ClaudeDepotLLM()
-    prompt = (
-        "My friend says lights are dark sinks, not sources. "
-        "Explain how to prove they're wrong using physics."
-    )
-    result = llm.invoke(prompt)
+    ##User Input
+    API_KEY = "" # Your API key for Claude Depot
+    BASE_URL = "" # Base URL for the API
+    MODEL = "grok-4-fast-reasoning-birthright"
+    llm = ClaudeDepotLLM(api_key=API_KEY, base_url=BASE_URL, model=MODEL, system_message='You are a linguist.')
+    # llm = openai.OpenAI(api_key=API_KEY, base_url=BASE_URL)
+
+    PROMPT_1 = '''Reverse the letters in the next prompt.'''
+    result = llm.invoke(PROMPT_1)
+    print("\n\nModel response-1:")
+    print(result)
+    result = llm.invoke("What is the question?")
+    # result = llm.chat.completions.create(
+    #     model=MODEL,
+    #     messages=[
+    #         {"role": "user", "content": PROMPT_1}
+    #     ]
+    # )
+    print("\n\nModel response-2:")
     print(result)

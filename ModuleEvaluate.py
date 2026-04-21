@@ -1,8 +1,7 @@
 import os
 import json
 import difflib
-import re
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 class ModelicaModuleComparator:
     def __init__(self, file1_path=None, file2_path=None):

@@ -213,7 +213,7 @@ class ModuleGenerator:
         """
         localpath = os.path.abspath(os.path.join(self.output_dir, f"{self.title}.mo"))
         if filepath is None:
-            filepath = os.path.abspath(os.path.join(self.output_dir, f"{self.title}.mo"))
+            filepath = localpath
         else:
             filepath = os.path.abspath(filepath)
         if self.omc is None:
@@ -449,7 +449,7 @@ class ModuleGenerator:
 
         self.final_code = final_cleaned_code
         return final_cleaned_code
-    
+
 def clean_temp_files():
     current_dir = os.getcwd()
     deleted_files = []

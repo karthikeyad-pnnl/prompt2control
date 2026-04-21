@@ -14,7 +14,7 @@ MODEL = 'text-embedding-3-small-birthright'
 def main():
 
     # Initialize the generator with the dummy LLM and specify paths.
-    system_message_1 = """
+    SYSTEM_MESSAGE_1 = """
             You are a code generator. Only return valid Modelica code with no natural language, no explanations, and no comments.
 
             Follow these additional modeling and layout conventions:
@@ -33,14 +33,14 @@ def main():
             - Annotate instances with their names where appropriate to enhance visual understanding.
             """
 
-    system_message_2 = "You are an expert Builidng Control engineer. Respond in structured, clear text."
-    system_message_3 = "You are an expert to evaluate Modelica models. You can only answer yes or no."
+    SYSTEM_MESSAGE_2 = "You are an expert Building Control engineer. Respond in structured, clear text."
+    SYSTEM_MESSAGE_3 = "You are an expert to evaluate Modelica models. You can only answer yes or no."
 
     ##User Input
     #change model name as needed
-    llm_1 = ClaudeDepotLLM(model=MODEL, api_key=API_KEY, system_message=system_message_1, base_url=BASE_URL)
-    llm_2 = ClaudeDepotLLM(model=MODEL, api_key=API_KEY, system_message=system_message_2, base_url=BASE_URL)
-    llm_3 = ClaudeDepotLLM(model=MODEL, api_key=API_KEY, system_message=system_message_3, base_url=BASE_URL)
+    llm_1 = ClaudeDepotLLM(model=MODEL, api_key=API_KEY, system_message=SYSTEM_MESSAGE_1, base_url=BASE_URL)
+    llm_2 = ClaudeDepotLLM(model=MODEL, api_key=API_KEY, system_message=SYSTEM_MESSAGE_2, base_url=BASE_URL)
+    llm_3 = ClaudeDepotLLM(model=MODEL, api_key=API_KEY, system_message=SYSTEM_MESSAGE_3, base_url=BASE_URL)
 
     lib_build = os.path.abspath(os.path.join('..', '..', 'buildings_library', 'modelica-buildings', 'Buildings'))
     example_path = os.path.normpath(os.path.join(lib_build, 'Controls', 'OBC', 'CDL', 'Examples'))
