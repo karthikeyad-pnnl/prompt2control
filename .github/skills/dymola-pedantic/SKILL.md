@@ -7,6 +7,12 @@ description: "Create a Dymola application instance and run pedantic translation 
 
 Use this skill to launch Dymola and perform a pedantic translation of a Modelica class.
 
+If you need `checkModel` validation (instead of pedantic translation), use `dymola-model-check` with:
+
+```powershell
+python dymola_model_check.py --class-path <ModelicaClassPath>
+```
+
 ## Prerequisites
 
 - Dymola installed and accessible:

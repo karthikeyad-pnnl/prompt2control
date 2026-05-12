@@ -1,6 +1,6 @@
 ---
 name: modulecheck
-description: "Run ModuleCheck workflows for Modelica classes: generate English documentation, review annotation documentation quality, generate pseudo code, and analyze CDL variable naming compliance. Use when users ask to evaluate or document a Buildings model class. For pedantic translation checks, use the dymola-pedantic skill."
+description: "Run ModuleCheck workflows for Modelica classes: generate English documentation, review annotation documentation quality, generate pseudo code, and analyze CDL variable naming compliance. Use when users ask to evaluate or document a Buildings model class. For Dymola pedantic translation checks, use dymola-pedantic. For Dymola checkModel validation, use dymola-model-check."
 ---
 
 # ModuleCheck Skill
@@ -11,6 +11,12 @@ For Dymola pedantic translation checks, route to `dymola-pedantic` and use:
 
 ```powershell
 python dymola_pedantic_check.py --class-path <ModelicaClassPath>
+```
+
+For Dymola model checks (`checkModel`), route to `dymola-model-check` and use:
+
+```powershell
+python dymola_model_check.py --class-path <ModelicaClassPath>
 ```
 
 ## Prerequisites
