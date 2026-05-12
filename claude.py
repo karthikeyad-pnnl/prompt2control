@@ -1,5 +1,4 @@
-from typing import Any, List, Optional
-from langchain.llms.base import LLM
+from typing import List, Optional
 import requests
 import os
 import openai
@@ -59,3 +58,4 @@ if __name__ == "__main__":
     # )
     print("\n\nModel response-2:")
     print(result)
+    # print(result.choices[0].message.content)

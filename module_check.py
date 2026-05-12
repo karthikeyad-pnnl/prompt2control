@@ -176,7 +176,8 @@ class ModuleCheck:
         return variable_md, connections_list, internal_context_md
 
     def generate_english_documentation(self, modelica_package_tree_path):
-        '''Generate English documentation for the Modelica model based on the extracted variables and connections.'''
+        '''Generate English documentation for the Modelica model based on the extracted variables
+        and connections.'''
         variable_md, connections_list, internal_context_md = self.generate_code_analysis_inputs_2(modelica_package_tree_path)
         documentation_message = f"Based on the following information about a Modelica model,\
             generate English documentation that describes the purpose and functionality of the\
@@ -204,7 +205,10 @@ class ModuleCheck:
             of three sections: the first consists of mandatory edit suggestions because certain\
             documentation rules are being broken. The second should provide suggested edits because\
             information may be missing from the documentation. The third should provide general\
-            comments and recommendations for improvement. Ensure you add \` signs\
+            comments and recommendations for improvement.\
+            The feedback should be a concise and clear list with each item having 3 columns for\
+            the original text with issue, the suggested edit, and the rationale.\
+            Ensure you add '`' signs\
             around any HTML code referenced in the output so that it doesn't break the formatting\
             of the md output.The variables, connections and context give you more details about the model.\
             Here are the rules:\n{self.doc_rules_contents[0]}\n\nDocumentation:\n{documentation}.\n\nVariables:\n{variable_md}\n\nConnections:\n{connections_list}\n\nInternal Context:\n{internal_context_md}"
@@ -237,10 +241,15 @@ if __name__ == "__main__":
     output_dir = os.path.abspath('.')
     os.environ['MODELICAPATH'] = os.path.dirname(lib_root_trial)
 
-    # checker = ModuleCheck(MODEL, BASE_URL, API_KEY, lib_root_trial, True)
-    # # TEST_FILE = 'Buildings.Templates.Plants.Controls.HeatPumps.AirToWater'
-    # TEST_FILE = 'Buildings.Templates.Plants.Controls.HeatPumps.HybridPlantControlModule'
-    # english_docs = checker.generate_english_documentation(TEST_FILE)
+    checker = ModuleCheck(MODEL, BASE_URL, API_KEY, lib_root_trial, True)
+    # TEST_FILE = 'Buildings.Templates.Plants.Controls.HeatPumps.AirToWater'
+    TEST_FILE = 'Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable'
+    english_docs = checker.generate_english_documentation(TEST_FILE)
+    output_file_path = os.path.join(output_dir, 'DocumentationGeneration_042226', f'sonnet46_{TEST_FILE.split(".")[-1]}.html')
+    if not os.path.exists(os.path.dirname(output_file_path)):
+        os.makedirs(os.path.dirname(output_file_path))
+    with open(output_file_path, 'w', encoding='utf-8') as f:
+        f.write(english_docs)
     # print(english_docs)
     # # analysis_result = checker.analyze_variable_names(variables)
     # # print(analysis_result)
@@ -256,14 +265,14 @@ if __name__ == "__main__":
     # with open(os.path.join(output_dir, 'pseudocode.md'), 'w', encoding='utf-8') as f:
     #     f.write(pseudocode)
 
+    # reqd_class = ['Buildings.Templates.Plants.Controls.HeatPumps.AirToWater',
+    #               'Buildings.Templates.Plants.Controls.StagingRotation.EventSequencing',
+    #               'Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable',
+    #               'Buildings.Templates.Plants.Controls.StagingRotation.StageChangeCommand',
+    #               'Buildings.Templates.Plants.Controls.StagingRotation.HybridOperation']
+
+    # for class_path in reqd_class:
     checker_3 = ModuleCheck(MODEL, BASE_URL, API_KEY, lib_root_trial, True)
-    reqd_class = ['Buildings.Templates.Plants.Controls.HeatPumps.AirToWater',
-                  'Buildings.Templates.Plants.Controls.StagingRotation.EventSequencing',
-                  'Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable',
-                  'Buildings.Templates.Plants.Controls.StagingRotation.StageChangeCommand',
-                  'Buildings.Templates.Plants.Controls.StagingRotation.HybridOperation']
-    
-    for class_path in reqd_class:
-        feedback = checker_3.check_english_documentation(class_path)
-        with open(os.path.join(output_dir, f'documentation_feedback2_{class_path.split(".")[-1]}.md'), 'w', encoding='utf-8') as f:
-            f.write(feedback)
+    feedback = checker_3.check_english_documentation(TEST_FILE)
+    with open(os.path.join(output_dir, 'DocumentationFeedback_042226', f'sonnet46_{TEST_FILE.split(".")[-1]}_2.md'), 'w', encoding='utf-8') as f:
+        f.write(feedback)
