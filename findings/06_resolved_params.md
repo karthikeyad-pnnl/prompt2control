@@ -1,0 +1,34 @@
+## Step 6 Findings
+- File(s) inspected: c:/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/Validation/AirToWater.mo; c:/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/Validation/UserProject/Data/AllSystems.mo; c:/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/Interfaces/PartialHeatPumpPlant.mo; c:/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/Components/Interfaces/PartialController.mo; c:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/HeatPumps/AirToWater.mo; c:/git_repos/prompt2control/agent_outputs/dymola_model_check/dymola_model_check.log
+- Key observations:
+  - Resolved/inferred parameter values for this configuration:
+    - pla.nHp = 3 (explicit in validation model).
+    - pla.typDis = Constant1Variable2 (AWHP uses typDis_select1 default, typDis_select1 default is Constant1Variable2).
+    - pla.typArrPumChiWatPri / pla.typArrPumHeaWatPri: not separate parameters in this template; effective primary arrangement is typArrPumPri=Dedicated (default).
+    - pla.typArrPumChiWatSec / pla.typArrPumHeaWatSec: not separate parameters; effective secondary pump types derive to Centralized for typDis=Constant1Variable2.
+    - have_pumChiWatPriDed = false (have_pumChiWatPriDed_select default false, typArr dedicated).
+    - have_pumHeaWatPriDed: not explicit in this interface.
+    - have_pumChiWatSec = true; have_pumHeaWatSec = true (is_priOnl=false -> both secondary loops active).
+    - have_senDpChiWatRemWir = false; have_senDpHeaWatRemWir = false (defaults from PartialController).
+    - have_senVChiWatSec_flow / have_senVHeaWatSec_flow (controller-level equivalents have_senVChiWatSec/have_senVHeaWatSec) = true.
+    - have_valChiWatMinByp = false for typDis=Constant1Variable2.
+    - have_hrc = true (validation sets have_hrc_select=true).
+    - pla.ctl.ctl.nPumChiWatSec = 3; pla.ctl.ctl.nPumHeaWatSec = 3.
+    - pla.ctl.ctl.nSenDpChiWatRem = 1; pla.ctl.ctl.nSenDpHeaWatRem = 1.
+    - pla.ctl.ctl.staPumChiWatSec.have_valInlIso = false; have_valOutIso = false; nSta = 3; nEquAlt = 3.
+    - pla.ctl.ctl.staPumHeaWatSec.have_valInlIso = false; have_valOutIso = false; nSta = 3; nEquAlt = 3.
+    - pla.ctl.staEqu = {{1/3,1/3,1/3},{2/3,2/3,2/3},{1,1,1}}.
+  - Referenced nin/nout terms on unknown-side expression:
+    - pla.ctl.ctl.staPumHeaWatPri.y1Ded_actual.nin = 3.
+    - pla.ctl.ctl.staPumHeaWatPri.y1Ded_actual.nout = 3.
+    - pla.ctl.ctl.ctlPumHeaWatSec.maxSet.nin = 1.
+    - pla.ctl.ctl.ctlPumChiWatSec.maxSet.nin = 1.
+  - Additional directly resolved scalar terms in the unknown-side expression:
+    - size(pla.dat.hrc.per.PLRSup,1) = 10.
+    - size(ratLoa.table,2) = 3.
+    - size(ratLoa.offset,1) = 2 (TimeTable default offset length = nout = size(table,2)-1).
+- Hypotheses generated/refuted:
+  - Generated: Configuration resolves to a fully defined 3-HP, primary-secondary, HRC-enabled AWHP plant.
+  - Generated: Several warning-listed `u_internal` values come from fallback paths whose controlling booleans evaluate false by design.
+  - Refuted: No evidence that primary cardinality terms are undefined; they resolve to concrete values listed above.
+- Artifacts produced: findings/06_resolved_params.md

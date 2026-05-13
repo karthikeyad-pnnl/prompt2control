@@ -1,0 +1,18 @@
+## Patch Verification Findings
+- File(s) inspected: c:/git_repos/prompt2control/agent_outputs/dymola_model_check/dymola_model_check.log; c:/git_repos/prompt2control/logs/01_dymola_check.log
+- Key observations:
+  - Post patch rerun still fails checkModel for Buildings.Templates.Plants.HeatPumps.Validation.AirToWater.
+  - New run reports:
+    - The model has the same number of unknowns and equations: 18575.
+    - Error: The model is not well posed.
+    - Using the given settings of the parameters, the difference could be reduced to -30.
+  - Relative to baseline:
+    - Baseline unknown and equation count was 18551 with reduced difference -30.
+    - Post patch unknown and equation count moved to 18575, but reduced difference remained -30.
+  - Warning list changed as expected:
+    - Previous warning entries for placeholder u_internal terms at idxStaCoo and idxStaHea, nPumHdrDp placeholder terms, and placeholder real terms TChiWatRet, THeaWatRet, V*Sta_flow, V*Loa_flow are no longer listed.
+    - Remaining warnings include disabled branch parameters such as staPumChiWatSec and staPumHeaWatSec staEqu and valve flags, typDis_select2, and WaterToWater-only HP data fields.
+- Hypotheses generated/refuted:
+  - Refuted: The placeholder default and nPumHdrDp dtRun patch is not sufficient to eliminate the -30 structural imbalance.
+  - Generated: Root cause likely sits deeper in equation side cardinality of staging and pump control subgraphs, not in placeholder parameter default semantics.
+- Artifacts produced: findings/10_patch_verification.md

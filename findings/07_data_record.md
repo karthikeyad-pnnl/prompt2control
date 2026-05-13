@@ -1,0 +1,18 @@
+## Step 7 Findings
+- File(s) inspected: c:/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/Components/Data/HeatPumpGroup.mo
+- Key observations:
+  - Declarations and enable expressions in HeatPumpGroup record:
+    - mSouWwHeaHp_flow_nominal: Dialog enable = typ==Buildings.Templates.Components.Types.HeatPump.WaterToWater.
+    - dpSouWwHeaHp_nominal: Dialog enable = typ==Buildings.Templates.Components.Types.HeatPump.WaterToWater.
+    - mSouWwCooHp_flow_nominal: Dialog enable = typ==Buildings.Templates.Components.Types.HeatPump.WaterToWater and is_rev.
+  - Discriminator used: typ (HeatPump type enum), specifically equality to WaterToWater.
+  - Exclusion behavior for AWHP:
+    - For AWHP (typ==AirToWater), these water-source parameters are not used in final source flow/pressure finals:
+      - mSouHeaHp_flow_nominal uses else branch ratMFloAirByCapChi * abs(capHeaHp_nominal).
+      - dpSouHeaHp_nominal uses else branch dpAirChi.
+      - mSouCooHp_flow_nominal similarly uses air-side formula.
+    - Therefore, warning appearance is from disabled parameter records retaining start-only placeholders, not from active physics equations for AWHP.
+- Hypotheses generated/refuted:
+  - Generated: This is primarily a warning-only modeling hygiene issue for AWHP configurations.
+  - Refuted: No direct evidence these WaterToWater-only record fields are the dominant contributor to the -30 equation imbalance.
+- Artifacts produced: findings/07_data_record.md

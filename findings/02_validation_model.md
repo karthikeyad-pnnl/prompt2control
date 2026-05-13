@@ -1,0 +1,48 @@
+## Step 2 Findings
+- File(s) inspected: c:/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/Validation/AirToWater.mo; c:/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/Validation/UserProject/Data/AllSystems.mo
+- Key observations:
+  - Full pla instantiation (key overrides) in validation model:
+    - redeclare final package MediumHeaWat=Medium
+    - have_hrc_select=true
+    - cfg(nHpShc=0)
+    - ctl(is_typDis_override=false, nAirHan=1, nEquZon=0)
+    - final dat=datAll.pla
+    - final have_chiWat=have_chiWat
+    - nHp=3
+    - typPumHeaWatPri_select1=...PumpsPrimary.Constant
+    - final allowFlowReversal=allowFlowReversal
+    - linearized=true
+    - show_T=true
+    - is_dpBalYPumSetCal=true
+  - Full datAll record contents (AllSystems.pla) include:
+    - hp sizing/performance data (AWHP heating/cooling files)
+    - pump sizing formulas for primary/secondary HW+CHW pumps
+    - hrc sizing/performance data
+    - ctl overrides including T setpoints, DP setpoints, VHeaWatSec_flow_nominal, VChiWatSec_flow_nominal, yPum*Set, TChiWatSupHrc_min, THeaWatSupHrc_max, COPHeaHrc_nominal, cap*Hrc_min.
+    - local override in AirToWater.mo: datAll(pla(final cfg=pla.cfg, ctl(yPumHeaWatPriSet=1, yPumChiWatPriSet=1, staEquDouMod={{1/3,1/3,1/3},{2/3,2/3,2/3},{1,1,1}}, staEquSinMod={{1/3,1/3,1/3},{2/3,2/3,2/3},{1,1,1}})))
+  - Wiring of loaHea/loaCoo/ratLoa:
+    - ratLoa.table has 3 columns: time + 2 outputs.
+    - ratLoa.y[1] -> loaHea.u.
+    - ratLoa.y[2] -> loaCoo.u.
+    - ratLoa.offset is not explicitly set; TimeTable default is fill(0, nout), where nout=size(table,2)-1=2.
+  - Explicit values/absence for requested parameters:
+    - nHp: explicitly set to 3 in pla instance.
+    - typDis: not explicitly set in validation model; inherited via typDis_select1 default path for AWHP.
+    - typArrPumChiWatPri / typArrPumHeaWatPri: no such explicit parameters in this class interface (single typArrPumPri is used and not overridden).
+    - typArrPumChiWatSec / typArrPumHeaWatSec: not explicit in this class interface; secondary pump type is derived via typPum*Sec finals.
+    - have_pumChiWatPriDed: not explicitly set (driven by have_pumChiWatPriDed_select default path).
+    - have_pumHeaWatPriDed: not an explicit parameter in this interface.
+    - have_pumChiWatSec / have_pumHeaWatSec: not explicitly set; derived from typDis/is_priOnl logic.
+  - Parameters in Step 1 warning list not explicitly set in validation model:
+    - datAll.pla.hp.dpSouWwHeaHp_nominal
+    - datAll.pla.hp.mSouWwCooHp_flow_nominal
+    - datAll.pla.hp.mSouWwHeaHp_flow_nominal
+    - pla.typDis_select2
+    - pla.ctl.ctl.TChiWatRet.u_internal / THeaWatRet.u_internal
+    - pla.ctl.ctl.VChiWatLoa_flow.u_internal / VChiWatSta_flow.u_internal / VHeaWatLoa_flow.u_internal / VHeaWatSta_flow.u_internal
+    - pla.ctl.ctl.idxStaCoo.pas[*].u_internal / idxStaHea.pas[*].u_internal
+    - pla.ctl.ctl.staPumChiWatSec.* and pla.ctl.ctl.staPumHeaWatSec.* warning-listed fallback parameters.
+- Hypotheses generated/refuted:
+  - Generated: Validation model intentionally relies on many derived/default parameters; warning set is dominated by non-overridden internal placeholders.
+  - Refuted: No obvious direct mismatch in ratLoa dimensions (table and default offset are consistent: nout=2).
+- Artifacts produced: findings/02_validation_model.md

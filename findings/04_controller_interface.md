@@ -1,0 +1,26 @@
+## Step 4 Findings
+- File(s) inspected: c:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/HeatPumps/AirToWater.mo; c:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/Utilities/PlaceholderReal.mo; c:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/Utilities/StageIndex.mo; c:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/Pumps/Generic/StagingHeadered.mo
+- Key observations:
+  - Required conditional inputs are implemented through internal placeholder blocks and conditional connectors.
+  - Declarations and enable/guard logic:
+    - TChiWatRet: Utilities.PlaceholderReal TChiWatRet(final have_inp=have_senTChiWatPriRet, final have_inpPh=true) if have_chiWat.
+      - Effective enable for direct input u is have_senTChiWatPriRet.
+      - Placeholder path uPh is active when not have_senTChiWatPriRet.
+    - THeaWatRet: Utilities.PlaceholderReal THeaWatRet(final have_inp=have_senTHeaWatPriRet, final have_inpPh=true) if have_heaWat.
+      - Effective enable for direct input u is have_senTHeaWatPriRet.
+    - VChiWatSta_flow: Utilities.PlaceholderReal VChiWatSta_flow(final have_inp=have_senVChiWatPri, final have_inpPh=true) if have_chiWat.
+    - VHeaWatSta_flow: Utilities.PlaceholderReal VHeaWatSta_flow(final have_inp=have_senVHeaWatPri, final have_inpPh=true) if have_heaWat.
+    - VChiWatLoa_flow: Utilities.PlaceholderReal VChiWatLoa_flow(final have_inp=is_priOnl, final have_inpPh=true) if have_chiWat.
+    - VHeaWatLoa_flow: Utilities.PlaceholderReal VHeaWatLoa_flow(final have_inp=is_priOnl, final have_inpPh=true) if have_heaWat.
+    - idxStaCoo.pas[1..3] and idxStaHea.pas[1..3]: inside Utilities.StageIndex as PlaceholderLogical pas[nSta](have_inp=dtRun>0, have_inpPh=true).
+    - staPumChiWatSec.nPumHdrDp.pas[1..3] and staPumHeaWatSec.nPumHdrDp.pas[1..3]: via Pumps.Generic.StagingHeadered -> StageIndex nPumHdrDp(final have_inpAva=false, final nSta=nPum) and its internal pas[nSta](have_inp=dtRun>0, have_inpPh=true).
+  - staEquSinMod / staEquDouMod and defaults:
+    - Controller parameters staEquSinMod[:, nHpTot] and staEquDouMod[:, nHpTot] exist in AirToWater controller.
+    - Warning-listed secondary pump values refer to staPum*Sec.enaHdr.staEquSinMod/DouMod defaults inside EquipmentEnable in StagingHeadered context.
+  - have_valInlIso/have_valOutIso in secondary pump staging:
+    - In StagingHeadered, parameters default to false and are Dialog-enabled only for is_pri.
+    - Secondary instances (is_pri=false) therefore keep defaults false and appear in warning list.
+- Hypotheses generated/refuted:
+  - Generated: Most warning-listed values are default/fallback parameters from generic blocks, not necessarily active control paths.
+  - Refuted: No evidence that these declarations are missing enable logic; they use explicit conditional interfaces and placeholder selection.
+- Artifacts produced: findings/04_controller_interface.md

@@ -1,0 +1,13 @@
+## Step 0 Findings
+- File(s) inspected: c:/buildings_library/modelica-buildings/Buildings/package.mo; c:/buildings_library/modelica-buildings/.git/HEAD; c:/buildings_library/modelica-buildings/.git/refs/heads/issue4304_HybridAirSourceHeatPumpPlantControls_April2026; c:/git_repos/prompt2control/agent_outputs/dymola_model_check/model_check.mos; c:/git_repos/prompt2control/agent_outputs/dymola_model_check/dymola_model_check.log
+- Key observations:
+  - Buildings library version is 13.0.0 (versionDate 2025-05-29).
+  - Buildings workspace branch ref is refs/heads/issue4304_HybridAirSourceHeatPumpPlantControls_April2026.
+  - Buildings Git commit SHA is 18d6e622d7e9bdbb8137b9c408546bedd10ca9c8.
+  - Modelica Standard Library loaded by Dymola is Modelica 4.1.0 (openModel path in model_check.mos/log).
+  - Translation tool used is Dymola 2025x (from c:/program files/dymola 2025x/insert/dymola.mos in log).
+  - OpenModelica was not executed in this run.
+- Hypotheses generated/refuted:
+  - Generated: Environment matches the expected modern stack (Buildings 13.0.0 + MSL 4.1.0 + Dymola 2025x), so the failure is likely model/configuration-structure related rather than missing library versions.
+  - Refuted: No evidence of version mismatch between Buildings and MSL.
+- Artifacts produced: findings/00_environment.md

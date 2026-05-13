@@ -1,0 +1,36 @@
+## Step 3 Findings
+- File(s) inspected: c:/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/AirToWater.mo; c:/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/Components/Controls/HybridAirToWater.mo; c:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/HeatPumps/AirToWater.mo
+- Key observations:
+  - Controller type paths:
+    - pla.ctl type path: Buildings.Templates.Plants.HeatPumps.Components.Controls.HybridAirToWater
+    - pla.ctl.ctl type path: Buildings.Templates.Plants.Controls.HeatPumps.AirToWater
+  - How pla.ctl.ctl is instantiated (selected have_* booleans and sources in HybridAirToWater):
+    - have_chiWat <- cfg.have_chiWat
+    - have_heaWat <- cfg.have_heaWat
+    - have_hrc_select <- cfg.have_hrc
+    - have_pumChiWatPriDed_select <- cfg.have_pumChiWatPriDed
+    - have_pumPriHdr <- (cfg.typArrPumPri == Headered)
+    - have_pumHeaWatPriVar_select <- cfg.have_pumHeaWatPriVar
+    - have_pumChiWatPriVar_select <- cfg.have_pumChiWatPriVar
+    - have_senDpChiWatRemWir <- cfg.have_senDpChiWatRemWir
+    - have_senDpHeaWatRemWir <- cfg.have_senDpHeaWatRemWir
+    - have_valHpInlIso <- cfg.have_valHpInlIso
+    - have_valHpOutIso <- cfg.have_valHpOutIso
+    - nPumChiWatSec <- if have_PumHeaWatSec_override then nPumHeaWatSec_override else cfg.nPumChiWatSec
+    - nPumHeaWatSec <- if have_PumHeaWatSec_override then nPumHeaWatSec_override else cfg.nPumHeaWatSec
+  - Trace of flagged conditional inputs (connect presence/guards):
+    - TChiWatRet and THeaWatRet are internal PlaceholderReal blocks in pla.ctl.ctl; connects are unconditional (no if-guard):
+      - connect(TChiWatPriRet, TChiWatRet.u)
+      - connect(TChiWatSecRet, TChiWatRet.uPh)
+      - connect(THeaWatPriRet, THeaWatRet.u)
+      - connect(THeaWatSecRet, THeaWatRet.uPh)
+    - V*Sta_flow and V*Loa_flow placeholders are connected unconditionally (u and uPh).
+    - idxStaCoo/idxStaHea warnings point to StageIndex.pas[*].u_internal (internal PlaceholderLogical); the block-level connections are internal and unguarded.
+    - staPum*WatSec.nPumHdrDp.pas[*].u_internal are inside StagingHeadered -> StageIndex; connections are internal and unguarded.
+  - Propagation of staging matrices:
+    - In HybridAirToWater, pla.ctl.ctl receives final staEquSinMod=dat.staEquSinMod and final staEquDouMod=dat.staEquDouMod.
+    - pla.ctl.staEqu (final parameter of HybridAirToWater) is derived from dat.staEqu (or dat.staEquSinMod if cfg.have_HpShc).
+- Hypotheses generated/refuted:
+  - Generated: There is no obvious missing top-level connect() for flagged items; warnings are tied to internal placeholder fallbacks and disabled branches.
+  - Refuted: A direct external bus wiring omission for T*/V* signals in pla.ctl is not observed.
+- Artifacts produced: findings/03_plant_template.md

@@ -1,0 +1,23 @@
+## Step 8 Findings
+- File(s) inspected: c:/git_repos/prompt2control/agent_outputs/dymola_model_check/dymola_model_check.log; c:/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/Validation/AirToWater.mo; c:/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/Validation/UserProject/Data/AllSystems.mo; c:/buildings_library/modelica-buildings/Buildings/Controls/OBC/CDL/Reals/Sources/TimeTable.mo
+- Key observations:
+  - Unknown-side expression reconciliation (values substituted from Step 6):
+    - countTrue(...) over pla.ctl.staEqu columns = 3.
+    - 18470 + 16*3 = 18518.
+    - + staPumHeaWatPri.y1Ded_actual.nin (3) -> 18521.
+    - + staPumHeaWatPri.y1Ded_actual.nout (3) -> 18524.
+    - + ctlPumHeaWatSec.maxSet.nin (1) -> 18525.
+    - + ctlPumChiWatSec.maxSet.nin (1) -> 18526.
+    - + 2*size(pla.dat.hrc.per.PLRSup,1) = 2*10 = 20 -> 18546.
+    - + size(ratLoa.table,2) = 3 -> 18549.
+    - + max([2; size(ratLoa.offset,1)]) = max([2;2]) = 2 -> 18551.
+    - Result matches Dymola unknown count 18551.
+  - Equations-side expression:
+    - Dymola reports same base count 18551 before reduction and then "difference could be reduced to -30".
+    - This implies effective reduced equations exceed unknowns by 30 (equations ≈ 18581 vs unknowns 18551).
+  - The largest unresolved symbolic contribution on equation side is a large sum of conditional cardinality terms involving many `*.nin` values and conditional branch counts; Dymola collapses this to the reported net imbalance of 30.
+- Hypotheses generated/refuted:
+  - Generated: Unknown-side expression is internally consistent and fully reconciled.
+  - Generated: The residual -30 comes from equation-side conditional block cardinalities after parameter reduction, not from unknown-side count errors.
+  - Refuted: ratLoa dimensionality is not the source of the mismatch.
+- Artifacts produced: findings/08_arithmetic_reconciliation.md

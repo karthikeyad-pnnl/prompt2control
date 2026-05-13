@@ -1,0 +1,40 @@
+## Step 1 Findings
+- File(s) inspected: c:/git_repos/prompt2control/agent_outputs/dymola_model_check/dymola_model_check.log; c:/git_repos/prompt2control/agent_outputs/dymola_model_check/model_check.mos; c:/git_repos/prompt2control/logs/01_dymola_check.log
+- Key observations:
+  - Baseline Dymola checkModel was executed for Buildings.Templates.Plants.HeatPumps.Validation.AirToWater.
+  - Unknown/equation report in log:
+    - "The model has the same number of unknowns and equations: 18551"
+    - Then: "Error: The model is not well-posed."
+    - "Using the given settings of the parameters, the difference could be reduced to -30"
+  - Complete "enable=false and only start value" list (as reported):
+    - datAll.pla.hp.dpSouWwHeaHp_nominal(start = 40000.0)
+    - datAll.pla.hp.mSouWwCooHp_flow_nominal(start = 23.90057361376673)
+    - datAll.pla.hp.mSouWwHeaHp_flow_nominal(start = 14.937858508604206)
+    - datAll.tit24CliZon(start = ... Zone_1)
+    - loaCoo.con.dp1_nominal(start = 0)
+    - loaHea.con.dp1_nominal(start = 0)
+    - pla.ctl.ctl.idxStaCoo.pas[1..3].u_internal(start = true)
+    - pla.ctl.ctl.idxStaHea.pas[1..3].u_internal(start = true)
+    - pla.ctl.ctl.staPumChiWatSec.enaHdr.staEquDouMod(start = zero 3x3)
+    - pla.ctl.ctl.staPumChiWatSec.enaHdr.staEquSinMod(start = zero 3x3)
+    - pla.ctl.ctl.staPumChiWatSec.have_valInlIso(start = false)
+    - pla.ctl.ctl.staPumChiWatSec.have_valOutIso(start = false)
+    - pla.ctl.ctl.staPumChiWatSec.nPumHdrDp.pas[1..3].u_internal(start = true)
+    - pla.ctl.ctl.staPumHeaWatSec.enaHdr.staEquDouMod(start = zero 3x3)
+    - pla.ctl.ctl.staPumHeaWatSec.enaHdr.staEquSinMod(start = zero 3x3)
+    - pla.ctl.ctl.staPumHeaWatSec.have_valInlIso(start = false)
+    - pla.ctl.ctl.staPumHeaWatSec.have_valOutIso(start = false)
+    - pla.ctl.ctl.staPumHeaWatSec.nPumHdrDp.pas[1..3].u_internal(start = true)
+    - pla.ctl.ctl.TChiWatRet.u_internal(start = 0)
+    - pla.ctl.ctl.THeaWatRet.u_internal(start = 0)
+    - pla.ctl.ctl.VChiWatLoa_flow.u_internal(start = 0)
+    - pla.ctl.ctl.VChiWatSta_flow.u_internal(start = 0)
+    - pla.ctl.ctl.VHeaWatLoa_flow.u_internal(start = 0)
+    - pla.ctl.ctl.VHeaWatSta_flow.u_internal(start = 0)
+    - pla.typDis_select2(start = ... Constant1Variable2)
+  - No separate connect/size-mismatch warning block appeared; the principal failure is structural equation/unknown imbalance after parameter reduction.
+- Hypotheses generated/refuted:
+  - Generated: The baseline failure is reproducible and matches the known -30 imbalance signature.
+  - Generated: Warnings are concentrated in conditional/placeholder parameters and disabled options (air-to-water model retaining water-to-water fields and internal fallback placeholders).
+  - Refuted: The issue is not a missing-library/openModel failure in this run.
+- Artifacts produced: logs/01_dymola_check.log; findings/01_baseline.md
