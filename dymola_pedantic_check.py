@@ -40,7 +40,7 @@ def _default_output_dir() -> Path:
     return (Path(__file__).resolve().parent / "agent_outputs" / "dymola_pedantic").resolve()
 
 
-def _build_mos_content(model_class: str, library_root: str, modelica_path: str = "") -> str:
+def _build_mos_content(model_class: str, library_root: str, output_dir: str, modelica_path: str = "") -> str:
     """Create the Dymola command script for pedantic translation."""
     lib_path = Path(library_root).resolve().as_posix()
     lines = [
@@ -54,13 +54,13 @@ def _build_mos_content(model_class: str, library_root: str, modelica_path: str =
 
     lines.extend(
         [
+            'openModel("C:/Program Files/Dymola 2025x/Modelica/Library/Modelica 4.1.0/package.mo");',
             f'openModel("{lib_path}/Buildings/package.mo");',
-            f'translateModel("{model_class}");',
-            "ok := true;",
+            f'ok := translateModel("{model_class}");',
             "if not ok then",
             '  Modelica.Utilities.Streams.print("Pedantic translation failed.");',
             "end if;",
-            "savelog(""dymola_translation.log"");",
+            f'savelog("{output_dir}/dymola_translation.log");',
             "exit();",
         ]
     )
@@ -78,12 +78,12 @@ def run_pedantic_check(
     output_dir.mkdir(parents=True, exist_ok=True)
     mos_path = output_dir / "pedantic_translate.mos"
     mos_path.write_text(
-        _build_mos_content(model_class, library_root, modelica_path=modelica_path),
+        _build_mos_content(model_class, library_root, str(output_dir.resolve().as_posix()), modelica_path=modelica_path),
         encoding="utf-8",
     )
 
     exe = _find_dymola_executable(dymola_exe)
-    cmd = [exe, str(mos_path)]
+    cmd = [exe, '/nowindow', str(mos_path)]
 
     proc = subprocess.run(
         cmd,

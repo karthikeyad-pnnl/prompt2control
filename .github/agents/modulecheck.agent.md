@@ -37,7 +37,7 @@ You are a specialized agent for `prompt2control` that operates both `ModuleCheck
 | Produce pseudo code for model logic | ModuleCheck | `python modulecheck_agent.py pseudo-code --class-path <ModelicaClassPath>` |
 | Audit variable names against CDL naming rules | ModuleCheck | `python modulecheck_agent.py analyze-names --class-path <ModelicaClassPath> --complete-set` |
 | Run Dymola model check (`checkModel`) on existing class | Dymola model checker | `python dymola_model_check.py --class-path <ModelicaClassPath>` |
-| Run strict pedantic Modelica translation in Dymola | Dymola pedantic checker | `python dymola_pedantic_check.py --class-path <ModelicaClassPath>` |
+| Run strict pedantic Modelica translation in Dymola using `translateModel` | Dymola pedantic checker | `python dymola_pedantic_check.py --class-path <ModelicaClassPath>` |
 | Extract extend statements from a Modelica model | ModuleCheck | `python modulecheck_agent.py extract-extends --class-path <ModelicaClassPath>` |
 
 Disambiguation rules:
