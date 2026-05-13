@@ -82,6 +82,11 @@ def _get_parser() -> argparse.ArgumentParser:
         parents=[shared],
         help="Generate markdown pseudo code from the model.",
     )
+    subparsers.add_parser(
+        "extract-extends",
+        parents=[shared],
+        help="Extract extend statements from the model and generate a markdown summary.",
+    )
 
     analyze_parser = subparsers.add_parser(
         "analyze-names",
@@ -107,6 +112,8 @@ def _default_filename(command: str, class_path: str) -> str:
         return f"{class_name}_pseudocode.md"
     if command == "analyze-names":
         return f"{class_name}_naming_analysis.md"
+    if command == "extract-extends":
+        return f"{class_name}_extends.md"
     return f"{class_name}_{command}.txt"
 
 
@@ -120,7 +127,7 @@ def _resolve_output_path(output_dir: str, output_file: str, command: str, class_
 
 
 def _require_api_key_if_needed(command: str, api_key: str) -> None:
-    needs_llm = command in {"generate-docs", "review-docs", "pseudo-code", "analyze-names"}
+    needs_llm = command in {"generate-docs", "review-docs", "pseudo-code", "analyze-names", "extract-extends"}
     if needs_llm and not api_key:
         raise ValueError(
             "Missing API key. Set PROMPT2CONTROL_API_KEY or pass --api-key when running this command."
@@ -151,6 +158,8 @@ def main() -> None:
         result = checker.check_english_documentation(args.class_path)
     elif args.command == "pseudo-code":
         result = checker.get_pseudo_code(args.class_path)
+    elif args.command == "extract-extends":
+        result = checker.get_extend_statements(args.class_path)
     elif args.command == "analyze-names":
         variables_df = checker.parse_model_variables(args.class_path, complete_set=args.complete_set)
         result = checker.analyze_variable_names(variables_df)

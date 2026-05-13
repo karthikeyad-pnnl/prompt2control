@@ -61,6 +61,24 @@ python modulecheck_agent.py pseudo-code --class-path <ModelicaClassPath>
 python modulecheck_agent.py analyze-names --class-path <ModelicaClassPath> --complete-set
 ```
 
+### 5) Extract Extend Statements
+
+Extract extend statements from a Modelica model to analyze inheritance and redeclarations. This method parses the model file and generates a markdown table summarizing the base classes, redeclared components, and other assignments.
+
+#### Command
+
+Run from repository root:
+
+```powershell
+python module_check.py --extract-extends --class-path <ModelicaClassPath>
+```
+
+#### Example Output
+
+| Base Class                          | Redeclares       | Other Assignments |
+|-------------------------------------|------------------|-------------------|
+| Buildings.Controls.OBC.CDL.Interfaces | param1, param2   | assign1=value1    |
+
 ## Output
 
 By default, files are written under `agent_outputs/` with task-specific names.

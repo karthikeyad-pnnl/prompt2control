@@ -12,6 +12,7 @@ import pandas as pd
 from OMPython import OMCSessionZMQ
 from claude import ClaudeDepotLLM
 from search import strip_annotations
+import extract_extends
 
 class ModuleCheck:
     '''
@@ -227,6 +228,23 @@ class ModuleCheck:
             \n\nVariables:\n{variable_md}\n\nConnections:\n{connections_list}\n\nInternal component Context:\n{internal_context_md}"
         result = self.llm.invoke(pseudocode_message)
         return result
+
+    def get_extend_statements(self, modelica_package_tree_path):
+        '''Extract the extend statements from the Modelica model.'''
+
+        # Retrieve model text
+        filepath = os.path.join(self.lib_root, *modelica_package_tree_path.split('.')) + '.mo'
+        with open(filepath, 'r', encoding='utf-8') as f:
+            modelica_text = f.read()
+        extend_statement_data = extract_extends.extract_extends(modelica_text)
+        extend_record = pd.DataFrame(columns=['base', 'redeclares', 'other assignments'])
+        for index,item in enumerate(extend_statement_data):
+            extend_record.loc[index,'base'] = item.base_class
+            extend_record.loc[index,'redeclares'] = ', '.join(item.redeclares)
+            extend_record.loc[index,'other assignments'] = ', '.join(item.assignments)
+        extend_record = extend_record.to_markdown(index=False)
+
+        return extend_record
 
 if __name__ == "__main__":
     API_KEY = "" # Your API key for Claude Depot
