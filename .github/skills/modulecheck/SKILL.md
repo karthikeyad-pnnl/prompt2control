@@ -1,6 +1,6 @@
 ---
 name: modulecheck
-description: "Run ModuleCheck workflows for Modelica classes: generate English documentation, review annotation documentation quality, generate pseudo code, and analyze CDL variable naming compliance. Use when users ask to evaluate or document a Buildings model class. For Dymola pedantic translation checks, use dymola-pedantic. For Dymola checkModel validation, use dymola-model-check."
+description: "Run ModuleCheck workflows for Modelica classes: generate English documentation, review annotation documentation quality, generate pseudo code, analyze CDL variable naming compliance, rename components with OpenModelica, and extract extends data. Use when users ask to evaluate or document a Buildings model class. For Dymola pedantic translation checks, use dymola-pedantic. For Dymola checkModel validation, use dymola-model-check."
 ---
 
 # ModuleCheck Skill
@@ -70,7 +70,27 @@ Extract extend statements from a Modelica model to analyze inheritance and redec
 Run from repository root:
 
 ```powershell
-python module_check.py --extract-extends --class-path <ModelicaClassPath>
+python modulecheck_agent.py extract-extends --class-path <ModelicaClassPath>
+```
+
+### 6) Rename a component in a class
+
+Rename a component in a target class using OpenModelica `renameComponent`.
+
+```powershell
+python modulecheck_agent.py rename-component --class-path <ModelicaClassPath> --old-name <OldComponentName> --new-name <NewComponentName>
+```
+
+To rename without saving to disk immediately:
+
+```powershell
+python modulecheck_agent.py rename-component --class-path <ModelicaClassPath> --old-name <OldComponentName> --new-name <NewComponentName> --no-save
+```
+
+To run a preflight check only (verify old component exists and new name is available):
+
+```powershell
+python modulecheck_agent.py rename-component --class-path <ModelicaClassPath> --old-name <OldComponentName> --new-name <NewComponentName> --dry-run
 ```
 
 #### Example Output
@@ -87,5 +107,6 @@ By default, files are written under `agent_outputs/` with task-specific names.
 - `*_documentation_feedback.md`
 - `*_pseudocode.md`
 - `*_naming_analysis.md`
+- `*_rename_component.txt`
 
 Use `--output-file` to override the destination.

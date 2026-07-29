@@ -1,0 +1,71 @@
+RunScript("c:/program files/dymola 2025x/insert/dymola.mos", true);
+ = true
+Successfully loaded settings file C:/Users/deva713/AppData/Roaming/DassaultSystemes/Dymola/2025x/setup.dymx
+RunScript("$DYMOLA/insert/displayunit.mos", true);
+ = true
+RunScript("C:\\git_repos\\prompt2control\\agent_outputs\\dymola_model_check\\model_check.mos");
+Advanced.TranslationInCommandLog:=true;
+openModel("C:/Program Files/Dymola 2025x/Modelica/Library/Modelica 4.1.0/package.mo");
+ = true
+openModel("C:/buildings_library/modelica-buildings/Buildings/package.mo");
+ = true
+ok := checkModel("Buildings.Templates.Plants.HeatPumps.Validation.AirToWater");
+Pedantic check of Buildings.Templates.Plants.HeatPumps.Validation.AirToWater
+The following parameters have enable=false and don't have any value, only a start value:
+    datAll.pla.hp.dpSouWwHeaHp_nominal(start = 40000.0)
+    datAll.pla.hp.mSouWwCooHp_flow_nominal(start = 23.90057361376673)
+    datAll.pla.hp.mSouWwHeaHp_flow_nominal(start = 14.937858508604206)
+    datAll.tit24CliZon(start = Buildings.Controls.OBC.ASHRAE.G36.Types.Title24ClimateZone.      Zone_1)
+    loaCoo.con.dp1_nominal(start = 0)
+    loaHea.con.dp1_nominal(start = 0)
+    pla.ctl.ctl.idxStaCoo.pas[1].u_internal(start = true)
+    pla.ctl.ctl.idxStaCoo.pas[2].u_internal(start = true)
+    pla.ctl.ctl.idxStaCoo.pas[3].u_internal(start = true)
+    pla.ctl.ctl.idxStaHea.pas[1].u_internal(start = true)
+    pla.ctl.ctl.idxStaHea.pas[2].u_internal(start = true)
+    pla.ctl.ctl.idxStaHea.pas[3].u_internal(start = true)
+    pla.ctl.ctl.staPumChiWatSec.enaHdr.staEquDouMod(start = 
+    [0, 0, 0;
+    0, 0, 0;
+    0, 0, 0])
+    pla.ctl.ctl.staPumChiWatSec.enaHdr.staEquSinMod(start = 
+    [0, 0, 0;
+    0, 0, 0;
+    0, 0, 0])
+    pla.ctl.ctl.staPumChiWatSec.have_valInlIso(start = false)
+    pla.ctl.ctl.staPumChiWatSec.have_valOutIso(start = false)
+    pla.ctl.ctl.staPumChiWatSec.nPumHdrDp.pas[1].u_internal(start = true)
+    pla.ctl.ctl.staPumChiWatSec.nPumHdrDp.pas[2].u_internal(start = true)
+    pla.ctl.ctl.staPumChiWatSec.nPumHdrDp.pas[3].u_internal(start = true)
+    pla.ctl.ctl.staPumHeaWatSec.enaHdr.staEquDouMod(start = 
+    [0, 0, 0;
+    0, 0, 0;
+    0, 0, 0])
+    pla.ctl.ctl.staPumHeaWatSec.enaHdr.staEquSinMod(start = 
+    [0, 0, 0;
+    0, 0, 0;
+    0, 0, 0])
+    pla.ctl.ctl.staPumHeaWatSec.have_valInlIso(start = false)
+    pla.ctl.ctl.staPumHeaWatSec.have_valOutIso(start = false)
+    pla.ctl.ctl.staPumHeaWatSec.nPumHdrDp.pas[1].u_internal(start = true)
+    pla.ctl.ctl.staPumHeaWatSec.nPumHdrDp.pas[2].u_internal(start = true)
+    pla.ctl.ctl.staPumHeaWatSec.nPumHdrDp.pas[3].u_internal(start = true)
+    pla.ctl.ctl.TChiWatRet.u_internal(start = 0)
+    pla.ctl.ctl.THeaWatRet.u_internal(start = 0)
+    pla.ctl.ctl.VChiWatLoa_flow.u_internal(start = 0)
+    pla.ctl.ctl.VChiWatSta_flow.u_internal(start = 0)
+    pla.ctl.ctl.VHeaWatLoa_flow.u_internal(start = 0)
+    pla.ctl.ctl.VHeaWatSta_flow.u_internal(start = 0)
+    pla.typDis_select2(start = Buildings.Templates.Plants.HeatPumps.Types.Distribution.      Constant1Variable2)
+ 
+The model has the same number of unknowns and equations: 18551
+Error: The model is not well-posed.
+Using the given settings of the parameters, the difference could be reduced to
+  -30
+Error: ERRORS have been issued.
+Declaring variable: Boolean ok ;
+if not ok then
+  Modelica.Utilities.Streams.print("Model check failed.");
+end if;
+Model check failed.
+savelog("C:/git_repos/prompt2control/agent_outputs/dymola_model_check/dymola_model_check.log");

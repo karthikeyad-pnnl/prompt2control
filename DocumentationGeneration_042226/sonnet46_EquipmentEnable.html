@@ -1,0 +1,201 @@
+<p>
+This block computes the enable command <code>y1</code> for each piece of
+equipment in a plant based on the active stage index <code>uSta</code>,
+the equipment availability signals <code>u1Ava</code>, and — for plants
+that include lead/lag alternate equipment — the sorted runtime indices
+<code>uIdxAltSor</code>.
+It supports three plant configurations: non-hybrid plants, hybrid heat
+pump plants operating in single-operation mode, and hybrid heat pump
+plants operating in simultaneous heating-cooling mode.
+</p>
+
+<h4>Main equations</h4>
+<p>
+For each equipment item <i>i</i>, the enable command is determined as
+follows.
+</p>
+<p>
+The staging matrix (or its transpose) encodes which equipment items are
+required at each stage.
+A row of the transpose matrix corresponding to equipment <i>i</i> is
+extracted at the active stage index via
+<code>reqEquSta</code>
+(<a href="modelica://Buildings.Controls.OBC.CDL.Routing.RealExtractor">
+Buildings.Controls.OBC.CDL.Routing.RealExtractor</a>).
+When the stage index is zero the extracted row is zeroed out by
+<code>voiStaZer</code> so that all equipment is commanded off.
+</p>
+<p>
+From the extracted row, three Boolean conditions are derived for each
+equipment item <i>i</i>:
+</p>
+<ul>
+<li>
+<i>isReq</i>: the staging row value equals exactly 1, meaning equipment
+<i>i</i> is required without a lead/lag alternate.
+</li>
+<li>
+<i>isReqPosAlt</i>: the staging row value is greater than zero, meaning
+equipment <i>i</i> is required either directly or as a potential
+lead/lag alternate.
+</li>
+<li>
+<i>isNotReqNoAlt</i>: the staging row value is less than 1, meaning
+equipment <i>i</i> is either not required or is only a candidate
+lead/lag alternate.
+</li>
+</ul>
+<p>
+Equipment that is directly required (<i>isReq</i> is true) and available
+(<code>u1Ava</code> is true) is enabled via <code>isReqAva</code>.
+</p>
+<p>
+For lead/lag alternate equipment, the number of alternates needed to
+satisfy the stage requirement is computed as:
+</p>
+<p align="center" style="font-style:italic;">
+n<sub>alt,req</sub> = n<sub>equ,sta</sub> &minus; n<sub>req</sub>
+</p>
+<p>
+where <i>n<sub>equ,sta</sub></i> is the total number of equipment
+required at the current stage (summed from the staging row via
+<code>nEquStaRea</code> and converted by <code>nEquSta</code>) and
+<i>n<sub>req</sub></i> is the count of equipment directly required
+without a lead/lag alternate (counted by <code>nReq</code>).
+The block
+<a href="modelica://Buildings.Templates.Plants.Controls.Utilities.TrueArrayConditional">
+Buildings.Templates.Plants.Controls.Utilities.TrueArrayConditional</a>
+(<code>truArrCon</code>) then generates a Boolean array that marks the
+first <i>n<sub>alt,req</sub></i> available lead/lag alternate equipment
+items according to the sorted runtime order supplied by
+<code>uIdxAltSor</code>.
+An alternate equipment item is enabled when it is a candidate
+(<i>isReqPosAlt</i> and <i>isNotReqNoAlt</i>), available
+(<code>u1Ava</code>), and selected by <code>truArrCon</code>; this
+combined condition is evaluated by <code>isReqAltAva</code> and
+<code>isReqAltAvaNee</code>.
+</p>
+<p>
+The final enable command for each equipment item is the logical OR of
+the two paths:
+</p>
+<p align="center" style="font-style:italic;">
+y1<sub>i</sub> = isReqAva<sub>i</sub> or isReqAltAvaNee<sub>i</sub>
+</p>
+
+<h4>Assumptions and limitations</h4>
+<p>
+The enable commands are updated immediately on a stage change, on a
+change in the heating-cooling mode signal, or when the number of
+previously enabled and still available equipment items falls below the
+number required at the current stage.
+Between these trigger events the previously computed enable vector is
+held via the
+<a href="modelica://Buildings.Controls.OBC.CDL.Logical.Pre">
+Buildings.Controls.OBC.CDL.Logical.Pre</a>
+block (<code>y1Pre</code>) and the
+<a href="modelica://Buildings.Controls.OBC.CDL.Logical.Switch">
+Buildings.Controls.OBC.CDL.Logical.Switch</a>
+block (<code>logSwi</code>), which prevents unnecessary toggling of
+equipment commands when availability or runtime rankings change
+continuously.
+</p>
+<p>
+The block assumes that the staging matrices are correctly sized and
+consistent with <code>nSta</code> and <code>nEqu</code>.
+It does not implement any time delay or proof-of-operation feedback.
+</p>
+
+<h4>Typical use and important parameters</h4>
+<p>
+The parameters <code>staEqu</code>, <code>staEquSinMod</code>, and
+<code>staEquDouMod</code> define which equipment items are required at
+each stage for non-hybrid, hybrid single-operation, and hybrid
+heating-cooling configurations respectively.
+A value of <code>1</code> in row <i>s</i>, column <i>i</i> of
+<code>staEqu</code> means equipment <i>i</i> is directly required at
+stage <i>s</i>.
+A value strictly between <code>0</code> and <code>1</code> indicates
+that equipment <i>i</i> is a lead/lag alternate candidate at stage
+<i>s</i>.
+A value of <code>0</code> means equipment <i>i</i> is not used at
+stage <i>s</i>.
+The corresponding transpose matrices <code>traStaEqu</code>,
+<code>traStaEquSinMod</code>, and <code>traStaEquDouMod</code> are
+used internally by
+<a href="modelica://Buildings.Controls.OBC.CDL.Routing.RealExtractor">
+Buildings.Controls.OBC.CDL.Routing.RealExtractor</a>
+to extract the equipment requirement vector for the active stage.
+</p>
+<p>
+Set <code>have_HpShc = true</code> when the block is deployed in a
+hybrid heat pump plant that can operate in simultaneous heating-cooling
+mode.
+In this case the block switches between <code>traStaEquSinMod</code>
+and <code>traStaEquDouMod</code> depending on the Boolean input
+<code>u1HeaCoo</code>.
+When <code>have_HpShc = false</code> the block always uses
+<code>traStaEqu</code>.
+</p>
+<p>
+The parameter <code>nEquAlt</code> sets the number of lead/lag alternate
+equipment items and must match the length of the <code>uIdxAltSor</code>
+input vector.
+</p>
+
+<h4>Options</h4>
+<p>
+When <code>is_pumApp = true</code> the block is configured for a pump
+control module application.
+This flag may alter how the staging matrices are interpreted in the
+broader plant control template.
+</p>
+
+<h4>Dynamics</h4>
+<p>
+The block is event-driven.
+The enable switch condition (<code>swiEna</code>) is activated by any
+of the following events:
+</p>
+<ul>
+<li>
+A change in the stage index <code>uSta</code>, detected by
+<code>cha</code>.
+</li>
+<li>
+The number of previously enabled and still available equipment items
+becoming less than the number required at the current stage, evaluated
+by <code>nEnaAvaPre</code> and <code>intLes</code>.
+</li>
+<li>
+A change in the heating-cooling mode signal <code>u1HeaCoo</code>,
+detected by <code>cha1</code>.
+</li>
+</ul>
+<p>
+Outside these events the output <code>y1</code> is held at its previous
+value using
+<a href="modelica://Buildings.Controls.OBC.CDL.Logical.Pre">
+Buildings.Controls.OBC.CDL.Logical.Pre</a>.
+</p>
+
+<h4>Implementation</h4>
+<p>
+For hybrid plants the transposed staging matrix is selected at run time
+by the
+<a href="modelica://Buildings.Controls.OBC.CDL.Reals.Switch">
+Buildings.Controls.OBC.CDL.Reals.Switch</a>
+block <code>swiMod</code>, which is driven by the element-wise
+replication of <code>u1HeaCoo</code> to the matrix dimensions via
+<code>booScaRepCol</code> and <code>booVecRepRow</code>.
+For non-hybrid plants the constant matrix
+<code>conTraMatStaEqu</code> is connected directly to
+<code>reqEquSta.u</code>.
+</p>
+<p>
+To prevent index-out-of-range errors when <code>uSta = 0</code>
+(plant off), the stage index passed to
+<code>reqEquSta</code> is clamped to a minimum of <code>1</code> by
+<code>maxInt</code>, while <code>voiStaZer</code> multiplies the
+extracted row by zero so that no equipment is commanded on.
+</p>

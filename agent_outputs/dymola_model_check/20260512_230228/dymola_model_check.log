@@ -1,0 +1,163 @@
+﻿RunScript("c:/program files/dymola 2025x/insert/dymola.mos", true);
+ = true
+Successfully loaded settings file C:/Users/deva713/AppData/Roaming/DassaultSystemes/Dymola/2025x/setup.dymx
+RunScript("$DYMOLA/insert/displayunit.mos", true);
+ = true
+RunScript("C:\\git_repos\\prompt2control\\agent_outputs\\dymola_model_check\\20260512_230228\\model_check.mos");
+Advanced.TranslationInCommandLog:=true;
+openModel("C:/Program Files/Dymola 2025x/Modelica/Library/Modelica 4.1.0/package.mo");
+ = true
+openModel("C:/buildings_library/modelica-buildings/Buildings/package.mo");
+ = true
+ok := checkModel("Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable");
+Pedantic check of Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable
+Check is assuming: is_pumApp = false
+Check is assuming: nEqu = 0
+Check is assuming: nSta = 0
+Error: Failed to expand connect(nReq.u1, nReq.booToInt.u);
+ 
+Found in class Buildings.Templates.Plants.Controls.Utilities.CountTrue, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/Utilities/CountTrue.mo at line 28, and used in component nReq.
+Zero-sized array of record is not supported: nReq.booToInt
+Error: Failed to expand connect(nReq.booToInt.y, nReq.sumMul.u);
+ 
+Found in class Buildings.Templates.Plants.Controls.Utilities.CountTrue, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/Utilities/CountTrue.mo at line 32, and used in component nReq.
+Zero-sized array of record is not supported: nReq.booToInt
+Error: Failed to expand the variable nReq.sumMul.u
+Error: Failed to expand connect(nEnaAvaPre.u1, nEnaAvaPre.booToInt.u);
+ 
+Found in class Buildings.Templates.Plants.Controls.Utilities.CountTrue, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/Utilities/CountTrue.mo at line 28, and used in component nEnaAvaPre.
+Zero-sized array of record is not supported: nEnaAvaPre.booToInt
+Error: Failed to expand connect(nEnaAvaPre.booToInt.y, nEnaAvaPre.sumMul.u);
+ 
+Found in class Buildings.Templates.Plants.Controls.Utilities.CountTrue, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/Utilities/CountTrue.mo at line 32, and used in component nEnaAvaPre.
+Zero-sized array of record is not supported: nEnaAvaPre.booToInt
+Error: Failed to expand the variable nEnaAvaPre.sumMul.u
+Error: Failed to expand connect(intScaRep.y, reqEquSta.index);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 236.
+Zero-sized array of record is not supported: reqEquSta
+Error: Failed to expand connect(isReq.y, isReqAva.u1);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 238.
+Zero-sized array of record is not supported: isReq
+Zero-sized array of record is not supported: isReqAva
+Error: Failed to expand connect(u1Ava, isReqAva.u2);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 241.
+Zero-sized array of record is not supported: isReqAva
+Error: Failed to expand connect(isReqPosAlt.y, isReqAltAva.u[1]);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 244.
+Zero-sized array of record is not supported: isReqPosAlt
+Zero-sized array of record is not supported: isReqAltAva
+Error: Failed to expand connect(isNotReqNoAlt.y, isReqAltAva.u[2]);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 247.
+Zero-sized array of record is not supported: isNotReqNoAlt
+Zero-sized array of record is not supported: isReqAltAva
+Error: Failed to expand connect(u1Ava, isReqAltAva.u[3]);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 250.
+Zero-sized array of record is not supported: isReqAltAva
+Error: Failed to expand connect(isReqAva.y, ena.u2);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 253.
+Zero-sized array of record is not supported: isReqAva
+Zero-sized array of record is not supported: ena
+Error: Failed to expand connect(isReqAltAva.y, isReqAltAvaNee.u2);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 260.
+Zero-sized array of record is not supported: isReqAltAva
+Zero-sized array of record is not supported: isReqAltAvaNee
+Error: Failed to expand connect(isReqAltAvaNee.y, ena.u1);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 263.
+Zero-sized array of record is not supported: isReqAltAvaNee
+Zero-sized array of record is not supported: ena
+Error: Failed to expand connect(logSwi.y, y1);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 269.
+Zero-sized array of record is not supported: logSwi
+Error: Failed to expand the variable y1
+Error: Failed to expand connect(y1, y1Pre.u);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 272.
+Zero-sized array of record is not supported: y1Pre
+Error: Failed to expand connect(y1Pre.y, logSwi.u3);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 275.
+Zero-sized array of record is not supported: y1Pre
+Zero-sized array of record is not supported: logSwi
+Error: Failed to expand connect(ena.y, logSwi.u1);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 278.
+Zero-sized array of record is not supported: ena
+Zero-sized array of record is not supported: logSwi
+Error: Failed to expand connect(booScaRep.y, logSwi.u2);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 281.
+Zero-sized array of record is not supported: logSwi
+Error: Failed to expand connect(isReq.y, nReq.u1);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 287.
+Zero-sized array of record is not supported: isReq
+Error: Failed to expand connect(isEnaPreAva.y, nEnaAvaPre.u1);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 297.
+Zero-sized array of record is not supported: isEnaPreAva
+Error: Failed to expand connect(y1Pre.y, isEnaPreAva.u2);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 299.
+Zero-sized array of record is not supported: y1Pre
+Zero-sized array of record is not supported: isEnaPreAva
+Error: Failed to expand connect(u1Ava, isEnaPreAva.u1);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 302.
+Zero-sized array of record is not supported: isEnaPreAva
+Error: Failed to expand connect(truArrCon.y1, isReqAltAvaNee.u1);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 309.
+Zero-sized array of record is not supported: isReqAltAvaNee
+Error: Failed to expand connect(reqEquSta.y, voiStaZer.u1);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 327.
+Zero-sized array of record is not supported: reqEquSta
+Zero-sized array of record is not supported: voiStaZer
+Error: Failed to expand connect(reaScaRep.y, voiStaZer.u2);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 331.
+Zero-sized array of record is not supported: voiStaZer
+Error: Failed to expand connect(voiStaZer.y, nEquStaRea.u);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 333.
+Zero-sized array of record is not supported: voiStaZer
+Error: Failed to expand the variable nEquStaRea.u
+Error: Failed to expand connect(voiStaZer.y, isReqPosAlt.u);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 335.
+Zero-sized array of record is not supported: voiStaZer
+Zero-sized array of record is not supported: isReqPosAlt
+Error: Failed to expand connect(voiStaZer.y, isNotReqNoAlt.u);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 338.
+Zero-sized array of record is not supported: voiStaZer
+Zero-sized array of record is not supported: isNotReqNoAlt
+Error: Failed to expand connect(voiStaZer.y, isReq.u);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 340.
+Zero-sized array of record is not supported: voiStaZer
+Zero-sized array of record is not supported: isReq
+Error: Failed to expand connect(conTraMatStaEqu.y, reqEquSta.u);
+ 
+Found in class Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable, C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo at line 357.
+Zero-sized array of record is not supported: conTraMatStaEqu
+Zero-sized array of record is not supported: reqEquSta
+The model contained invalid connect statements.
+Check aborted.
+Error: ERRORS have been issued.
+Declaring variable: Boolean ok ;
+if not ok then
+  Modelica.Utilities.Streams.print("Model check failed.");
+end if;
+Model check failed.
+savelog("C:/git_repos/prompt2control/agent_outputs/dymola_model_check/20260512_230228/dymola_model_check.log");

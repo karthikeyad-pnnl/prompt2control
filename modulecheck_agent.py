@@ -88,6 +88,32 @@ def _get_parser() -> argparse.ArgumentParser:
         help="Extract extend statements from the model and generate a markdown summary.",
     )
 
+    rename_parser = subparsers.add_parser(
+        "rename-component",
+        parents=[shared],
+        help="Rename a component in a Modelica class using OpenModelica renameComponent.",
+    )
+    rename_parser.add_argument(
+        "--old-name",
+        required=True,
+        help="Existing component name to rename.",
+    )
+    rename_parser.add_argument(
+        "--new-name",
+        required=True,
+        help="New component name.",
+    )
+    rename_parser.add_argument(
+        "--no-save",
+        action="store_true",
+        help="Do not save the class after renameComponent succeeds.",
+    )
+    rename_parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Validate rename preconditions only; do not rename or save.",
+    )
+
     analyze_parser = subparsers.add_parser(
         "analyze-names",
         parents=[shared],
@@ -114,6 +140,8 @@ def _default_filename(command: str, class_path: str) -> str:
         return f"{class_name}_naming_analysis.md"
     if command == "extract-extends":
         return f"{class_name}_extends.md"
+    if command == "rename-component":
+        return f"{class_name}_rename_component.txt"
     return f"{class_name}_{command}.txt"
 
 
@@ -127,7 +155,7 @@ def _resolve_output_path(output_dir: str, output_file: str, command: str, class_
 
 
 def _require_api_key_if_needed(command: str, api_key: str) -> None:
-    needs_llm = command in {"generate-docs", "review-docs", "pseudo-code", "analyze-names", "extract-extends"}
+    needs_llm = command in {"generate-docs", "review-docs", "pseudo-code", "analyze-names"}
     if needs_llm and not api_key:
         raise ValueError(
             "Missing API key. Set PROMPT2CONTROL_API_KEY or pass --api-key when running this command."
@@ -160,6 +188,29 @@ def main() -> None:
         result = checker.get_pseudo_code(args.class_path)
     elif args.command == "extract-extends":
         result = checker.get_extend_statements(args.class_path)
+    elif args.command == "rename-component":
+        rename_result = checker.rename_component(
+            args.class_path,
+            args.old_name,
+            args.new_name,
+            save_class=not args.no_save,
+            dry_run=args.dry_run,
+        )
+        result = (
+            f"class_path: {rename_result['class_path']}\n"
+            f"old_name: {rename_result['old_name']}\n"
+            f"new_name: {rename_result['new_name']}\n"
+            f"dry_run: {rename_result['dry_run']}\n"
+            f"precheck_success: {rename_result['precheck_success']}\n"
+            f"component_exists: {rename_result['component_exists']}\n"
+            f"new_name_conflict: {rename_result['new_name_conflict']}\n"
+            f"precheck_message: {rename_result['precheck_message']}\n"
+            f"rename_success: {rename_result['rename_success']}\n"
+            f"rename_result: {rename_result['rename_result']}\n"
+            f"save_attempted: {rename_result['save_attempted']}\n"
+            f"save_success: {rename_result['save_success']}\n"
+            f"save_result: {rename_result['save_result']}\n"
+        )
     elif args.command == "analyze-names":
         variables_df = checker.parse_model_variables(args.class_path, complete_set=args.complete_set)
         result = checker.analyze_variable_names(variables_df)

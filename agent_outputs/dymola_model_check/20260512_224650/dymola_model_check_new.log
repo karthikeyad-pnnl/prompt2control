@@ -1,0 +1,44 @@
+﻿RunScript("c:/program files/dymola 2025x/insert/dymola.mos", true);
+ = true
+Successfully loaded settings file C:/Users/deva713/AppData/Roaming/DassaultSystemes/Dymola/2025x/setup.dymx
+RunScript("$DYMOLA/insert/displayunit.mos", true);
+ = true
+RunScript("model_check.mos");
+Advanced.TranslationInCommandLog:=true;
+openModel("C:/Program Files/Dymola 2025x/Modelica/Library/Modelica 4.1.0/package.mo");
+ = true
+openModel("C:/buildings_library/modelica-buildings/Buildings/package.mo");
+ = true
+ok := checkModel("Buildings.Templates.Plants.Controls.StagingRotation.Validation.EquipmentEnable");
+Pedantic check of Buildings.Templates.Plants.Controls.StagingRotation.Validation.EquipmentEnable
+The following parameters have enable=false and don't have any value, only a start value:
+    equEnaEqu.staEquDouMod(start = 
+    [0, 0, 0;
+    0, 0, 0;
+    0, 0, 0])
+    equEnaEqu.staEquSinMod(start = 
+    [0, 0, 0;
+    0, 0, 0;
+    0, 0, 0])
+    equEnaOneTwo.staEquDouMod(start = 
+    [0, 0, 0;
+    0, 0, 0;
+    0, 0, 0;
+    0, 0, 0;
+    0, 0, 0])
+    equEnaOneTwo.staEquSinMod(start = 
+    [0, 0, 0;
+    0, 0, 0;
+    0, 0, 0;
+    0, 0, 0;
+    0, 0, 0])
+ 
+The model has the same number of unknowns and equations: 520
+The model has the same number of unknowns and equations:
+  508+2*size(u1AvaEqu.table, 2)+size(uSta.table, 2)+size(uSta1.table, 2)
+Check of Buildings.Templates.Plants.Controls.StagingRotation.Validation.EquipmentEnable successful.
+Declaring variable: Boolean ok ;
+if not ok then
+  Modelica.Utilities.Streams.print("Model translation failed.");
+end if;
+savelog("C:/git_repos/prompt2control/agent_outputs/dymola_model_check/20260512_224650/dymola_model_check_new.log");

@@ -1,0 +1,5 @@
+Dymola executable: C:\Program Files\Dymola 2025x\bin64\dymola.exe
+MOS script: C:\git_repos\prompt2control\agent_outputs\dymola_model_check\model_check.mos
+Exit code: 0
+Stdout log: C:\git_repos\prompt2control\agent_outputs\dymola_model_check\dymola_model_check_stdout.log
+Stderr log: C:\git_repos\prompt2control\agent_outputs\dymola_model_check\dymola_model_check_stderr.log

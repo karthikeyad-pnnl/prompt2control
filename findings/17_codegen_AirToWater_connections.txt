@@ -1,0 +1,328 @@
+equation
+  connect(u1SchHea, enaHea.u1Sch)
+    
+  connect(nReqPlaHeaWat, enaHea.nReqPla) 
+  connect(TOut, enaHea.TOut)
+    
+  connect(enaHea.y1, idxStaHea.u1Lea)
+    
+  connect(avaStaHea.y1, idxStaHea.u1AvaSta)
+    
+  connect(idxStaHea.y, enaEquHea.uSta)
+    
+  connect(seqEve[1:nHp].y1ValHeaWatOutIso, y1ValHeaWatHpOutIso) 
+  connect(seqEve[1:nHp].y1ValHeaWatInlIso, y1ValHeaWatHpInlIso) 
+  connect(seqEve[1:nHp].y1ValChiWatInlIso, y1ValChiWatHpInlIso) 
+  connect(seqEve[1:nHp].y1ValChiWatOutIso, y1ValChiWatHpOutIso) 
+  connect(idxStaHea.y, chaStaHea.uSta)
+    
+  connect(chaStaHea.y1Dow, idxStaHea.u1Dow)
+    
+  connect(chaStaHea.y1Up, idxStaHea.u1Up)
+    
+  connect(avaStaHea.y1, chaStaHea.u1AvaSta)
+    
+  connect(sorRunTimHea.yIdx, enaEquHea.uIdxAltSor)
+    
+  connect(nReqPlaChiWat, enaCoo.nReqPla) 
+  connect(TOut, enaCoo.TOut)
+    
+  connect(u1SchCoo, enaCoo.u1Sch)
+    
+  connect(avaStaCoo.y1, chaStaCoo.u1AvaSta)
+    
+  connect(enaCoo.y1, idxStaCoo.u1Lea)
+    
+  connect(chaStaCoo.y1Up, idxStaCoo.u1Up)
+    
+  connect(chaStaCoo.y1Dow, idxStaCoo.u1Dow)
+    
+  connect(idxStaCoo.y, enaEquCoo.uSta)
+    
+  connect(enaEquHea.y1, seqEve.u1Hea) 
+  connect(enaEquCoo.y1, seqEve.u1Coo) 
+  connect(avaStaCoo.y1, idxStaCoo.u1AvaSta)
+    
+  connect(sorRunTimCoo.yIdx, enaEquCoo.uIdxAltSor)
+    
+  connect(idxStaCoo.y, chaStaCoo.uSta)
+    
+  connect(staPumChiWatPri.y1_actual, seqEve.u1PumChiWatPri_actual) 
+  connect(seqEve.y1PumChiWatPri, staPumChiWatPri.u1Pum) 
+  connect(pasPumChiWatPriSta.y, staPumChiWatPri.u1Pum_actual)
+    
+  connect(pasPumHeaWatPriSta.y, staPumHeaWatPri.u1Pum_actual)
+    
+  connect(staPumHeaWatPri.y1_actual, seqEve.u1PumHeaWatPri_actual) 
+  connect(staPumHeaWatSec.y1, y1PumHeaWatSec)
+    
+  connect(staPumChiWatSec.y1, y1PumChiWatSec)
+    
+  connect(u1PumHeaWatSec_actual, staPumHeaWatSec.u1Pum_actual)
+    
+  connect(u1PumChiWatSec_actual, staPumChiWatSec.u1Pum_actual)
+    
+  connect(staPumChiWatSec.y1_actual, seqEve.u1PumChiWatSec_actual) 
+  connect(seqEve.y1PumHeaWatPri, staPumHeaWatPri.u1Pum) 
+  connect(staPumHeaWatSec.y1_actual, seqEve.u1PumHeaWatSec_actual) 
+  connect(VHeaWatSec_flow, staPumHeaWatSec.V_flow)
+    
+  connect(VChiWatSec_flow, staPumChiWatSec.V_flow)
+    
+  connect(THeaWatPriRet, THeaWatRet.u)
+    
+  connect(THeaWatRet.y, chaStaHea.TRet)
+    
+  connect(THeaWatSecRet, THeaWatRet.uPh) 
+  connect(VHeaWatPri_flow, VHeaWatSta_flow.u) 
+  connect(VHeaWatSta_flow.y, chaStaHea.V_flow) 
+  connect(VHeaWatSec_flow, VHeaWatSta_flow.uPh) 
+  connect(TChiWatPriRet, TChiWatRet.u)
+    
+  connect(TChiWatRet.y, chaStaCoo.TRet)
+    
+  connect(TChiWatSecRet, TChiWatRet.uPh) 
+  connect(VChiWatPri_flow, VChiWatSta_flow.u) 
+  connect(VChiWatSta_flow.y, chaStaCoo.V_flow) 
+  connect(VChiWatSec_flow, VChiWatSta_flow.uPh) 
+  connect(enaHea.y1, staPumHeaWatSec.u1Pla)
+    
+  connect(enaCoo.y1, staPumChiWatSec.u1Pla)
+    
+  connect(seqEve.y1ValHeaWatInlIso, staPumHeaWatPri.u1ValInlIso) 
+  connect(seqEve.y1ValHeaWatOutIso, staPumHeaWatPri.u1ValOutIso) 
+  connect(seqEve.y1ValChiWatInlIso, staPumChiWatPri.u1ValInlIso) 
+  connect(seqEve.y1ValChiWatOutIso, staPumChiWatPri.u1ValOutIso) 
+  connect(idxStaCoo.y, comStaCoo.uSta)
+    
+  connect(comStaCoo.y1, chaStaCoo.u1StaPro)
+    
+  connect(y1HpPre.y, comStaCoo.u1)
+    
+  connect(idxStaHea.y, comStaHea.uSta)
+    
+  connect(y1HpPre.y, comStaHea.u1)
+    
+  connect(comStaHea.y1, chaStaHea.u1StaPro)
+    
+  connect(resHeaWat.dpSet, dpHeaWatRemSet)
+    
+  connect(resChiWat.dpSet, dpChiWatRemSet)
+    
+  connect(nReqResHeaWat,resHeaWat.nReqRes)
+    
+  connect(nReqResChiWat,resChiWat.nReqRes)
+    
+  connect(enaCoo.y1, resChiWat.u1Ena)
+    
+  connect(enaHea.y1, resHeaWat.u1Ena)
+    
+  connect(comStaHea.y1, resHeaWat.u1StaPro)
+    
+  connect(comStaCoo.y1, resChiWat.u1StaPro)
+    
+  connect(resChiWat.TSupSet, chaStaCoo.TSupSet)
+    
+  connect(resHeaWat.TSupSet, chaStaHea.TSupSet)
+    
+  connect(ctlPumPri.yPumHeaWatPriHdr, yPumHeaWatPriHdr)
+    
+  connect(ctlPumPri.yPumChiWatPriHdr, yPumChiWatPriHdr)
+    
+  connect(staPumChiWatPri.y1, ctlPumPri.u1PumChiWatPri)
+    
+  connect(seqEve.y1Hea, ctlPumPri.u1Hea) 
+  connect(ctlPumHeaWatSec.y, yPumHeaWatSec)
+    
+  connect(ctlPumChiWatSec.y, yPumChiWatSec)
+    
+  connect(u1PumHeaWatSec_actual, ctlPumHeaWatSec.y1_actual)
+    
+  connect(u1PumChiWatSec_actual, ctlPumChiWatSec.y1_actual)
+    
+  connect(resChiWat.dpSet, ctlPumChiWatSec.dpRemSet)
+    
+  connect(dpHeaWatRem, ctlPumHeaWatSec.dpRem)
+    
+  connect(resHeaWat.dpSet, ctlPumHeaWatSec.dpRemSet)
+    
+  connect(dpHeaWatLoc, ctlPumHeaWatSec.dpLoc)
+    
+  connect(dpHeaWatLocSet, ctlPumHeaWatSec.dpLocSet)
+    
+  connect(dpChiWatRem, ctlPumChiWatSec.dpRem)
+    
+  connect(dpChiWatLocSet, ctlPumChiWatSec.dpLocSet)
+    
+  connect(dpChiWatLoc, ctlPumChiWatSec.dpLoc)
+    
+  connect(u1AvaHp.y, avaEquHeaCoo.u1Ava) 
+  connect(resChiWat.TSupSet, repTChiWatSupSet.u) 
+  connect(resHeaWat.TSupSet, repTHeaWatSupSet.u) 
+  connect(resChiWat.TSupSet, TChiWatSupSet) 
+  connect(resHeaWat.TSupSet, THeaWatSupSet) 
+  connect(hrc.y1, y1Hrc) 
+  connect(hrc.y1Coo, y1CooHrc)
+    
+  connect(hrc.y1PumChiWat, y1PumChiWatHrc) 
+  connect(hrc.y1PumHeaWat, y1PumHeaWatHrc) 
+  connect(TChiWatSupSet, hrc.TChiWatSupSet) 
+  connect(THeaWatSupSet, hrc.THeaWatSupSet) 
+  connect(enaCoo.y1, hrc.u1Coo) 
+  connect(enaHea.y1, hrc.u1Hea) 
+  connect(TChiWatRetUpsHrc, hrc.TChiWatRetUpsHrc) 
+  connect(THeaWatRetUpsHrc, hrc.THeaWatRetUpsHrc) 
+  connect(THeaWatSecRet, hrc.THeaWatHrcLvg) 
+  connect(TChiWatSecRet, hrc.TChiWatHrcLvg) 
+  connect(u1Hrc_actual, hrc.u1Hrc_actual) 
+  connect(u1ReqFloChiWat, hrc.u1ReqFloChiWat) 
+  connect(u1ReqFloConWat, hrc.u1ReqFloConWat) 
+  connect(TChiWatPriSup, chaStaCoo.TPriSup) 
+  connect(THeaWatSecSup, chaStaHea.TSecSup) 
+  connect(TChiWatSecSup, chaStaCoo.TSecSup) 
+  connect(THeaWatPriSup, chaStaHea.TPriSup) 
+  connect(ctlPumHeaWatSec.y, staPumHeaWatSec.y) 
+  connect(ctlPumChiWatSec.y, staPumChiWatSec.y) 
+  connect(ctlPumHeaWatSec.dpLocSetMax, staPumHeaWatSec.dpSet[1]) 
+  connect(ctlPumChiWatSec.dpLocSetMax, staPumChiWatSec.dpSet[1]) 
+  connect(dpHeaWatLoc, staPumHeaWatSec.dp[1]) 
+  connect(dpChiWatLoc, staPumChiWatSec.dp[1]) 
+  connect(dpChiWatRem, staPumChiWatSec.dp) 
+  connect(dpHeaWatRem, staPumHeaWatSec.dp) 
+  connect(resHeaWat.dpSet, pasDpHeaWatRemSet.u) 
+  connect(pasDpHeaWatRemSet.y, staPumHeaWatSec.dpSet) 
+  connect(pasDpChiWatRemSet.y, staPumChiWatSec.dpSet) 
+  connect(resChiWat.dpSet, pasDpChiWatRemSet.u) 
+  connect(resChiWat.dpSet, ctlPumPri.dpChiWatRemSet) 
+  connect(resHeaWat.dpSet, ctlPumPri.dpHeaWatRemSet) 
+  connect(dpHeaWatRem, ctlPumPri.dpHeaWatRem) 
+  connect(dpHeaWatLocSet, ctlPumPri.dpHeaWatLocSet) 
+  connect(dpHeaWatLoc, ctlPumPri.dpHeaWatLoc) 
+  connect(pasDpHeaWatRemSet.y, staPumHeaWatPri.dpSet) 
+  connect(pasDpChiWatRemSet.y, staPumChiWatPri.dpSet) 
+  connect(ctlPumPri.dpChiWatLocSetMax, staPumChiWatPri.dpSet[1]) 
+  connect(ctlPumPri.dpHeaWatLocSetMax, staPumHeaWatPri.dpSet[1]) 
+  connect(dpHeaWatRem, staPumHeaWatPri.dp) 
+  connect(dpChiWatRem, staPumChiWatPri.dp) 
+  connect(dpHeaWatLoc, staPumHeaWatPri.dp[1]) 
+  connect(dpChiWatLoc, staPumChiWatPri.dp[1]) 
+  connect(dpChiWatLoc, ctlPumPri.dpChiWatLoc) 
+  connect(VChiWatPri_flow, staPumChiWatPri.V_flow) 
+  connect(VHeaWatPri_flow, staPumHeaWatPri.V_flow) 
+  connect(pasPumHeaWatPriSta.y, ctlPumPri.u1PumHeaWatPri_actual) 
+  connect(pasPumChiWatPriSta.y, ctlPumPri.u1PumChiWatPri_actual) 
+  connect(dpChiWatRem, ctlPumPri.dpChiWatRem) 
+  connect(dpChiWatLocSet, ctlPumPri.dpChiWatLocSet) 
+  connect(ctlFloMin.yValHeaWatMinByp, yValHeaWatMinByp)
+    
+  connect(ctlFloMin.yValChiWatMinByp, yValChiWatMinByp) 
+  connect(seqEve.y1, ctlFloMin.u1Equ) 
+  connect(seqEve.y1Hea, ctlFloMin.u1HeaEqu) 
+  connect(seqEve.y1ValHeaWatInlIso, ctlFloMin.u1ValHeaWatInlIso) 
+  connect(seqEve.y1ValHeaWatOutIso, ctlFloMin.u1ValHeaWatOutIso) 
+  connect(seqEve.y1ValChiWatInlIso, ctlFloMin.u1ValChiWatInlIso) 
+  connect(seqEve.y1ValChiWatOutIso, ctlFloMin.u1ValChiWatOutIso) 
+  connect(pasPumHeaWatPriSta.y, ctlFloMin.u1PumHeaWatPri_actual) 
+  connect(pasPumChiWatPriSta.y, ctlFloMin.u1PumChiWatPri_actual) 
+  connect(VHeaWatPri_flow, ctlFloMin.VHeaWatPri_flow) 
+  connect(VChiWatPri_flow, ctlFloMin.VChiWatPri_flow) 
+  connect(ctlPumPri.yPumHeaWatPriHdr, staPumHeaWatPri.y) 
+  connect(ctlPumPri.yPumChiWatPriHdr, staPumChiWatPri.y) 
+  connect(VHeaWatSec_flow, VHeaWatLoa_flow.uPh) 
+  connect(VHeaWatPri_flow, VHeaWatLoa_flow.u) 
+  connect(VChiWatSec_flow, VChiWatLoa_flow.uPh) 
+  connect(VChiWatPri_flow, VChiWatLoa_flow.u) 
+  connect(VChiWatLoa_flow.y, hrc.VChiWatLoa_flow) 
+  connect(VHeaWatLoa_flow.y, hrc.VHeaWatLoa_flow) 
+  connect(avaEquHeaCoo.y1Hea, or2.u2) 
+  connect(or2.y, avaStaHea.u1Ava) 
+  connect(or2.y, sorRunTimHea.u1Ava) 
+  connect(or2.y, enaEquHea.u1Ava) 
+  connect(avaEquHeaCoo.y1Coo, or1.u1) 
+  connect(or1.y, enaEquCoo.u1Ava) 
+  connect(or1.y, avaStaCoo.u1Ava) 
+  connect(or1.y, sorRunTimCoo.u1Ava) 
+  connect(staPumChiWatPri.y1, or7.u2) 
+  connect(staPumHeaWatPri.y1, or6.u2) 
+  connect(enaCoo.y1, ctlPlaHyb.u1EnaCoo) 
+  connect(enaHea.y1, ctlPlaHyb.u1EnaHea) 
+  connect(seqEve.y1Hea, ctlPlaHyb.uMod) 
+  connect(staPumHeaWatPri.y1, ctlPlaHyb.u1PumPriHea) 
+  connect(staPumChiWatPri.y1, ctlPlaHyb.u1PumPriCoo) 
+  connect(ctlPlaHyb.y1PumPri, or6.u1) 
+  connect(ctlPlaHyb.y1PumPri, or7.u1) 
+    connect(ctlPlaHyb.yAvaHpShcCoo, or1.u2) 
+    connect(ctlPlaHyb.yAvaHpShcHea, or2.u1) 
+  connect(ctlPlaHyb.yHeaCoo, enaEquHea.u1HeaCoo) 
+  connect(ctlPlaHyb.yHeaCoo, enaEquCoo.u1HeaCoo) 
+  connect(ctlPlaHyb.yStaEqu, avaStaCoo.staEqu) 
+  connect(ctlPlaHyb.yStaEqu, avaStaHea.staEqu) 
+  connect(ctlPlaHyb.yIdxSta, enaEquHea.uIdxAltSor) 
+  connect(ctlPlaHyb.yIdxSta, enaEquCoo.uIdxAltSor) 
+if have_HpShc then
+end if;
+  connect(staMat.y, avaStaHea.staEqu) 
+  connect(staMat.y, avaStaCoo.staEqu) 
+  connect(con.y, enaEquHea.u1HeaCoo) 
+  connect(con.y, enaEquCoo.u1HeaCoo) 
+  connect(con.y, booScaRep.u) 
+  connect(booScaRep.y, or2.u1)
+    
+  connect(booScaRep.y, or1.u2) 
+  connect(y1HpPre.y, andHeaEna.u1) 
+  connect(y1HpPre.y, andCooEna.u1) 
+  connect(y1HeaPre.y, andHeaEna.u2) 
+  connect(notCooMod.y, andCooEna.u2)
+    
+  connect(y1HeaPre.y, notCooMod.u) 
+  connect(andHeaEna.y, avaEquHeaCoo.u1EnaHea) 
+  connect(andCooEna.y, avaEquHeaCoo.u1EnaCoo) 
+  connect(pasHeaPumSta.y, sorRunTimHea.u1Run) 
+  connect(pasHeaPumSta.y, comStaHea.u1_actual) 
+  connect(pasHeaPumSta.y, sorRunTimCoo.u1Run) 
+  connect(pasHeaPumSta.y, comStaCoo.u1_actual) 
+  connect(seqEve.y1, y1HpPre.u) 
+  connect(seqEve.y1Hea, y1HeaPre.u) 
+  connect(u1Hp_actual, pasHeaPumSta.u[1:nHp])
+    
+  connect(seqEve[1:nHp].y1, y1Hp) 
+  connect(seqEve[1:nHp].y1Hea, y1HeaHp) 
+  connect(staPumHeaWatPri.y1[1:nPumHeaWatPri], y1PumHeaWatPri)
+    
+  connect(staPumChiWatPri.y1[1:nPumChiWatPri], y1PumChiWatPri)
+    
+  connect(u1PumHeaWatPri_actual, pasPumHeaWatPriSta.u[1:nPumHeaWatPri])
+    
+  connect(u1PumChiWatPri_actual, pasPumChiWatPriSta.u[1:nPumChiWatPri])
+    
+  connect(ctlPumPri.yPumHeaWatPriDed[1:nPumHeaWatPri], yPumHeaWatPriDed)
+    
+  connect(ctlPumPri.yPumChiWatPriDed[1:nPumChiWatPri], yPumChiWatPriDed)
+    
+  connect(ctlPlaHyb.yHeaCoo, chaStaCoo.u1HeaCoo) 
+  connect(ctlPlaHyb.yHeaCoo, chaStaHea.u1HeaCoo) 
+  connect(staPumHeaWatPri.y1, or3.u1) 
+  connect(staPumChiWatPri.y1, or3.u2) 
+  connect(or3.y, ctlPumPri.u1PumHeaWatPri) 
+  connect(staPumHeaWatPri.y1, pasPumHeaWatPri.u) 
+  connect(pasPumHeaWatPri.y, ctlPumPri.u1PumHeaWatPri) 
+  connect(u1AvaHp.y, ctlPlaHyb.u1HpAva) 
+  connect(repTHeaWatSupSet.y[1:nHp], THeaWatSupHpSet)
+    
+  connect(repTChiWatSupSet.y[1:nHp], TChiWatSupHpSet) 
+  connect(THeaWatSupSet, THeaWatHrcSupSet) 
+  connect(TChiWatSupSet, TChiWatHrcSupSet) 
+  connect(seqEve[(nHp + 1):(nHp+nHpShc)].y1, y1HpShc) 
+  connect(ctlPlaHyb.yMod[(nHp + 1):(nHp+nHpShc)], yMod) 
+  connect(or6[nHp + 1:nHp + nHpShc].y, y1PumHeaWatPriShc) 
+  connect(or7[nHp + 1:nHp + nHpShc].y, y1PumChiWatPriShc) 
+  connect(repTHeaWatSupSet.y[nHp + 1:nHp + nHpShc], THeaWatSupSetHpShc)
+    
+  connect(repTChiWatSupSet.y[nHp + 1:nHp + nHpShc], TChiWatSupSetHpShc)
+    
+  connect(u1HpShc_actual, pasHeaPumSta.u[nHp + 1:nHp + nHpShc]) 
+  connect(u1PumHeaWatPriShc_actual, pasPumHeaWatPriSta.u[nHp + 1:nHp + nHpShc])
+    
+  connect(u1PumChiWatPriShc_actual, pasPumChiWatPriSta.u[nHp + 1:nHp + nHpShc])
+    
+  

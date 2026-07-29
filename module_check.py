@@ -229,6 +229,89 @@ class ModuleCheck:
         result = self.llm.invoke(pseudocode_message)
         return result
 
+    def rename_component(self, modelica_package_tree_path, old_name, new_name, save_class: bool = True, dry_run: bool = False):
+        '''Rename a component in a class using OpenModelica renameComponent.
+        In dry-run mode, only validate that old_name exists and new_name does not conflict.'''
+        def _omc_success(value):
+            if isinstance(value, bool):
+                return value
+            value_text = str(value).strip().lower()
+            if value_text in {'true', '1'}:
+                return True
+            if value_text in {'false', '0'} or 'error' in value_text:
+                return False
+            return bool(value)
+
+        identifier_pattern = re.compile(r'^[A-Za-z_][A-Za-z0-9_]*$')
+        if not identifier_pattern.match(old_name):
+            raise ValueError(f"Invalid old_name '{old_name}'. Expected a valid Modelica identifier.")
+        if not identifier_pattern.match(new_name):
+            raise ValueError(f"Invalid new_name '{new_name}'. Expected a valid Modelica identifier.")
+
+        components_result = self.omc.sendExpression(f'getComponentsTest({modelica_package_tree_path})')
+        component_names = set()
+        if isinstance(components_result, list):
+            for component in components_result:
+                if isinstance(component, dict) and 'name' in component:
+                    component_names.add(component['name'])
+
+        component_exists = old_name in component_names
+        new_name_conflict = new_name in component_names and new_name != old_name
+        precheck_success = component_exists and not new_name_conflict
+
+        if dry_run or not precheck_success:
+            precheck_message = None
+            if not component_exists:
+                precheck_message = f"Component '{old_name}' not found in class {modelica_package_tree_path}."
+            elif new_name_conflict:
+                precheck_message = f"Target name '{new_name}' already exists in class {modelica_package_tree_path}."
+            else:
+                precheck_message = "Precheck successful. Rename can proceed."
+
+            return {
+                'class_path': modelica_package_tree_path,
+                'old_name': old_name,
+                'new_name': new_name,
+                'dry_run': dry_run,
+                'precheck_success': precheck_success,
+                'component_exists': component_exists,
+                'new_name_conflict': new_name_conflict,
+                'precheck_message': precheck_message,
+                'rename_success': False,
+                'rename_result': None,
+                'save_attempted': False,
+                'save_success': None,
+                'save_result': None,
+            }
+
+        old_name_escaped = old_name.replace('"', '\\"')
+        new_name_escaped = new_name.replace('"', '\\"')
+        rename_expr = f'renameComponent({modelica_package_tree_path}, "{old_name_escaped}", "{new_name_escaped}")'
+        rename_result = self.omc.sendExpression(rename_expr)
+        rename_success = _omc_success(rename_result)
+
+        save_result = None
+        save_success = None
+        if rename_success and save_class:
+            save_result = self.omc.sendExpression(f'save({modelica_package_tree_path})')
+            save_success = _omc_success(save_result)
+
+        return {
+            'class_path': modelica_package_tree_path,
+            'old_name': old_name,
+            'new_name': new_name,
+            'dry_run': False,
+            'precheck_success': precheck_success,
+            'component_exists': component_exists,
+            'new_name_conflict': new_name_conflict,
+            'precheck_message': 'Precheck successful. Rename executed.',
+            'rename_success': rename_success,
+            'rename_result': rename_result,
+            'save_attempted': save_class,
+            'save_success': save_success,
+            'save_result': save_result,
+        }
+
     def get_extend_statements(self, modelica_package_tree_path):
         '''Extract the extend statements from the Modelica model.'''
 
@@ -247,10 +330,10 @@ class ModuleCheck:
         return extend_record
 
 if __name__ == "__main__":
-    API_KEY = "" # Your API key for Claude Depot
-    BASE_URL = "" # Base URL for the API
-    # MODEL = 'claude-sonnet-4-6-birthright'
-    MODEL = 'grok-4-fast-reasoning-birthright'
+    API_KEY = "sk-_1K6n4unTXIrpHAcQuGAQQ" # Your API key for Claude Depot
+    BASE_URL = "https://ai-incubator-api.pnnl.gov" # Base URL for the API
+    MODEL = 'claude-sonnet-4-6-birthright'
+    # MODEL = 'grok-4-fast-reasoning-birthright'
 
     lib_build = os.path.abspath(os.path.join('..', '..', 'buildings_library', 'modelica-buildings', 'Buildings'))
     example_path = os.path.normpath(os.path.join(lib_build, 'Controls', 'OBC', 'CDL', 'Examples'))
@@ -261,13 +344,15 @@ if __name__ == "__main__":
 
     checker = ModuleCheck(MODEL, BASE_URL, API_KEY, lib_root_trial, True)
     # TEST_FILE = 'Buildings.Templates.Plants.Controls.HeatPumps.AirToWater'
-    TEST_FILE = 'Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable'
-    english_docs = checker.generate_english_documentation(TEST_FILE)
-    output_file_path = os.path.join(output_dir, 'DocumentationGeneration_042226', f'sonnet46_{TEST_FILE.split(".")[-1]}.html')
-    if not os.path.exists(os.path.dirname(output_file_path)):
-        os.makedirs(os.path.dirname(output_file_path))
-    with open(output_file_path, 'w', encoding='utf-8') as f:
-        f.write(english_docs)
+    TEST_FILE = 'Buildings.Templates.Plants.HeatPumps.AirToWater'
+    # english_docs = checker.generate_english_documentation(TEST_FILE)
+    # output_file_path = os.path.join(output_dir, 'DocumentationGeneration_042226', f'sonnet46_{TEST_FILE.split(".")[-1]}.html')
+    # if not os.path.exists(os.path.dirname(output_file_path)):
+    #     os.makedirs(os.path.dirname(output_file_path))
+    # with open(output_file_path, 'w', encoding='utf-8') as f:
+    #     f.write(english_docs)
+
+    extend_statements = checker.get_extend_statements(TEST_FILE)
     # print(english_docs)
     # # analysis_result = checker.analyze_variable_names(variables)
     # # print(analysis_result)
@@ -290,7 +375,7 @@ if __name__ == "__main__":
     #               'Buildings.Templates.Plants.Controls.StagingRotation.HybridOperation']
 
     # for class_path in reqd_class:
-    checker_3 = ModuleCheck(MODEL, BASE_URL, API_KEY, lib_root_trial, True)
-    feedback = checker_3.check_english_documentation(TEST_FILE)
-    with open(os.path.join(output_dir, 'DocumentationFeedback_042226', f'sonnet46_{TEST_FILE.split(".")[-1]}_2.md'), 'w', encoding='utf-8') as f:
-        f.write(feedback)
+    # checker_3 = ModuleCheck(MODEL, BASE_URL, API_KEY, lib_root_trial, True)
+    # feedback = checker_3.check_english_documentation(TEST_FILE)
+    # with open(os.path.join(output_dir, 'DocumentationFeedback_042226', f'sonnet46_{TEST_FILE.split(".")[-1]}_2.md'), 'w', encoding='utf-8') as f:
+    #     f.write(feedback)

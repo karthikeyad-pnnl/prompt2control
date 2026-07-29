@@ -1,0 +1,114 @@
+This is the simulation result of the first 10 time points for each variable:
+
+TChiSet:
+  t=0.00, value=0
+  t=2.40, value=0
+  t=4.80, value=0
+  t=7.20, value=0
+  t=9.60, value=0
+  t=12.00, value=0
+  t=14.40, value=0
+  t=16.80, value=0
+  t=19.20, value=0
+  t=21.60, value=0
+
+TChi_CHWST:
+  t=0.00, value=0
+  t=2.40, value=0
+  t=4.80, value=0
+  t=7.20, value=0
+  t=9.60, value=0
+  t=12.00, value=0
+  t=14.40, value=0
+  t=16.80, value=0
+  t=19.20, value=0
+  t=21.60, value=0
+
+sub.y:
+  t=0.00, value=0
+  t=2.40, value=0
+  t=4.80, value=0
+  t=7.20, value=0
+  t=9.60, value=0
+  t=12.00, value=0
+  t=14.40, value=0
+  t=16.80, value=0
+  t=19.20, value=0
+  t=21.60, value=0
+
+hys.y:
+  t=0.00, value=0
+  t=2.40, value=0
+  t=4.80, value=0
+  t=7.20, value=0
+  t=9.60, value=0
+  t=12.00, value=0
+  t=14.40, value=0
+  t=16.80, value=0
+  t=19.20, value=0
+  t=21.60, value=0
+
+y:
+  t=0.00, value=0
+  t=2.40, value=0
+  t=4.80, value=0
+  t=7.20, value=0
+  t=9.60, value=0
+  t=12.00, value=0
+  t=14.40, value=0
+  t=16.80, value=0
+  t=19.20, value=0
+  t=21.60, value=0
+
+TDeaBan:
+  t=0.00, value=1
+  t=1200.00, value=1
+
+hys.uHigh:
+  t=0.00, value=1
+  t=1200.00, value=1
+
+hys.uLow:
+  t=0.00, value=0
+  t=1200.00, value=0
+
+hys.pre_y_start:
+  t=0.00, value=0
+  t=1200.00, value=0
+
+hys.u:
+  t=0.00, value=0
+  t=2.40, value=0
+  t=4.80, value=0
+  t=7.20, value=0
+  t=9.60, value=0
+  t=12.00, value=0
+  t=14.40, value=0
+  t=16.80, value=0
+  t=19.20, value=0
+  t=21.60, value=0
+
+sub.u1:
+  t=0.00, value=0
+  t=2.40, value=0
+  t=4.80, value=0
+  t=7.20, value=0
+  t=9.60, value=0
+  t=12.00, value=0
+  t=14.40, value=0
+  t=16.80, value=0
+  t=19.20, value=0
+  t=21.60, value=0
+
+sub.u2:
+  t=0.00, value=0
+  t=2.40, value=0
+  t=4.80, value=0
+  t=7.20, value=0
+  t=9.60, value=0
+  t=12.00, value=0
+  t=14.40, value=0
+  t=16.80, value=0
+  t=19.20, value=0
+  t=21.60, value=0
+

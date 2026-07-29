@@ -1,0 +1,24 @@
+RunScript("c:/program files/dymola 2025x/insert/dymola.mos", true);
+ = true
+Successfully loaded settings file C:/Users/deva713/AppData/Roaming/DassaultSystemes/Dymola/2025x/setup.dymx
+RunScript("$DYMOLA/insert/displayunit.mos", true);
+ = true
+RunScript("C:\\git_repos\\prompt2control\\agent_outputs\\dymola_model_check\\model_check.mos");
+Advanced.TranslationInCommandLog:=true;
+openModel("C:/Program Files/Dymola 2025x/Modelica/Library/Modelica 4.1.0/package.mo");
+ = true
+openModel("C:/buildings_library/modelica-buildings/Buildings/package.mo");
+ = true
+ok := checkModel("Buildings.Templates.Plants.HeatPumps.Validation.AirToWater");
+Pedantic check of Buildings.Templates.Plants.HeatPumps.Validation.AirToWater
+The model has the same number of unknowns and equations: 18551
+Error: The model is not well-posed.
+Using the given settings of the parameters, the difference could be reduced to
+  -30
+Error: ERRORS have been issued.
+Declaring variable: Boolean ok ;
+if not ok then
+  Modelica.Utilities.Streams.print("Model check failed.");
+end if;
+Model check failed.
+savelog("C:/git_repos/prompt2control/agent_outputs/dymola_model_check/dymola_model_check.log");

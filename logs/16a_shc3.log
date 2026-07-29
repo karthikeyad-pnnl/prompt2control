@@ -1,0 +1,74 @@
+RunScript("c:/program files/dymola 2025x/insert/dymola.mos", true);
+ = true
+Successfully loaded settings file C:/Users/deva713/AppData/Roaming/DassaultSystemes/Dymola/2025x/setup.dymx
+RunScript("$DYMOLA/insert/displayunit.mos", true);
+ = true
+RunScript("c:\\git_repos\\prompt2control\\logs\\16a_shc3_run\\model_check.mos");
+Advanced.TranslationInCommandLog:=true;
+openModel("C:/Program Files/Dymola 2025x/Modelica/Library/Modelica 4.1.0/package.mo");
+ = true
+openModel("C:/buildings_library/modelica-buildings/Buildings/package.mo");
+ = true
+ok := checkModel("Buildings.Templates.Plants.HeatPumps.Validation.AirToWaterShc3");
+Pedantic check of Buildings.Templates.Plants.HeatPumps.Validation.AirToWaterShc3
+Error: Cannot instantiate the model, either due to an error or a limitation.
+Current version of the Modelica translator can only handle
+conditional components with fixed condition.
+All variables used in condition of conditional declaration must be declared as constants or parameters.
+Failed for component pla.ctl.ctl.chaStaHea.gre.greHys with condition if have_hysteresis.
+  File: C:/buildings_library/modelica-buildings/Buildings/Controls/OBC/CDL/Reals/Greater.mo, line 25
+Error: Internal failure to expand
+  NotImplemented
+Error: Internal failure to expand
+  NotImplemented
+Failed for component pla.ctl.ctl.chaStaHea.gre.greNoHys with condition if not have_hysteresis.
+  File: C:/buildings_library/modelica-buildings/Buildings/Controls/OBC/CDL/Reals/Greater.mo, line 30
+Error: Internal failure to expand
+  NotImplemented
+Error: Internal failure to expand
+  NotImplemented
+Failed for component pla.ctl.ctl.chaStaHea.les.lesHys with condition if have_hysteresis.
+  File: C:/buildings_library/modelica-buildings/Buildings/Controls/OBC/CDL/Reals/Less.mo, line 24
+Error: Internal failure to expand
+  NotImplemented
+Error: Internal failure to expand
+  NotImplemented
+Failed for component pla.ctl.ctl.chaStaHea.les.lesNoHys with condition if not have_hysteresis.
+  File: C:/buildings_library/modelica-buildings/Buildings/Controls/OBC/CDL/Reals/Less.mo, line 29
+Error: Internal failure to expand
+  NotImplemented
+Error: Internal failure to expand
+  NotImplemented
+Failed for component pla.ctl.ctl.chaStaCoo.gre.greHys with condition if have_hysteresis.
+  File: C:/buildings_library/modelica-buildings/Buildings/Controls/OBC/CDL/Reals/Greater.mo, line 25
+Error: Internal failure to expand
+  NotImplemented
+Error: Internal failure to expand
+  NotImplemented
+Failed for component pla.ctl.ctl.chaStaCoo.gre.greNoHys with condition if not have_hysteresis.
+  File: C:/buildings_library/modelica-buildings/Buildings/Controls/OBC/CDL/Reals/Greater.mo, line 30
+Error: Internal failure to expand
+  NotImplemented
+Error: Internal failure to expand
+  NotImplemented
+Failed for component pla.ctl.ctl.chaStaCoo.les.lesHys with condition if have_hysteresis.
+  File: C:/buildings_library/modelica-buildings/Buildings/Controls/OBC/CDL/Reals/Less.mo, line 24
+Error: Internal failure to expand
+  NotImplemented
+Error: Internal failure to expand
+  NotImplemented
+Failed for component pla.ctl.ctl.chaStaCoo.les.lesNoHys with condition if not have_hysteresis.
+  File: C:/buildings_library/modelica-buildings/Buildings/Controls/OBC/CDL/Reals/Less.mo, line 29
+Error: Internal failure to expand
+  NotImplemented
+Error: Internal failure to expand
+  NotImplemented
+The model contained invalid expressions.
+Check of class aborted.
+Error: ERRORS have been issued.
+Declaring variable: Boolean ok ;
+if not ok then
+  Modelica.Utilities.Streams.print("Model check failed.");
+end if;
+Model check failed.
+savelog("C:/git_repos/prompt2control/logs/16a_shc3_run/dymola_model_check.log");

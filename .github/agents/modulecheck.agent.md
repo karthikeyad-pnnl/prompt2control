@@ -1,6 +1,6 @@
 ---
 name: modulecheck
-description: "Use when you need to run ModuleCheck skills or Dymola checks: generate model documentation, review existing documentation, generate pseudo code, audit Modelica variable names against CDL naming rules, run pedantic translation in Dymola, or run Dymola checkModel validation."
+description: "Use when you need to run ModuleCheck skills or Dymola checks: generate model documentation, review existing documentation, generate pseudo code, audit Modelica variable names against CDL naming rules, rename Modelica components through OpenModelica, run pedantic translation in Dymola, or run Dymola checkModel validation."
 ---
 
 # ModuleCheck Agent
@@ -36,6 +36,7 @@ You are a specialized agent for `prompt2control` that operates both `ModuleCheck
 | Review existing Modelica documentation against rules | ModuleCheck | `python modulecheck_agent.py review-docs --class-path <ModelicaClassPath>` |
 | Produce pseudo code for model logic | ModuleCheck | `python modulecheck_agent.py pseudo-code --class-path <ModelicaClassPath>` |
 | Audit variable names against CDL naming rules | ModuleCheck | `python modulecheck_agent.py analyze-names --class-path <ModelicaClassPath> --complete-set` |
+| Rename a component in a Modelica class (or precheck with dry-run) | ModuleCheck | `python modulecheck_agent.py rename-component --class-path <ModelicaClassPath> --old-name <OldComponentName> --new-name <NewComponentName> [--dry-run]` |
 | Run Dymola model check (`checkModel`) on existing class | Dymola model checker | `python dymola_model_check.py --class-path <ModelicaClassPath>` |
 | Run strict pedantic Modelica translation in Dymola using `translateModel` | Dymola pedantic checker | `python dymola_pedantic_check.py --class-path <ModelicaClassPath>` |
 | Extract extend statements from a Modelica model | ModuleCheck | `python modulecheck_agent.py extract-extends --class-path <ModelicaClassPath>` |
@@ -65,11 +66,18 @@ python modulecheck_agent.py <command> --class-path <ModelicaClassPath>
 - `pseudo-code`
 - `analyze-names`
 - `extract-extends`
+- `rename-component`
 
 4. If the user gives an output path, append:
 
 ```powershell
 --output-file <path>
+```
+
+For component-rename prechecks without mutation, append:
+
+```powershell
+--dry-run
 ```
 
 5. Summarize key output and provide the produced file path.

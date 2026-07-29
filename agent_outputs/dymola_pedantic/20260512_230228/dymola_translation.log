@@ -1,0 +1,68 @@
+﻿RunScript("c:/program files/dymola 2025x/insert/dymola.mos", true);
+ = true
+Successfully loaded settings file C:/Users/deva713/AppData/Roaming/DassaultSystemes/Dymola/2025x/setup.dymx
+RunScript("$DYMOLA/insert/displayunit.mos", true);
+ = true
+RunScript("C:\\git_repos\\prompt2control\\agent_outputs\\dymola_pedantic\\20260512_230228\\pedantic_translate.mos");
+Advanced.TranslationInCommandLog:=true;
+Advanced.PedanticModelica:=true;
+openModel("C:/Program Files/Dymola 2025x/Modelica/Library/Modelica 4.1.0/package.mo");
+ = true
+openModel("C:/buildings_library/modelica-buildings/Buildings/package.mo");
+ = true
+translateModel("Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable");
+Pedantic translation of Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable
+Error: Cannot instantiate the model, either due to an error or a limitation.
+Current version of the Modelica translator can only handle
+array of components with fixed size and conditional components with fixed condition.
+All variables used in size expressions and condition of conditonal declaration must be declared as constants or parameters.
+Failed for component u1HeaCoo with condition if not is_pumApp.
+  File: C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo, line 67
+Failed for component reqEquSta with array dimensions [nEqu].
+  File: C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo, line 86
+Failed for component isReq with array dimensions [nEqu].
+  File: C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo, line 98
+Failed for component isReqAva with array dimensions [nEqu].
+  File: C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo, line 102
+Failed for component isReqPosAlt with array dimensions [nEqu].
+  File: C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo, line 105
+Failed for component isNotReqNoAlt with array dimensions [nEqu].
+  File: C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo, line 109
+Failed for component isReqAltAva with array dimensions [nEqu].
+  File: C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo, line 113
+Failed for component ena with array dimensions [nEqu].
+  File: C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo, line 117
+Failed for component isReqAltAvaNee with array dimensions [nEqu].
+  File: C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo, line 128
+Failed for component y1Pre with array dimensions [nEqu].
+  File: C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo, line 136
+Failed for component logSwi with array dimensions [nEqu].
+  File: C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo, line 140
+Failed for component nReq.booToInt with array dimensions [nin].
+  File: C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/Utilities/CountTrue.mo, line 17
+Failed for component nEnaAvaPre.booToInt with array dimensions [nin].
+  File: C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/Utilities/CountTrue.mo, line 17
+Failed for component isEnaPreAva with array dimensions [nEqu].
+  File: C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo, line 166
+Failed for component voiStaZer with array dimensions [nEqu].
+  File: C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo, line 194
+Failed for component cha1 with condition if not is_pumApp.
+  File: C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo, line 198
+Failed for component conTraMatStaEqu with condition if not have_HpShc.
+Failed for component conTraMatStaEqu with array dimensions [nEqu, nSta].
+  File: C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo, line 217
+Failed for component booVecRepRow with condition if not is_pumApp.
+  File: C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo, line 222
+Failed for component booScaRepCol with condition if not is_pumApp.
+  File: C:/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/StagingRotation/EquipmentEnable.mo, line 228
+The model contained invalid expressions.
+Translation aborted.
+Error: ERRORS have been issued.
+ = false
+ok := true;
+Instantiation of 
+Declaring variable: Boolean ok ;
+if not ok then
+  Modelica.Utilities.Streams.print("Pedantic translation failed.");
+end if;
+savelog("C:/git_repos/prompt2control/agent_outputs/dymola_pedantic/20260512_230228/dymola_translation.log");

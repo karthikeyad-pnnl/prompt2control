@@ -1,0 +1,66 @@
+﻿RunScript("c:/program files/dymola 2025x/insert/dymola.mos", true);
+ = true
+Successfully loaded settings file C:/Users/deva713/AppData/Roaming/DassaultSystemes/Dymola/2025x/setup.dymx
+RunScript("$DYMOLA/insert/displayunit.mos", true);
+ = true
+RunScript("model_check.mos");
+Advanced.TranslationInCommandLog:=true;
+openModel("C:/Program Files/Dymola 2025x/Modelica/Library/Modelica 4.1.0/package.mo");
+ = true
+openModel("C:/buildings_library/modelica-buildings/Buildings/package.mo");
+ = true
+ok := translateModel("Buildings.Templates.Plants.Controls.StagingRotation.Validation.EquipmentEnable");
+Pedantic translation of Buildings.Templates.Plants.Controls.StagingRotation.Validation.EquipmentEnable
+The DAE has 520 scalar unknowns and 520 scalar equations.
+ 
+Statistics
+ 
+Original Model
+  Number of components: 181
+  Variables: 675
+  Parameters: 264 (514 scalars)
+  Unknowns: 411 (520 scalars)
+  Equations: 358
+  Nontrivial: 332
+Translated Model
+  Constants: 380 scalars
+  Free parameters: 109 scalars
+  Parameter depending: 77 scalars
+  Time-varying variables: 163 scalars
+  Alias variables: 305 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: { }
+  Sizes after manipulation of the linear systems: { }
+  Sizes of nonlinear systems of equations: { }
+  Sizes after manipulation of the nonlinear systems: { }
+  Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+The following parameters have enable=false and don't have any value, only a start value:
+    equEnaEqu.staEquDouMod(start = 
+    [0, 0, 0;
+    0, 0, 0;
+    0, 0, 0])
+    equEnaEqu.staEquSinMod(start = 
+    [0, 0, 0;
+    0, 0, 0;
+    0, 0, 0])
+    equEnaOneTwo.staEquDouMod(start = 
+    [0, 0, 0;
+    0, 0, 0;
+    0, 0, 0;
+    0, 0, 0;
+    0, 0, 0])
+    equEnaOneTwo.staEquSinMod(start = 
+    [0, 0, 0;
+    0, 0, 0;
+    0, 0, 0;
+    0, 0, 0;
+    0, 0, 0])
+ 
+Finished
+Declaring variable: Boolean ok ;
+if not ok then
+  Modelica.Utilities.Streams.print("Model translation failed.");
+end if;
+savelog("C:/git_repos/prompt2control/agent_outputs/dymola_model_check/20260512_224650/dymola_model_translation_new.log");

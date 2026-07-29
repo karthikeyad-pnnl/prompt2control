@@ -1,0 +1,22 @@
+﻿RunScript("c:/program files/dymola 2025x/insert/dymola.mos", true);
+ = true
+Successfully loaded settings file C:/Users/deva713/AppData/Roaming/DassaultSystemes/Dymola/2025x/setup.dymx
+RunScript("$DYMOLA/insert/displayunit.mos", true);
+ = true
+RunScript("C:\\git_repos\\prompt2control\\agent_outputs\\dymola_pedantic\\pedantic_translate.mos");
+Advanced.TranslationInCommandLog:=true;
+Advanced.PedanticModelica:=true;
+openModel("C:/Program Files/Dymola 2025x/Modelica/Library/Modelica 4.1.0/package.mo");
+ = true
+openModel("C:/git_repos/buildings_library/modelica-buildings/Buildings/package.mo");
+ = false
+ok := translateModel("Buildings.Templates.Plants.HeatPumps.Validation.AirToWater");
+Pedantic translation of Buildings.Templates.Plants.HeatPumps.Validation.AirToWater
+Did not find model Buildings.Templates.Plants.HeatPumps.Validation.AirToWater
+Error: ERRORS have been issued.
+Declaring variable: Boolean ok ;
+if not ok then
+  Modelica.Utilities.Streams.print("Pedantic translation failed.");
+end if;
+Pedantic translation failed.
+savelog("C:/git_repos/prompt2control/agent_outputs/dymola_pedantic/dymola_translation.log");

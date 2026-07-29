@@ -1,0 +1,9 @@
+Advanced.TranslationInCommandLog:=true;
+openModel("C:/Program Files/Dymola 2025x/Modelica/Library/Modelica 4.1.0/package.mo");
+openModel("C:/buildings_library/modelica-buildings/Buildings/package.mo");
+ok := checkModel("Buildings.Templates.Plants.Controls.StagingRotation.Validation.EquipmentEnable");
+if not ok then
+  Modelica.Utilities.Streams.print("Model translation failed.");
+end if;
+savelog("C:/git_repos/prompt2control/agent_outputs/dymola_model_check/20260512_224650/dymola_model_check_new.log");
+exit();

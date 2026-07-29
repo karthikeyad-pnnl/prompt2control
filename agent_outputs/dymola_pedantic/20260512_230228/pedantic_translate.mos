@@ -1,0 +1,11 @@
+Advanced.TranslationInCommandLog:=true;
+Advanced.PedanticModelica:=true;
+openModel("C:/Program Files/Dymola 2025x/Modelica/Library/Modelica 4.1.0/package.mo");
+openModel("C:/buildings_library/modelica-buildings/Buildings/package.mo");
+translateModel("Buildings.Templates.Plants.Controls.StagingRotation.EquipmentEnable");
+ok := true;
+if not ok then
+  Modelica.Utilities.Streams.print("Pedantic translation failed.");
+end if;
+savelog("C:/git_repos/prompt2control/agent_outputs/dymola_pedantic/20260512_230228/dymola_translation.log");
+exit();

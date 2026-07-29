@@ -1,0 +1,10 @@
+Advanced.TranslationInCommandLog:=true;
+Advanced.PedanticModelica:=true;
+openModel("C:/Program Files/Dymola 2025x/Modelica/Library/Modelica 4.1.0/package.mo");
+openModel("C:/git_repos/buildings_library/modelica-buildings/Buildings/package.mo");
+ok := translateModel("Buildings.Templates.Plants.HeatPumps.Validation.AirToWater");
+if not ok then
+  Modelica.Utilities.Streams.print("Pedantic translation failed.");
+end if;
+savelog("C:/git_repos/prompt2control/agent_outputs/dymola_pedantic/dymola_translation.log");
+exit();

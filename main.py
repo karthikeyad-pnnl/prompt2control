@@ -1,15 +1,13 @@
 import os
 from claude import ClaudeDepotLLM
-from search import gather_cdl_modules
 from ModuleGenerator import ModuleGenerator
 from ModuleEvaluate import ModelicaModuleComparator
 
 ##User Input
-API_KEY = "" # Your API key for Claude Depot
-BASE_URL = "" # Base URL for the API
-FOLDER_PATH = "CDL"
+API_KEY = "sk-_1K6n4unTXIrpHAcQuGAQQ" # Your API key for Claude Depot
+BASE_URL = "https://ai-incubator-api.pnnl.gov" # Base URL for the API
 # MODEL = 'claude-sonnet-4-6-birthright'
-MODEL = 'text-embedding-3-small-birthright'
+MODEL = 'grok-4-fast-reasoning-birthright'
 
 def main():
 

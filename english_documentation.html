@@ -1,0 +1,57 @@
+<p>
+Block that determines the operation mode and availability of multiple heat pumps
+for heating, cooling, or simultaneous heating-cooling operation.
+It supports both 2-pipe and 4-pipe air-source heat pumps (ASHPs),
+and generates staging signals based on configurable matrices.
+The block also handles primary pump enabling for 4-pipe ASHPs
+and optional runtime-based lead-lag sorting.
+</p>
+
+<h4>Typical use and important parameters</h4>
+<p>
+Connect <code>u1EnaHea</code> to the heating plant enable signal,
+<code>u1EnaCoo</code> to the cooling plant enable signal,
+and <code>uMod</code> to the binary mode signal for 2-pipe HPs
+(true for heating, false for cooling).
+Set <code>u1Hp</code> to the vector of HP enable signals.
+For 4-pipe ASHPs, connect <code>u1PumPriHea</code> and <code>u1PumPriCoo</code>
+to the respective primary pump enables.
+</p>
+<p>
+Set <code>nHp</code> to the number of heat pumps,
+<code>is_fouPip</code> to a vector indicating 4-pipe ASHPs,
+and <code>has_sort</code> to enable runtime-based sorting of lead-lag equipment.
+Configure <code>staEquCooHea</code> for the staging matrix in heating-cooling mode
+and <code>staEquOneMod</code> for heating-only or cooling-only modes,
+where each row specifies the equipment required per stage.
+</p>
+
+<h4>Implementation</h4>
+<p>
+The block first checks if both heating and cooling plants are enabled
+using an <i>and</i> gate (<code>and2</code>).
+If true, it sets the heating-cooling mode flag <code>yHeaCoo</code>
+and selects the staging matrix <code>staEquCooHea</code> via a switch (<code>swi</code>).
+Otherwise, it uses <code>staEquOneMod</code> for single-mode operation.
+</p>
+<p>
+For 2-pipe HPs, the mode signal <code>uMod</code> is converted to an integer
+and replicated across all HPs to produce <code>yMod</code>.
+For 4-pipe ASHPs, latches (<code>lat</code>, <code>lat1</code>) maintain heating-only
+or cooling-only states based on plant enables and pump signals,
+triggered by falling edges of HP enables (<code>falEdg</code>).
+Availability outputs <code>yAvaFouPipHea</code> and <code>yAvaFouPipCoo</code>
+are set true only for enabled 4-pipe HPs in the respective modes.
+The primary pump enable <code>y1PumPri</code> activates when any 4-pipe primary pump is on
+and heat recovery HPs are in heating-cooling mode (<code>and9</code>).
+</p>
+<p>
+Staging indices <code>yIdxSta</code> are generated without sorting by switching
+between direct (<code>conInt1</code>) and reverse (<code>conInt2</code>) orders
+if <code>has_sort=false</code>.
+The final staging matrix <code>yStaEqu</code> outputs the selected equipment requirements per stage.
+Mode equalities (<code>intEqu</code>, <code>intEqu1</code>, <code>intEqu2</code>)
+and logical combinations ensure proper mode detection and availability
+only for enabled, heat-recovery-capable HPs.
+Algebraic loops are broken using <i>pre</i> operators (<code>pre</code>, <code>pre1</code>, <code>pre2</code>).
+</p>

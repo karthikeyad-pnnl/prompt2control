@@ -1,0 +1,294 @@
+User: please execute on the instructions in this document
+
+GitHub Copilot: I will execute the checklist in debugging_instructions_AI.md end-to-end: first I’ll read any required skill instructions and environment facts, then run the Dymola/ModuleCheck workflow using only workspace-defined skills, and write each findings file in the required format.
+
+I’m gathering the exact skill procedures and existing memory notes so I can run the required checks with the approved workflow and avoid duplicating prior notes.
+
+Read memory
+
+Read skill [dymola-model-check](file:///c%3A/git_repos/prompt2control/.github/skills/dymola-model-check/SKILL.md?vscodeLinkType%3Dskill)
+
+Read skill [modulecheck](file:///c%3A/git_repos/prompt2control/.github/skills/modulecheck/SKILL.md?vscodeLinkType%3Dskill)
+
+Read skill [dymola-pedantic](file:///c%3A/git_repos/prompt2control/.github/skills/dymola-pedantic/SKILL.md?vscodeLinkType%3Dskill)
+
+Read memory [](file:///c%3A/Users/deva713/AppData/Roaming/Code/User/workspaceStorage/344c461a3f1643506ca66f37735c7c39/GitHub.copilot-chat/memory-tool/memories/repo/copilot-customizations.md)
+
+I’ve confirmed the exact Dymola/ModuleCheck commands to use; next I’ll run the baseline check and collect environment/version details, then I’ll generate each required findings file step by step.
+
+Created 9 todos
+
+I’m pulling the full checklist text and core metadata files now so I can follow every required step exactly, including final report templates.
+
+Read [](file:///c%3A/git_repos/prompt2control/debugging_instructions_AI.md)
+
+Searched for files matching `modelica-buildings` · `**/package.mo`, 20 matches
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/package.mo)
+
+I confirmed version metadata from the library package; next I’m retrieving the rest of the checklist and then executing the baseline Dymola check command from the skill.
+
+Read [](file:///c%3A/git_repos/prompt2control/debugging_instructions_AI.md#172-172), lines 172 to 172
+
+I’m configuring the Python environment for prompt2control before invoking the skill scripts, so the checks run in the intended environment.
+
+Configuring a Python Environment
+Completed with input: {
+  "resourcePath": "c:\\git_repos\\prompt2control"
+}
+
+I’m running the required Dymola checkModel skill command now and will capture where the logs are written so I can populate Step 1 exactly.
+
+Execution complete: Run Dymola checkModel baseline
+
+Ran terminal command: cd c:/git_repos/prompt2control; c:/git_repos/prompt2control/.venv/Scripts/python.exe dymola_model_check.py --class-path Buildings.Templates.Plants.HeatPumps.Validation.AirToWater .
+Completed with input: cd c:/git_repos/prompt2control; c:/git_repos/prompt2control/.venv/Scripts/python.exe dymola_model_check.py --class-path Buildings.Templates.Plants.HeatPumps.Validation.AirToWater .
+
+Ran terminal command: cd c:/git_repos/prompt2control; c:/git_repos/prompt2control/.venv/Scripts/python.exe dymola_model_check.py --class-path Buildings.Templates.Plants.HeatPumps.Validation.AirToWater
+
+Ran terminal command: Get-Content C:\git_repos\prompt2control\agent_outputs\dymola_model_check\dymola_model_check_stdout.log
+
+Ran terminal command: Get-Content C:\git_repos\prompt2control\agent_outputs\dymola_model_check\model_check.mos
+
+Ran terminal command: Get-Content C:\git_repos\prompt2control\agent_outputs\dymola_model_check\dymola_model_check.log
+
+Ran terminal command: Test-Path C:\git_repos\buildings_library\modelica-buildings\Buildings\package.mo
+
+Ran terminal command: Get-ChildItem -Path C:\git_repos -Directory
+
+Ran terminal command: cd c:/git_repos/prompt2control; c:/git_repos/prompt2control/.venv/Scripts/python.exe dymola_model_check.py --class-path Buildings.Templates.Plants.HeatPumps.Validation.AirToWater --library-root C:\git_repos\modelica-buildings\Buildings
+
+Ran terminal command: Get-Content C:\git_repos\prompt2control\agent_outputs\dymola_model_check\dymola_model_check.log
+
+The first run failed because the command arguments/library root were wrong, so I’ll rerun the same skill command with the correct Buildings library path to get the real baseline diagnostics.
+
+Execution complete: Rerun Dymola checkModel with correct library path
+
+Ran terminal command: c:/git_repos/prompt2control/.venv/Scripts/python.exe dymola_model_check.py --class-path Buildings.Templates.Plants.HeatPumps.Validation.AirToWater --library-root c:/buildings_library/modelica-buildings/Buildings
+
+Ran terminal command: Get-Content C:\git_repos\prompt2control\agent_outputs\dymola_model_check\dymola_model_check_stdout.log
+
+Ran terminal command: Get-ChildItem C:\git_repos\prompt2control\agent_outputs\dymola_model_check\
+
+Ran terminal command: Get-Content C:\git_repos\prompt2control\agent_outputs\dymola_model_check\dymola_model_check.log
+
+Ran terminal command: c:/git_repos/prompt2control/.venv/Scripts/python.exe dymola_model_check.py --class-path Buildings.Templates.Plants.HeatPumps.Validation.AirToWater --library-root c:/buildings_library/modelica-buildings/Buildings/Buildings
+
+Ran terminal command: Get-Content C:\git_repos\prompt2control\agent_outputs\dymola_model_check\dymola_model_check.log
+
+Ran terminal command: Test-Path c:/buildings_library/modelica-buildings/Buildings/Buildings/package.mo
+
+Ran terminal command: Get-ChildItem -Path c:/buildings_library/modelica-buildings -Recurse -Filter "package.mo" -Depth 2
+
+Ran terminal command: c:/git_repos/prompt2control/.venv/Scripts/python.exe dymola_model_check.py --class-path Buildings.Templates.Plants.HeatPumps.Validation.AirToWater --library-root c:/buildings_library/modelica-buildings/Buildings
+
+I identified the path issue: the wrapper expects the repository root (not the Buildings subfolder), so I’m running it once more with the corrected root to obtain the actual equation/unknown output.
+
+Execution complete: Run Dymola checkModel successfully
+
+Ran terminal command: c:/git_repos/prompt2control/.venv/Scripts/python.exe dymola_model_check.py --class-path Buildings.Templates.Plants.HeatPumps.Validation.AirToWater --library-root c:/buildings_library/modelica-buildings/Buildings
+
+Ran terminal command: Get-Content C:\git_repos\prompt2control\agent_outputs\dymola_model_check\dymola_model_check_stdout.log
+
+Ran terminal command: Get-Content C:\git_repos\prompt2control\agent_outputs\dymola_model_check\model_check.mos
+
+Ran terminal command: Get-Content C:\git_repos\prompt2control\agent_outputs\dymola_model_check\dymola_model_check.log
+
+Ran terminal command: Test-Path C:/buildings_library/modelica-buildings/Buildings/package.mo
+
+Ran terminal command: c:/git_repos/prompt2control/.venv/Scripts/python.exe dymola_model_check.py --class-path Buildings.Templates.Plants.HeatPumps.Validation.AirToWater --library-root c:/buildings_library/modelica-buildings/Buildings/package.mo
+
+Ran terminal command: Get-Content C:\git_repos\prompt2control\agent_outputs\dymola_model_check\dymola_model_check.log
+
+Ran terminal command: c:/git_repos/prompt2control/.venv/Scripts/python.exe dymola_model_check.py --class-path Buildings.Templates.Plants.HeatPumps.Validation.AirToWater --library-root c:/buildings_library/modelica-buildings/Buildings/package.mo --no-append-buildings
+Completed with input: c:/git_repos/prompt2control/.venv/Scripts/python.exe dymola_model_check.py --class-path Buildings.Templates.Plants.HeatPumps.Validation.AirToWater --library-root c:/buildings_library/modelica-buildings/Buildings/package.mo --no-append-buildings
+
+Ran terminal command: c:/git_repos/prompt2control/.venv/Scripts/python.exe dymola_model_check.py --class-path Buildings.Templates.Plants.HeatPumps.Validation.AirToWater --library-root c:/buildings_library/modelica-buildings
+
+Ran terminal command: Get-Content C:\git_repos\prompt2control\agent_outputs\dymola_model_check\dymola_model_check.log
+
+Baseline now succeeds, so I’m extracting the exact diagnostics directly from the generated log and then writing the required Step 0/Step 1 findings artifacts (including copying the full log to 01_dymola_check.log).
+
+Read [](file:///c%3A/git_repos/prompt2control/agent_outputs/dymola_model_check/dymola_model_check_stdout.log)
+
+Read [](file:///c%3A/git_repos/prompt2control/agent_outputs/dymola_model_check/dymola_model_check.log)
+
+Read [](file:///c%3A/git_repos/prompt2control/agent_outputs/dymola_model_check/dymola_model_check_stderr.log)
+
+I verified the baseline failure directly from Dymola log (including the −30 imbalance); next I’ll capture Git SHA and tool-version details from files so Step 0 is complete without extra terminal tooling.
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/.git/HEAD)
+
+Read [](file:///c%3A/git_repos/prompt2control/agent_outputs/dymola_model_check/model_check.mos)
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/.git/refs/heads/issue4304_HybridAirSourceHeatPumpPlantControls_April2026)
+
+I’ll now inspect the validation and template classes to extract the exact parameter overrides, controller type paths, and conditional connect guards required for Steps 2–5.
+
+Searched for regex `TChiWatRet|THeaWatRet|VChiWatLoa_flow|VChiWatSta_flow|VHeaWatLoa_flow|VHeaWatSta_flow|idxStaCoo|idxStaHea|nPumHdrDp` (`**/Buildings/Templates/Plants/HeatPumps/AirToWater.mo`), 10 results
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/Validation/AirToWater.mo)
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/AirToWater.mo#1-1), lines 1 to 520
+
+Searched for regex `redeclare Buildings\.Templates\.Plants\.HeatPumps\.Components\.Controls\.HybridAirToWater ctl|Buildings\.Templates\.Plants\.Controls\.|ctl\(` (`**/Buildings/Templates/Plants/HeatPumps/AirToWater.mo`), 4 results
+
+Searched for regex `connect\(.*ctl\.ctl\.(TChiWatRet|THeaWatRet|VChiWatLoa_flow|VChiWatSta_flow|VHeaWatLoa_flow|VHeaWatSta_flow|idxStaCoo|idxStaHea|staPumChiWatSec\.nPumHdrDp|staPumHeaWatSec\.nPumHdrDp)` (`**/Buildings/Templates/Plants/HeatPumps/AirToWater.mo`), no results
+
+Searched for regex `staEquSinMod|staEquDouMod|have_valInlIso|have_valOutIso|staEqu` (`**/Buildings/Templates/Plants/HeatPumps/AirToWater.mo`), no results
+
+I found that the direct conditional input wiring is not in the top-level plant file, so I’m drilling into the control classes (`HybridAirToWater` and inner controller) where those `connect()` and `enable` conditions are defined.
+
+Searched for files matching `modelica-buildings` · `**/HybridAirToWater.mo`, 2 matches
+
+Searched for files matching `modelica-buildings` · `**/AirToWater.mo`, 7 matches
+
+Searched for regex `model AirToWater|block AirToWater` (`**/Buildings/Templates/Plants/Controls/HeatPumps/**`), 5 results
+
+Searched for regex `TChiWatRet|THeaWatRet|VChiWatLoa_flow|VChiWatSta_flow|VHeaWatLoa_flow|VHeaWatSta_flow|idxStaCoo|idxStaHea|nPumHdrDp|staEquSinMod|staEquDouMod|have_valInlIso|have_valOutIso` (`**/Buildings/Templates/Plants/Controls/HeatPumps/AirToWater.mo`), 82 results
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/Components/Controls/HybridAirToWater.mo)
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/HeatPumps/AirToWater.mo#1-1), lines 1 to 380
+
+I’m extracting the exact controller declarations and connection lines around the flagged signals so we can build the guard-consistency table and resolve whether each warning is a true mismatch or expected placeholder behavior.
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/HeatPumps/AirToWater.mo#1260-1260), lines 1260 to 1765
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/HeatPumps/AirToWater.mo#1868-1868), lines 1868 to 2210
+
+Searched for regex `Utilities\.PlaceholderReal THeaWatRet|Utilities\.PlaceholderReal TChiWatRet|Utilities\.PlaceholderReal VHeaWatSta_flow|Utilities\.PlaceholderReal VChiWatSta_flow|Utilities\.PlaceholderReal VHeaWatLoa_flow|Utilities\.PlaceholderReal VChiWatLoa_flow|Utilities\.StageIndex idxStaHea|Utilities\.StageIndex idxStaCoo|staPumChiWatSec\(|staPumHeaWatSec\(` (`**/Buildings/Templates/Plants/Controls/HeatPumps/AirToWater.mo`), 10 results
+
+I’ve isolated the relevant controller sections; next I’m reading the helper blocks (`StageIndex`, `StagingHeadered`, `PlaceholderReal`) to capture the exact enable logic behind the `u_internal` warnings.
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/Utilities/StageIndex.mo#1-1), lines 1 to 340
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/Pumps/Generic/StagingHeadered.mo)
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/Utilities/PlaceholderReal.mo)
+
+Searched for regex `dpSouWwHeaHp_nominal|mSouWwCooHp_flow_nominal|mSouWwHeaHp_flow_nominal` (`**/Buildings/Templates/**`), 9 results
+
+Searched for files matching `modelica-buildings` · `**/HeatPumpGroup*.mo`, 4 matches
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/Components/Data/HeatPumpGroup.mo)
+
+Searching for regex `package UserProject|record AllSystems|model AllSystems` (`**/Buildings/**`)
+
+Searched for files matching `modelica-buildings` · `**/UserProject/**`, 20 matches
+
+Searched for regex `inner parameter UserProject.Data.AllSystems datAll|datAll\(` (`**/Buildings/Templates/Plants/HeatPumps/Validation/AirToWater.mo`), 1 result
+
+I’ve located the validation-specific `UserProject` data package; now I’m reading AllSystems.mo to resolve the concrete parameter values used by `datAll.pla`.
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/Validation/UserProject/Data/AllSystems.mo)
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/Validation/UserProject/Data/package.mo)
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/Validation/UserProject/package.mo)
+
+Searched for regex `record Configuration|typDis|typArrPumChiWatPri|typArrPumHeaWatPri|typArrPumChiWatSec|typArrPumHeaWatSec|have_pumChiWatPriDed|have_pumHeaWatPriDed|have_pumChiWatSec|have_pumHeaWatSec|nPumChiWatSec|nPumHeaWatSec|nHp` (`**/Buildings/Templates/Plants/HeatPumps/**`), 200 results
+
+Searched for files matching `modelica-buildings` · `Buildings/Templates/Plants/HeatPumps/Configuration*.mo`, no matches
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/Data/HeatPumpPlant.mo)
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/Interfaces/PartialHeatPumpPlant.mo#90-90), lines 90 to 380
+
+Searched for regex `Buildings.Templates.Plants.HeatPumps.Validation.AirToWater|pla\.typDis|pla\.nHp|staPumChiWatSec\.have_valInlIso|staPumHeaWatSec\.have_valInlIso|nPumChiWatSec|nPumHeaWatSec` (`**/Buildings/dsin.txt`), no results
+
+Searched for regex `pla\.ctl\.staEqu|staEquSinMod|staEquDouMod|typDis_select2|nPumHdrDp\.pas` (`**/Buildings/dsin.txt`), 192 results
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/dsin.txt#1-1), lines 1 to 80
+
+I have enough evidence for root-cause analysis, so I’m now materializing the required artifacts in findings and logs, starting with a faithful copy of the Dymola check log.
+
+Read [](file:///c%3A/git_repos/prompt2control/agent_outputs/dymola_model_check/dymola_model_check.log)
+
+Searched for files matching `prompt2control` · `logs/01_dymola_check.log`, 1 match
+
+Read [](file:///c%3A/git_repos/prompt2control/logs/01_dymola_check.log#1-1), lines 1 to 40
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/Interfaces/PartialHeatPumpPlant.mo#1-1), lines 1 to 95
+
+Searched for regex `dtRunSta|dtRunPumSta|dtRunFaiSafPumSta|dtRunEna|dtRun` (`**/Buildings/Templates/Plants/HeatPumps/Components/Data/Controller.mo`), no results
+
+Searched for regex `parameter Real dtRunSta|dtRunSta=` (`**/Buildings/Templates/Plants/Controls/HeatPumps/AirToWater.mo`), 1 result
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/Components/Data/Controller.mo#1-1), lines 1 to 340
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/HeatPumps/AirToWater.mo#520-520), lines 520 to 620
+
+Searched for regex `parameter Boolean have_senDpChiWatRemWir|parameter Boolean have_senDpHeaWatRemWir|have_senVChiWatSec|have_senVHeaWatSec|have_valChiWatMinByp|have_hrc` (`**/Buildings/Templates/Plants/Controls/HeatPumps/AirToWater.mo`), 46 results
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/Templates/Plants/HeatPumps/Components/Interfaces/PartialController.mo#1-1), lines 1 to 260
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/Utilities/PlaceholderLogical.mo)
+
+Searched for regex `block ControlDifferentialPressure|maxSet|anyOn|nin` (`**/Buildings/Templates/Plants/Controls/Pumps/Generic/ControlDifferentialPressure.mo`), 15 results
+
+Searched for regex `ratLoa\.table|ratLoa\.offset|TimeTable` (`**/Buildings/Controls/OBC/CDL/Reals/Sources/TimeTable.mo`), 3 results
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/Templates/Plants/Controls/Pumps/Generic/ControlDifferentialPressure.mo)
+
+Read [](file:///c%3A/buildings_library/modelica-buildings/Buildings/Controls/OBC/CDL/Reals/Sources/TimeTable.mo#1-1), lines 1 to 120
+
+Read [](file:///c%3A/git_repos/prompt2control/findings)
+
+I’ve completed the evidence gathering and am now writing the findings artifacts for Steps 0–3 in the exact required format, then I’ll continue with Steps 4–8 plus root-cause/proposed-fix report.
+
+Created [](file:///c%3A/git_repos/prompt2control/findings/00_environment.md)
+
+Created [](file:///c%3A/git_repos/prompt2control/findings/01_baseline.md)
+
+Created [](file:///c%3A/git_repos/prompt2control/findings/02_validation_model.md)
+
+Created [](file:///c%3A/git_repos/prompt2control/findings/03_plant_template.md)
+
+Steps 0–3 findings are written in 00_environment.md, 01_baseline.md, 02_validation_model.md, and 03_plant_template.md. I’m now writing Steps 4–8, including the guard-consistency table and arithmetic reconciliation.
+
+Created [](file:///c%3A/git_repos/prompt2control/findings/04_controller_interface.md)
+
+Created [](file:///c%3A/git_repos/prompt2control/findings/05_guard_consistency.md)
+
+Created [](file:///c%3A/git_repos/prompt2control/findings/06_resolved_params.md)
+
+Created [](file:///c%3A/git_repos/prompt2control/findings/07_data_record.md)
+
+Created [](file:///c%3A/git_repos/prompt2control/findings/08_arithmetic_reconciliation.md)
+
+Created [](file:///c%3A/git_repos/prompt2control/findings/09_root_cause_report.md)
+
+Completed: *Capture environment metadata* (1/9)
+
+Read [](file:///c%3A/git_repos/prompt2control/findings)
+
+Executed end-to-end. I followed the checklist and generated all requested findings artifacts plus a root-cause/proposed-fix report.
+
+Artifacts created:
+- 00_environment.md
+- 01_baseline.md
+- 02_validation_model.md
+- 03_plant_template.md
+- 04_controller_interface.md
+- 05_guard_consistency.md
+- 06_resolved_params.md
+- 07_data_record.md
+- 08_arithmetic_reconciliation.md
+- 09_root_cause_report.md
+
+Baseline log:
+- 01_dymola_check.log
+
+Key outcome:
+- Baseline reproduction confirmed the same structural failure signature:
+  - unknowns/equations reported as 18551 each
+  - model not well-posed
+  - reduced difference reported as -30
+- Guard consistency checks did not find a direct missing connect vs enable mismatch for the flagged conditional inputs.
+- Reconciliation confirms the unknown-side symbolic count closes exactly to 18551; the residual mismatch comes from equation-side conditional cardinality.
+- Proposed minimal targeted fix is documented in 09_root_cause_report.md, focused on explicit default assignments for placeholder fallback parameters and hardening nested stage-index runtime binding.
+
+If you want, I can now implement the proposed minimal patch and rerun the same Dymola check to verify whether the -30 imbalance is removed.
+
+Made changes.

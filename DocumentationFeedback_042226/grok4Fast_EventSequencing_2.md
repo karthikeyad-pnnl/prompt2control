@@ -1,0 +1,25 @@
+# Documentation Feedback for Modelica Class
+
+## 1. Mandatory Edit Suggestions (Rule Violations)
+
+| Original Text with Issue | Suggested Edit | Rationale |
+|---------------------------|----------------|-----------|
+| `<p>\nIf a heat pump is commanded on in a desired heating or cooling mode:\n</p>` (opening of info section) | `<p>This model generates control signals for a heat pump plant, including isolation valves and primary pumps, based on heating or cooling mode commands.</p>\n<p>\nIf a heat pump is commanded on in a desired heating or cooling mode:\n</p>` | The info section requires a short introduction (per rule 4). The current text lacks an introductory sentence describing the model's purpose; it jumps directly into operational details. Adding a concise intro ensures compliance with the template's required short intro. |
+| `<a href=\"modelica://Buildings.Templates.Plants.Controls.Pumps.Generic.StagingHeadered\">\nBuildings.Templates.Plants.Controls.Pumps.Generic.StagingHeadered</a>` (both hyperlinks in info) | `<a href="modelica://Buildings.Templates.Plants.Controls.Pumps.Generic.StagingHeadered">\nBuildings.Templates.Plants.Controls.Pumps.Generic.StagingHeadered</a>` | HTML attributes must use double quotes without escaping backslashes in the href (per rule 3 and 8). The current escaped `\"` can cause rendering issues; use standard double quotes for modelica:// URIs. |
+| `<li>\nMarch 29, 2024, by Antoine Gautier:<br/>\nFirst implementation.\n</li>` (in revisions) | `<li><i>March 29, 2024</i> by Antoine Gautier:<br/>\nFirst implementation.</li>` | Revisions must italicize the date with `<i>` tags (per rule 9). The current plain text date violates the specified format for reverse chronological entries. |
+
+## 2. Suggested Edits (Missing Information)
+
+| Original Text with Issue | Suggested Edit | Rationale |
+|---------------------------|----------------|-----------|
+| Entire info section lacks parameter references beyond `<code>dtVal</code>` and `<code>dtOff</code>` | After the intro, add: `<p><b>Important parameters</b></p>\n<ul>\n<li><code>dtVal</code>: Nominal valve timing for determining when valves are fully open.</li>\n<li><code>dtOff</code>: Heat pump shutdown cycle time, default 3 min.</li>\n<li><code>dtFil</code>: Delay for filtering upstream enable signals.</li>\n<li>Boolean flags like <code>have_valInlIso</code>, <code>have_pumHeaWatPri</code> to configure plant types.</li>\n</ul>` before the first `<p>If a heat pump...` | Rule 4 lists "Typical use and important parameters" as an optional section in the info template. Key parameters (e.g., booleans for plant configuration, `dtFil`) are missing explanations, which could improve usability. This adds clarity without redundancy, referencing variables from the provided list. |
+| No mention of outputs like `y1Hea`, `y1AndHea`, or interfaces like `u1Hea` | In the "If a heat pump is commanded on..." <ul>, after the last <li>, add: `<li>The output <code>y1</code> enables the heat pump, <code>y1Hea</code> sets heating/cooling mode, and <code>y1AndHea</code>/<code>y1AndCoo</code> indicate mode-specific activation.</li>` | The info describes behavior but omits key outputs and inputs (e.g., from variables list like `y1`, `u1Hea`). Adding this ties documentation to interfaces, enhancing completeness per rule 1 (descriptions for all connectors) and rule 4's optional sections. |
+| Revisions section has only one entry | No change needed, but if additional revisions exist, prepend: `<li><i>Updated Date</i> by Author:<br/>Description.</li>` before the existing entry. | Rule 9 requires reverse chronological order. With only one entry, it's compliant, but suggesting expansion prepares for future updates; currently, no missing info violation. |
+
+## 3. General Comments and Recommendations
+
+- **Clarity and Conciseness**: The documentation is mostly clear and action-oriented, using bullet points effectively for sequences. However, long lines (e.g., hyperlink wrapping) exceed ~80 characters in some rendered views—recommend breaking them with `<br/>` for better readability. Avoid repetition in the "on" and "off" sections (e.g., pump descriptions are nearly identical); consider a shared subsection if expanded.
+  
+- **Compliance Overall**: Strong adherence to HTML structure (<p>, <ul>, <li>, <b>, <code>, <i>, <a>). No figures, tables, or equations are present, which is fine as they are optional. Ensure spell-check (e.g., "heaWat" in variables should be "HW" consistently in text for acronyms). The `defaultComponentName="seqEve"` is correctly in lowerCamelCase (rule 10).
+
+- **Improvements**: Add an `<h4>Options</h4>` section (per rule 4 template) to describe configurations like dedicated vs. headered pumps using booleans (e.g., `<p>Configure for plant type via <code>have_pumHeaWatPri</code> (true for dedicated pumps).</p>`). This would make it more comprehensive. For dev branches, remove any "fixme" if present (rule 10). Test rendering in Modelica tools to verify hyperlinks and italics. Overall, the doc is concise (~300 words) but could benefit from the intro and parameters for better user guidance.
