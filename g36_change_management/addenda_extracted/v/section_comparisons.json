@@ -1,0 +1,57 @@
+{
+  "addendum": "v",
+  "sections_affected": [
+    "3.1.1.1",
+    "5.3.2.6",
+    "5.3.2.7"
+  ],
+  "comparison": {
+    "2021": {
+      "3.1.1.1": {
+        "status": "found",
+        "pdf_pages": [
+          6
+        ],
+        "text": "3.1.1.1. \nZone Temperature Setpoints \nZone temperature initial setpoints can be specified by the designer in a number of ways. The most flexible way is to \ninclude them for each zone in variable-air-volume (VAV) box and single-zone VAV (SZVAV) air-handling unit \n(AHU) equipment schedules. They can also be generically listed by zone type, such as the example in (a) below. \na. \nDefault setpoints shall be based on zone type as shown in Table 3.1.1.1. \nTable 3.1.1.1 Default Setpoints \nZone Type \nOccupied \nUnoccupied \nHeating \nCooling \nHeating \nCooling \nVAV  \n21°C (70°F) \n24°C (75°F) \n16°C (60°F) \n32°C (90°F) \nMechanical/electrical rooms \n18°C (65°F) \n29°C (85°F) \n18°C (65°F) \n29°C (85°F) \nNetworking/computer \n18°C (65°F) \n24°C (75°F) \n18°C (65°F) \n24°C (75°F)"
+      },
+      "5.3.2.6": {
+        "status": "found",
+        "pdf_pages": [
+          68
+        ],
+        "text": "5.3.2.6. \nCooling Demand Limit Set-Point Adjustment. The active cooling setpoints for all zones shall be \nincreased when a demand limit is imposed on the associated Zone Group. The operator shall have \nthe ability to exempt individual zones from this adjustment through the normal BAS user interface. \nChanges due to demand limits are not cumulative. \na. \nAt demand-limit Level 1, increase setpoint by 0.5°C (1°F). \nb. At demand-limit Level 2, increase setpoint by 1°C (2°F). \nc. \nAt demand-limit Level 3, increase setpoint by 2°C (4°F)."
+      },
+      "5.3.2.7": {
+        "status": "found",
+        "pdf_pages": [
+          68
+        ],
+        "text": "5.3.2.7. \nHeating Demand-Limit Set-Point Adjustment. The active heating setpoints for all zones shall be \ndecreased when a demand limit is imposed on the associated Zone Group. The operator shall have \nthe ability to exempt individual zones from this adjustment through the normal BAS user interface. \nChanges due to demand limits are not cumulative. \na. \nAt demand-limit Level 1, decrease setpoint by 0.5°C (1°F). \nb. At demand-limit Level 2, decrease setpoint by 1°C (2°F). \nc. \nAt demand-limit Level 3, decrease setpoint by 2°C (4°F). \nHeating demand limits may be desirable in buildings with electric heat or heat pumps or in regions with limited gas \ndistribution infrastructure."
+      }
+    },
+    "2024": {
+      "3.1.1.1": {
+        "status": "found",
+        "pdf_pages": [
+          6
+        ],
+        "text": "3.1.1.1. \nZone Temperature Setpoints \nZone temperature initial setpoints can be specified by the designer in a number of ways. The most flexible way is to \ninclude them for each zone in variable-air-volume (VAV) box and single-zone VAV (SZVAV) air-handling unit \n(AHU) equipment schedules. They can also be generically listed by zone type, such as the example in (a) and (b) \nbelow. \na. Default setpoints shall be based on zone type as shown in Table 3.1.1.1-1. \nTable 3.1.1.1-1 Default Setpoints \nZone Type \nOccupied \nUnoccupied \nHeating \nCooling \nHeating \nCooling \nVAV  \n21°C (70°F) \n24°C (75°F) \n16°C (60°F) \n32°C (90°F) \nMechanical/electrical rooms \n18°C (65°F) \n29°C (85°F) \n18°C (65°F) \n29°C (85°F) \nNetworking/computer \n18°C (65°F) \n24°C (75°F) \n18°C (65°F) \n24°C (75°F) \nb. Default demand limit (DL) setpoint offsets shall be based on zone type as shown in Table 3.1.1.1-\n2. \nTable 3.1.1.1-2 Default Demand Limit Offsets \nZone Type \nHeating \nCooling \nDL #1 \nDL #2 \nDL #3 \nDL #1 \nDL #2 \nDL #3 \nGeneral (unless listed below) \n0.5°C \n(1°F) \n1°C \n(2°F) \n2°C \n(4°F) \n0.5°C \n(1°F) \n1°C \n(2°F) \n2°C \n(4°F) \nLaboratory spaces \n0°C \n(0°F) \n0.5°C \n(1°F) \n1°C \n(2°F) \n0°C \n(0°F) \n0.5°C \n(1°F) \n1°C \n(2°F) \nTransient, gallery, restrooms \n1°C \n(2°F) \n1.5°C \n(3°F) \n2°C \n(4°F) \n1°C \n(2°F) \n1.5°C \n(3°F) \n2°C \n(4°F) \nIDF/MDF \n0°C \n(0°F) \n0°C \n(0°F) \n0°C \n(0°F) \n0°C \n(0°F) \n0°C \n(0°F) \n0°C \n(0°F)"
+      },
+      "5.3.2.6": {
+        "status": "found",
+        "pdf_pages": [
+          77
+        ],
+        "text": "5.3.2.6. \nCooling Demand Limit Set-Point Adjustment. The active cooling setpoints for all zones shall be \nincreased when a demand limit is imposed on the associated Zone Group. The operator shall have \nthe ability to exempt individual zones from this adjustment through the normal BAS user interface. \nChanges due to demand limits are not cumulative. \na. At demand-limit Level 1, increase setpoint by offset listed in Section 3.1.1.1.b. \nb. At demand-limit Level 2, increase setpoint by offset listed in Section 3.1.1.1.b. \nc. At demand-limit Level 3, increase setpoint by offset listed in Section 3.1.1.1.b."
+      },
+      "5.3.2.7": {
+        "status": "found",
+        "pdf_pages": [
+          77,
+          78
+        ],
+        "text": "5.3.2.7. \nHeating Demand-Limit Set-Point Adjustment. The active heating setpoints for all zones shall be \ndecreased when a demand limit is imposed on the associated Zone Group. The operator shall have \nthe ability to exempt individual zones from this adjustment through the normal BAS user interface. \nChanges due to demand limits are not cumulative. \na. At demand-limit Level 1, decrease setpoint by offset listed in Section 3.1.1.1.b. \nb. At demand-limit Level 2, decrease setpoint by offset listed in Section 3.1.1.1.b. \nc. At demand-limit Level 3, decrease setpoint by offset listed in Section 3.1.1.1.b. \nThis\u0003file\u0003is\u0003licensed\u0003to\u0003Karthikeya\u0003Devaprasad\u0003\u0003(karthikeya.devaprasad@pnnl.gov).\u0003Download\u0003Date:\u00031/28/2025\n\n=== PDF page 78 ===\n76 \nASHRAE Guideline 36-2024 \nHeating demand limits may be desirable in buildings with electric heat or heat pumps or in regions with limited \ngas distribution infrastructure."
+      }
+    }
+  }
+}

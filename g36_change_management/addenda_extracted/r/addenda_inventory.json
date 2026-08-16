@@ -1,0 +1,14 @@
+{
+  "r": {
+    "addendum": "r",
+    "sections_affected_raw": "5.20.12.2",
+    "sections_affected": [
+      "5.20.12.2"
+    ],
+    "description_of_change": "Addresses a potential issue where condenser water supply temperature setpoint could get “stuck” if load were to suddenly increase, making it impossible for CWST to achieve setpoint + 0.5°F for hours on end.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      307
+    ]
+  }
+}

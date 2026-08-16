@@ -1,0 +1,16 @@
+{
+  "e": {
+    "addendum": "e",
+    "sections_affected_raw": "5.3.2.3, 5.3.7, 5.4.6",
+    "sections_affected": [
+      "5.3.2.3",
+      "5.3.7",
+      "5.4.6"
+    ],
+    "description_of_change": "Adds zone group mode requests and modifies the conditions required to initiate warm-up, cool-down, setback and setup modes.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      306
+    ]
+  }
+}

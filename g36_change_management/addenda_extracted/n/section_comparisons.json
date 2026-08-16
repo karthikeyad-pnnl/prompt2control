@@ -1,0 +1,103 @@
+{
+  "addendum": "n",
+  "sections_affected": [
+    "5.7.5.5",
+    "5.8.5.1",
+    "5.8.5.2",
+    "5.9.5.5",
+    "5.10.5.5",
+    "5.18.4.1"
+  ],
+  "comparison": {
+    "2021": {
+      "5.7.5.5": {
+        "status": "found",
+        "pdf_pages": [
+          81
+        ],
+        "text": "5.7.5.5. \nFan Control \na. \nFan shall run whenever Zone State is heating. \nb. If ventilation is according to ASHRAE Standard 62.1-2016, the fan shall run in Deadband and \nCooling when the primary air volume is less than Voz for 1 minute and shall shut off when \nprimary air volume is above Voz by 10% for 3 minutes. \nc. \nIf ventilation is according to California Title 24, the fan shall run in Deadband and Cooling \nwhen the primary air volume is less than Zone-Abs-OA-min for 1 minute, and shall shut off \nwhen primary air volume is above Zone-Abs-OA-min by 10% for 3 minutes. \nThe designer must ensure that the sum of the indirect ventilation provided by the fan plus the ventilation provided by \nthe primary air at minimum setpoint meet Standard 62.1 requirements."
+      },
+      "5.8.5.1": {
+        "status": "found",
+        "pdf_pages": [
+          84,
+          85
+        ],
+        "text": "5.8.5.1. \nWhen the Zone State Is Cooling \na. \nThe cooling-loop output shall be mapped to the active airflow setpoint from the minimum \nendpoint to the cooling maximum endpoint.  \nDischarge Air \nTemperature \nSetpoint \nHeating Loop Signal \nCooling Loop Signal \nActive Primary \nAirflow \nSetpoint, Vspt \nMinimum  \nCooling Maximum \nPfan-htgmax \nTotal CFM \n(not directly controlled) \nPfan-z \nOA-min  \nParallel Fan \nAirflow Setpoint \nDeadband \n© ASHRAE. Per international copyright law, additional reproduction, distribution, or transmission in either \nprint or digital form is not permitted without ASHRAE's prior written permission.\nCopyright American Society of Heating, Refrigerating and Air-Conditioning Engine\nProvided by IHS Markit under license with ASHRAE - Uncontrolled Copy\nLicensee=BATTELLE PACIFIC NW DIVISION/5940137102, User=Devaprasad, Karthikeya\nNot for Resale, 01/27/2022 04:30:51 MST\nNo reproduction or networking permitted without license from IHS Markit\n--`,,,,```,,,`,`,`,`````,,,``,`-`-`,,`,,`,`,,`---\n\n=== PDF page 85 ===\n \nASHRAE Guideline 36-2021 \n83 \n1. If supply air temperature from the air handler is greater than room temperature, the active \nprimary airflow setpoint shall be no higher than the minimum endpoint. \nb. Heating coil is OFF. \nc. \nIf ventilation is according to ASHRAE Standard 62.1-2016, in Occupied Mode only, parallel \nfan starts when primary airflow drops below Voz minus one half of Pfan-z and shuts off when \nprimary airflow rises above Voz. Fan airflow rate setpoint is equal to Voz minus the current \nprimary airflow setpoint. \nd. If ventilation is according to California Title 24, in Occupied Mode only, parallel fan starts \nwhen primary airflow drops below Zone-Abs-OA-min minus one half of Pfan-z and shuts off \nwhen primary airflow rises above Zone-Abs-OA-min. Fan airflow rate setpoint is equal to \nZone-Abs-OA-min minus the current primary airflow setpoint. \nThe designer must ensure that the sum of the indirect ventilation provided by the fan plus the ventilation provided by \nthe primary air at minimum setpoint meet Standard 62.1 requirements."
+      },
+      "5.8.5.2": {
+        "status": "found",
+        "pdf_pages": [
+          85
+        ],
+        "text": "5.8.5.2. \nWhen the Zone State Is Deadband \na. \nThe active primary airflow setpoint shall be the minimum endpoint.  \nb. Heating coil is OFF. \nc. \nIf ventilation is according to ASHRAE Standard 62.1-2016, parallel fan runs if the active \nprimary airflow setpoint is below Voz. Fan airflow rate setpoint is equal to Voz minus the \nactive primary airflow setpoint.  \nd. If ventilation is according to California Title 24, in Occupied Mode only, parallel fan runs if \nthe active primary airflow setpoint is below Zone-Abs-OA-min. Fan airflow rate setpoint is \nequal to Zone-Abs-OA-min minus the active primary airflow setpoint. \nThe designer must ensure that the sum of the indirect ventilation provided by the fan plus the ventilation provided by \nthe primary air at minimum setpoint meet Standard 62.1 requirements."
+      },
+      "5.9.5.5": {
+        "status": "found",
+        "pdf_pages": [
+          89
+        ],
+        "text": "5.9.5.5. \nFan Control. Fan shall run whenever zone is in heating or cooling Zone State, or if the associated \nZone Group is in Occupied Mode. Prior to starting the fan, the damper is first driven fully closed to \nensure that the fan is not rotating backward. Once the fan is proven ON for a fixed time delay (15 \nseconds), the damper override is released."
+      },
+      "5.10.5.5": {
+        "status": "found",
+        "pdf_pages": [
+          93
+        ],
+        "text": "5.10.5.5. \nFan Control. Fan shall run whenever zone is in heating or cooling Zone State, or if the associated \nZone Group is in Occupied Mode. Prior to starting the fan, the damper is first driven fully closed to \nensure that the fan is not rotating backward. Once the fan is proven ON for a fixed time delay (15 \nseconds), the damper override is released."
+      },
+      "5.18.4.1": {
+        "status": "found",
+        "pdf_pages": [
+          153
+        ],
+        "text": "5.18.4.1. \nThe supply fan shall run whenever the unit is in any mode other than Unoccupied Mode."
+      }
+    },
+    "2024": {
+      "5.7.5.5": {
+        "status": "found",
+        "pdf_pages": [
+          92
+        ],
+        "text": "5.7.5.5. \nFan Control \na. Fan shall run whenever Zone State is heating. \nb. If ventilation is according to ASHRAE Standard 62.1, in Occupied Mode only, the fan shall run in \nDeadband and Cooling when both of the following conditions are true for 1 minute:  Voz is greater \nthan zero and the primary airflow is less than Voz. The fan shall be disabled when either of the \nfollowing conditions are true for 3 minutes: Voz is equal to zero or primary airflow is above Voz \nby 10%. \nc. If ventilation is according to California Title 24, in Occupied Mode only, the fan shall run in \nDeadband and Cooling when both of the following conditions are true for 1 minute:  Zone-Abs-\nOA-min is greater than zero and the primary airflow is less than Zone-Abs-OA-min.  The fan shall \nbe disabled when either of the following conditions are true for 3 minutes:  Zone-Abs-OA-min is \nequal to zero or the primary airflow is above Zone-Abs-OA-min by 10%. \nThe designer must ensure that the sum of the indirect ventilation provided by the fan plus the ventilation provided \nby the primary air at minimum setpoint meet Standard 62.1 requirements."
+      },
+      "5.8.5.1": {
+        "status": "found",
+        "pdf_pages": [
+          96,
+          97
+        ],
+        "text": "5.8.5.1. \nWhen the Zone State Is Cooling \na. The cooling-loop output shall be mapped to the active airflow setpoint from the minimum endpoint \nto the cooling maximum endpoint.  \n1. If supply air temperature from the air handler is greater than room temperature, the active \nprimary airflow setpoint shall be no higher than the minimum endpoint. \nb. Heating coil is OFF. \nc. If ventilation is according to ASHRAE Standard 62.1, in Occupied Mode only, the fan shall run \nwhen both of the following conditions are true for 1 minute:  Voz is greater than zero and the \nactive primary airflow setpoint drops below Voz minus one half of Pfan-z.  The fan shall be \ndisabled when either of the following conditions are true for 3 minutes:  Voz is equal to zero or the \nprimary airflow setpoint rises above Voz by 10%.  The fan airflow rate setpoint shall be equal to \nVoz minus the current primary airflow setpoint. \nd. If ventilation is according to California Title 24, in Occupied Mode only, the fan shall run when \nboth of the following conditions are true for 1 minute:  Zone-Abs-OA-min is greater than zero and \nthe active primary airflow setpoint drops below Zone-Abs-OA-min minus one half of Pfan-z.  The \nDischarge Air \nTemperature \nSetpoint \nHeating Loop Signal \nCooling Loop Signal \nActive Primary \nAirflow \nSetpoint, Vspt \nMinimum  \nCooling Maximum \nPfan-htgmax \nTotal Airflow \n(not directly controlled) \nPfan-z \nOA-min  \nParallel Fan \nAirflow Setpoint \nDeadband \nThis\u0003file\u0003is\u0003licensed\u0003to\u0003Karthikeya\u0003Devaprasad\u0003\u0003(karthikeya.devaprasad@pnnl.gov).\u0003Download\u0003Date:\u00031/28/2025\n\n=== PDF page 97 ===\nASHRAE Guideline 36-2024 \n95 \nfan shall be disabled when either of the following conditions are true for 3 minutes:  Zone-Abs-\nOA-min is equal to zero or the primary airflow setpoint rises above Zone-Abs-OA-min by 10%.  \nThe fan airflow rate setpoint shall be equal to Zone-Abs-OA-min minus the current primary \nairflow setpoint. \nThe designer must ensure that the sum of the indirect ventilation provided by the fan plus the ventilation provided \nby the primary air at minimum setpoint meet Standard 62.1 requirements."
+      },
+      "5.8.5.2": {
+        "status": "found",
+        "pdf_pages": [
+          97
+        ],
+        "text": "5.8.5.2. \nWhen the Zone State Is Deadband \na. The active primary airflow setpoint shall be the minimum endpoint.  \nb. Heating coil is OFF. \nc. If ventilation is according to ASHRAE Standard 62.1, in Occupied Mode only, the fan shall run \nwhen both of the following conditions are true for 1 minute:  Voz is greater than zero and the \nactive primary airflow setpoint is below Voz. The fan shall be disabled when either of the \nfollowing conditions are true for 3 minutes:  Voz is equal to zero or the primary air setpoint is \nabove Voz by 10%.  The fan airflow rate setpoint shall be equal to Voz minus the active primary \nairflow setpoint.  \nd. If ventilation is according to California Title 24, in Occupied Mode only, the fan shall run when \nboth of the following conditions are true for 1 minute:  Zone-Abs-OA-min is greater than zero and \nthe active primary airflow setpoint is less than Zone-Abs-OA-min.  The fan shall be disabled when \neither of the following conditions are true for 3 minutes:  Zone-Abs-OA-min is equal to zero or the \nprimary airflow setpoint is above Zone-Abs-OA-min by 10%.  The fan airflow rate setpoint shall \nbe equal to Zone-Abs-OA-min minus the active primary airflow setpoint. \nThe designer must ensure that the sum of the indirect ventilation provided by the fan plus the ventilation provided \nby the primary air at minimum setpoint meet Standard 62.1 requirements."
+      },
+      "5.9.5.5": {
+        "status": "found",
+        "pdf_pages": [
+          102
+        ],
+        "text": "5.9.5.5. \nFan Control. Fan shall run whenever zone is in heating or cooling Zone State, or if the associated \nZone Group is in Occupied Mode and the active primary airflow setpoint, Vspt, is greater than \nzero. Prior to starting the fan, the damper is first driven fully closed to ensure that the fan is not \nrotating backward. Once the fan is proven ON for a fixed time delay (15 seconds), the damper \noverride is released."
+      },
+      "5.10.5.5": {
+        "status": "found",
+        "pdf_pages": [
+          106
+        ],
+        "text": "5.10.5.5. \nFan Control. Fan shall run whenever zone is in heating or cooling Zone State, or if the associated \nZone Group is in Occupied Mode and the active primary airflow setpoint, Vspt, is greater than \nzero. Prior to starting the fan, the damper is first driven fully closed to ensure that the fan is not \nrotating backward. Once the fan is proven ON for a fixed time delay (15 seconds), the damper \noverride is released."
+      },
+      "5.18.4.1": {
+        "status": "found",
+        "pdf_pages": [
+          171
+        ],
+        "text": "5.18.4.1. \nThe supply fan shall run whenever the zone is in heating or cooling Zone State, or if the unit is in \nOccupied Mode and the minimum outdoor airflow setpoint, MinOAsp, is greater than zero."
+      }
+    }
+  }
+}

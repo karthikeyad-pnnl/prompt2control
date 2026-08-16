@@ -1,0 +1,20 @@
+{
+  "a": {
+    "addendum": "a",
+    "sections_affected_raw": "3.1.10, 4.13, 5.1.21, 5.16.4.4, 5.16.5.4, 5.16.6.3, 5.18.7",
+    "sections_affected": [
+      "3.1.10",
+      "4.13",
+      "5.1.21",
+      "5.16.4.4",
+      "5.16.5.4",
+      "5.16.6.3",
+      "5.18.7"
+    ],
+    "description_of_change": "Adds Outdoor Air Pollution Mode",
+    "ashrae_approval_date": "August 30, 2024",
+    "appendix_c_pdf_pages": [
+      306
+    ]
+  }
+}

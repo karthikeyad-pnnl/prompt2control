@@ -1,0 +1,14 @@
+{
+  "i": {
+    "addendum": "i",
+    "sections_affected_raw": "5.18.4.6",
+    "sections_affected": [
+      "5.18.4.6"
+    ],
+    "description_of_change": "Rearranges the supply fan speed and supply air temperature setpoint sections for Single Zone VAV Air Handling Units to enhance clarify.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      306
+    ]
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "addendum": "u",
+  "sections_affected": [
+    "5.7.6.3",
+    "5.8.6.3",
+    "5.9.6.3",
+    "5.10.6",
+    "5.16.13.2",
+    "5.17.3.2",
+    "5.18.12.2",
+    "5.19.2.2",
+    "5.22.5.2"
+  ],
+  "comparison": {
+    "2021": {
+      "5.7.6.3": {
+        "status": "found",
+        "pdf_pages": [
+          82
+        ],
+        "text": "5.7.6.3. \nFan alarm is indicated by the status input being different from the output command after a period of \n15 seconds after a change in output status. \na. \nCommanded on, status off: Level 2 \nb. Commanded off, status on: Level 4"
+      },
+      "5.8.6.3": {
+        "status": "found",
+        "pdf_pages": [
+          86
+        ],
+        "text": "5.8.6.3. \nFan alarm is indicated by the status input being different from the output command after a period of \n15 seconds after a change in output status. \na. \nCommanded ON, status OFF Level 2 \nb. Commanded OFF, status ON: Level 4"
+      },
+      "5.9.6.3": {
+        "status": "found",
+        "pdf_pages": [
+          89,
+          90
+        ],
+        "text": "5.9.6.3. \nFan alarm is indicated by the status input being different from the output command after a period of \n15 seconds after a change in output status. \na. \nCommanded ON, status OFF: Level 2 \nb. Commanded OFF, status ON: Level 4 \n© ASHRAE. Per international copyright law, additional reproduction, distribution, or transmission in either \nprint or digital form is not permitted without ASHRAE's prior written permission.\nCopyright American Society of Heating, Refrigerating and Air-Conditioning Engine\nProvided by IHS Markit under license with ASHRAE - Uncontrolled Copy\nLicensee=BATTELLE PACIFIC NW DIVISION/5940137102, User=Devaprasad, Karthikeya\nNot for Resale, 01/27/2022 04:30:51 MST\nNo reproduction or networking permitted without license from IHS Markit\n--`,,,,```,,,`,`,`,`````,,,``,`-`-`,,`,,`,`,,`---\n\n=== PDF page 90 ===\n \n88 \nASHRAE Guideline 36-2021"
+      },
+      "5.10.6": {
+        "status": "found",
+        "pdf_pages": [
+          93,
+          94
+        ],
+        "text": "5.10.6. \nAlarms \n5.10.6.1. \nLow Primary Airflow \na. \nIf the measured airflow is less than 70% of setpoint for 10 minutes while setpoint is greater \nthan zero, generate a Level 4 alarm. \nb. If the measured airflow is less than 50% of setpoint for 10 minutes while setpoint is greater \nthan zero, generate a Level 3 alarm. \nc. \nIf a zone has an Importance-Multiplier of 0 (see Section 5.1.14.2.a.1 for its static pressure reset \nT&R control loop, low airflow alarms shall be suppressed for that zone. \n5.10.6.2. \nLow-Discharge Air Temperature \na. \nIf heating hot-water plant is proven ON, and the DAT is 8.3°C (15°F) less than setpoint for 10 \nminutes, generate a Level 4 alarm.  \nb. If heating hot-water plant is proven ON, and the DAT is 17°C (30°F) less than setpoint for 10 \nminutes, generate a Level 3 alarm.  \nc. \nIf a zone has an Importance-Multiplier of 0 (see Section 5.1.14.2.a.1) for its hot-water reset \nT&R control loop, low-DAT alarms shall be suppressed for that zone. \n5.10.6.3. \nFan alarm is indicated by the status input being different from the output command after a period of \n15 seconds after a change in output status. \na. \nCommanded ON, status OFF: Level 2 \nb. Commanded OFF, status ON: Level 4 \n5.10.6.4. \nAirflow Sensor Calibration. If the fan serving the zone is OFF and airflow sensor reading is above \nthe larger of 10% of the cooling maximum airflow setpoint or 50 cfm for 30 minutes, generate a \nLevel 3 alarm. \n© ASHRAE. Per international copyright law, additional reproduction, distribution, or transmission in either \nprint or digital form is not permitted without ASHRAE's prior written permission.\nCopyright American Society of Heating, Refrigerating and Air-Conditioning Engine\nProvided by IHS Markit under license with ASHRAE - Uncontrolled Copy\nLicensee=BATTELLE PACIFIC NW DIVISION/5940137102, User=Devaprasad, Karthikeya\nNot for Resale, 01/27/2022 04:30:51 MST\nNo reproduction or networking permitted without license from IHS Markit\n--`,,,,```,,,`,`,`,`````,,,``,`-`-`,,`,,`,`,,`---\n\n=== PDF page 94 ===\n \n92 \nASHRAE Guideline 36-2021 \n5.10.6.5. \nLeaking Damper. If the damper position is 0%, and airflow sensor reading is above the larger of \n10% of the cooling maximum airflow setpoint or 50 cfm for 10 minutes while the fan serving the \nzone is proven ON, generate a Level 4 alarm. \nThe constant value thresholds for the airflow sensor calibration and leaking damper alarms are a function of the \ntransducer and A/D converter used to measure airflow.  The value used should be determined as the minimum \naccuracy of the transducer and A/D converter combination.  \n5.10.6.6. \nLeaking Valve. If the valve position is 0% for 15 minutes, and DAT is above AHU SAT by 3°C \n(5°F), generate a Level 4 alarm."
+      },
+      "5.16.13.2": {
+        "status": "found",
+        "pdf_pages": [
+          134
+        ],
+        "text": "5.16.13.2. \nFan alarm is indicated by the status being different from the command for a period of 15 seconds. \na. \nCommanded on, status off: Level 2 \nb. Commanded off, status on: Level 4"
+      },
+      "5.17.3.2": {
+        "status": "found",
+        "pdf_pages": [
+          148
+        ],
+        "text": "5.17.3.2. \nFan alarm is indicated by the status being different from the command for a period of 15 seconds. \na. \nCommanded ON, status OFF: Level 2 \nb. Commanded OFF, status ON: Level 4"
+      },
+      "5.18.12.2": {
+        "status": "found",
+        "pdf_pages": [
+          161
+        ],
+        "text": "5.18.12.2. \nFan alarm is indicated by the status being different from the command for a period of 15 seconds. \na. \nCommanded ON, status OFF: Level 2 \nb. Commanded OFF, status ON: Level 4"
+      },
+      "5.19.2.2": {
+        "status": "found",
+        "pdf_pages": [
+          171,
+          172
+        ],
+        "text": "5.19.2.2. \nFan alarm is indicated by the status being different from the command for a period of 15 seconds. \na. \nCommanded on, status off:  Level 2 \nb. Commanded off, status off:  Level 4 \n© ASHRAE. Per international copyright law, additional reproduction, distribution, or transmission in either \nprint or digital form is not permitted without ASHRAE's prior written permission.\nCopyright American Society of Heating, Refrigerating and Air-Conditioning Engine\nProvided by IHS Markit under license with ASHRAE - Uncontrolled Copy\nLicensee=BATTELLE PACIFIC NW DIVISION/5940137102, User=Devaprasad, Karthikeya\nNot for Resale, 01/27/2022 04:30:51 MST\nNo reproduction or networking permitted without license from IHS Markit\n--`,,,,```,,,`,`,`,`````,,,``,`-`-`,,`,,`,`,,`---\n\n=== PDF page 172 ===\n \n170 \nASHRAE Guideline 36-2021 \n Chilled Water Plant \nRetain the applicable variables listed in Sections 3.1.7 and 3.2.3. Delete variables that are not applicable."
+      },
+      "5.22.5.2": {
+        "status": "found",
+        "pdf_pages": [
+          264
+        ],
+        "text": "5.22.5.2. \nFan alarm is indicated by the status being different from the command for a period of 15 seconds. \na. \nCommanded on, status off: Level 2 \nb. Commanded off, status on: Level 4"
+      }
+    },
+    "2024": {
+      "5.7.6.3": {
+        "status": "found",
+        "pdf_pages": [
+          93
+        ],
+        "text": "5.7.6.3. \nFan alarm is indicated by the status input being different from the output command for 15 seconds. \na. Commanded on, status off: Level 2. Do not evaluate the alarm until the equipment has been \ncommanded on for 15 seconds. \nb. Commanded off, status on: Level 4. Do not evaluate the alarm until the equipment has been \ncommanded off for 60 seconds."
+      },
+      "5.8.6.3": {
+        "status": "found",
+        "pdf_pages": [
+          98
+        ],
+        "text": "5.8.6.3. \nFan alarm is indicated by the status input being different from the output command for 15 seconds. \na. Commanded on, status off: Level 2. Do not evaluate the alarm until the equipment has been \ncommanded on for 15 seconds. \nb. Commanded off, status on: Level 4. Do not evaluate the alarm until the equipment has been \ncommanded off for 60 seconds."
+      },
+      "5.9.6.3": {
+        "status": "found",
+        "pdf_pages": [
+          102
+        ],
+        "text": "5.9.6.3. \nFan alarm is indicated by the status input being different from the output command for 15 seconds. \na. Commanded on, status off: Level 2. Do not evaluate the alarm until the equipment has been \ncommanded on for 15 seconds. \nb. Commanded off, status on: Level 4. Do not evaluate the alarm until the equipment has been \ncommanded off for 60 seconds."
+      },
+      "5.10.6": {
+        "status": "found",
+        "pdf_pages": [
+          106,
+          107
+        ],
+        "text": "5.10.6. Alarms \n5.10.6.1. \nLow Primary Airflow \na. If the measured airflow is less than 70% of setpoint for 10 minutes while setpoint is greater than \nzero, generate a Level 4 alarm. \nb. If the measured airflow is less than 50% of setpoint for 10 minutes while setpoint is greater than \nzero, generate a Level 3 alarm. \nc. If a zone has an Importance-Multiplier of 0 (see Section 5.1.16) for its static pressure reset T&R \ncontrol loop, low airflow alarms shall be suppressed for that zone. \n5.10.6.2. \nLow-Discharge Air Temperature \na. If heating hot-water plant is proven ON, and the DAT is 8.3°C (15°F) less than setpoint for 10 \nminutes, generate a Level 4 alarm.  \nb. If heating hot-water plant is proven ON, and the DAT is 17°C (30°F) less than setpoint for 10 \nminutes, generate a Level 3 alarm.  \nThis\u0003file\u0003is\u0003licensed\u0003to\u0003Karthikeya\u0003Devaprasad\u0003\u0003(karthikeya.devaprasad@pnnl.gov).\u0003Download\u0003Date:\u00031/28/2025\n\n=== PDF page 107 ===\nASHRAE Guideline 36-2024 \n105 \nc. If a zone has an Importance-Multiplier of 0 (see Section 5.1.16) for its hot-water reset T&R control \nloop, low-DAT alarms shall be suppressed for that zone. \n5.10.6.3. \nFan alarm is indicated by the status input being different from the output command for 15 seconds. \na. Commanded on, status off: Level 2. Do not evaluate the alarm until the equipment has been \ncommanded on for 15 seconds. \nb. Commanded off, status on: Level 4. Do not evaluate the alarm until the equipment has been \ncommanded off for 60 seconds.  \n5.10.6.4. \nAirflow Sensor Calibration. If the fan serving the zone is OFF and airflow sensor reading is above \nthe larger of 10% of the cooling maximum airflow setpoint or 24 l/s (50 cfm) for 30 minutes, \ngenerate a Level 3 alarm. \n5.10.6.5. \nLeaking Damper. If the damper position is 0%, and airflow sensor reading is above the larger of \n10% of the cooling maximum airflow setpoint or 24 l/s (50 cfm) for 10 minutes while the fan \nserving the zone is proven ON, generate a Level 4 alarm. \nThe constant value thresholds for the airflow sensor calibration and leaking damper alarms are a function of the \ntransducer and A/D converter used to measure airflow.  The value used should be determined as the minimum \naccuracy of the transducer and A/D converter combination.  \n5.10.6.6. \nLeaking Valve. If all of the following are true for 15 minutes, generate a Level 4 alarm. \na. Valve position is 0%; and \nb. DAT is above AHU SAT by 3°C (5°F); and \nc. DAT is above room temperature by 3°C (5°F); and \nd. Series fan serving the zone is proven ON."
+      },
+      "5.16.13.2": {
+        "status": "found",
+        "pdf_pages": [
+          154
+        ],
+        "text": "5.16.13.2. Fan alarm is indicated by the status input being different from the output command for 15 seconds. \na. Commanded on, status off: Level 2. Do not evaluate the alarm until the equipment has been \ncommanded on for 15 seconds. \nb. Commanded off, status on: Level 4. Do not evaluate the alarm until the equipment has been \ncommanded off for 60 seconds."
+      },
+      "5.17.3.2": {
+        "status": "found",
+        "pdf_pages": [
+          167
+        ],
+        "text": "5.17.3.2. \nFan alarm is indicated by the status input being different from the output command for 15 seconds. \na. Commanded on, status off: Level 2. Do not evaluate the alarm until the equipment has been \ncommanded on for 15 seconds. \nb. Commanded off, status on: Level 4. Do not evaluate the alarm until the equipment has been \ncommanded off for 60 seconds."
+      },
+      "5.18.12.2": {
+        "status": "found",
+        "pdf_pages": [
+          180
+        ],
+        "text": "5.18.12.2. Fan alarm is indicated by the status input being different from the output command for 15 seconds. \na. Commanded on, status off: Level 2. Do not evaluate the alarm until the equipment has been \ncommanded on for 15 seconds. \nb. Commanded off, status on: Level 4. Do not evaluate the alarm until the equipment has been \ncommanded off for 60 seconds."
+      },
+      "5.19.2.2": {
+        "status": "found",
+        "pdf_pages": [
+          190
+        ],
+        "text": "5.19.2.2. \nFan alarm is indicated by the status input being different from the output command for 15 seconds. \na. Commanded on, status off: Level 2. Do not evaluate the alarm until the equipment has been \ncommanded on for 15 seconds. \nb. Commanded off, status on: Level 4. Do not evaluate the alarm until the equipment has been \ncommanded off for 60 seconds.  \nRetain the following paragraph if the exhaust fan is to be cycled to maintain room temperature.  Delete \notherwise."
+      },
+      "5.22.5.2": {
+        "status": "found",
+        "pdf_pages": [
+          284
+        ],
+        "text": "5.22.5.2. \nFan alarm is indicated by the status input being different from the output command for 15 seconds. \na. Commanded on, status off: Level 2. Do not evaluate the alarm until the equipment has been \ncommanded on for 15 seconds. \nb. Commanded off, status on: Level 4. Do not evaluate the alarm until the equipment has been \ncommanded off for 60 seconds."
+      }
+    }
+  }
+}

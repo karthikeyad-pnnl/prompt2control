@@ -1,0 +1,15 @@
+{
+  "y": {
+    "addendum": "y",
+    "sections_affected_raw": "5.16.4.4, 5.16.5.4",
+    "sections_affected": [
+      "5.16.4.4",
+      "5.16.5.4"
+    ],
+    "description_of_change": "Fixes an error the MZVAV AHUs with separate minimum outdoor air dampers which could cause both the outside air and return air damper to close when the supply air temperature control loop is wound up and minimum outdoor airflow control is enabled.",
+    "ashrae_approval_date": "August 30, 2024",
+    "appendix_c_pdf_pages": [
+      307
+    ]
+  }
+}

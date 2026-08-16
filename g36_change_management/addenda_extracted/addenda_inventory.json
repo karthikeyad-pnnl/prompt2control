@@ -1,0 +1,377 @@
+{
+  "a": {
+    "addendum": "a",
+    "sections_affected_raw": "3.1.10, 4.13, 5.1.21, 5.16.4.4, 5.16.5.4, 5.16.6.3, 5.18.7",
+    "sections_affected": [
+      "3.1.10",
+      "4.13",
+      "5.1.21",
+      "5.16.4.4",
+      "5.16.5.4",
+      "5.16.6.3",
+      "5.18.7"
+    ],
+    "description_of_change": "Adds Outdoor Air Pollution Mode",
+    "ashrae_approval_date": "August 30, 2024",
+    "appendix_c_pdf_pages": [
+      306
+    ]
+  },
+  "b": {
+    "addendum": "b",
+    "sections_affected_raw": "5.1.14.2",
+    "sections_affected": [
+      "5.1.14.2"
+    ],
+    "description_of_change": "Revision to the Request-hours calculation to prevent Cumulative%-Request-Hours total from exceeding 100%.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      306
+    ]
+  },
+  "c": {
+    "addendum": "c",
+    "sections_affected_raw": "5.2.1.3, 5.16.3.1",
+    "sections_affected": [
+      "5.2.1.3",
+      "5.16.3.1"
+    ],
+    "description_of_change": "Addresses an issue with the minimum outdoor airflow setpoint logic for ASHRAE Standard 62.1 ventilation. Relocates the Zpz calculation from the Multiple Zone VAV Air Handling Unit section to the Generic Ventilation Zones section.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      306
+    ]
+  },
+  "d": {
+    "addendum": "d",
+    "sections_affected_raw": "5.6.4",
+    "sections_affected": [
+      "5.6.4"
+    ],
+    "description_of_change": "Addresses an issue with heating control for VAV boxes with hot water reheat coils when Vmin* is zero due to no occupancy indicated by the occupancy sensor in occupied-standby mode.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      306
+    ]
+  },
+  "e": {
+    "addendum": "e",
+    "sections_affected_raw": "5.3.2.3, 5.3.7, 5.4.6",
+    "sections_affected": [
+      "5.3.2.3",
+      "5.3.7",
+      "5.4.6"
+    ],
+    "description_of_change": "Adds zone group mode requests and modifies the conditions required to initiate warm-up, cool-down, setback and setup modes.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      306
+    ]
+  },
+  "g": {
+    "addendum": "g",
+    "sections_affected_raw": "5.16.6.3",
+    "sections_affected": [
+      "5.16.6.3"
+    ],
+    "description_of_change": "Addresses an issue with the minimum outdoor airflow control logic for Multiple Zone VAV Air Handling Units with a single common damper for minimum outdoor air and economizer functions with airflow measurement. Default minimum outdoor airflow control loop erroneously set the AHU to 100% outdoor air during Setback, Setup, Warm-up and Cool-down modes.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      306
+    ]
+  },
+  "h": {
+    "addendum": "h",
+    "sections_affected_raw": "5.5.8.1, 5.6.8, 5.7.8, 5.8.8, 5.9.8, 5.10.8, 5.11.8, 5.12.8, 5.13.8, 5.14.8, 5.16.16, 5.17.6, 5.18.15, 5.22.8,",
+    "sections_affected": [
+      "5.5.8.1",
+      "5.6.8",
+      "5.7.8",
+      "5.8.8",
+      "5.9.8",
+      "5.10.8",
+      "5.11.8",
+      "5.12.8",
+      "5.13.8",
+      "5.14.8",
+      "5.16.16",
+      "5.17.6",
+      "5.18.15",
+      "5.22.8"
+    ],
+    "description_of_change": "Address an issue with the request logic structure, which could cause requests to be generated without its associated loop above 95%.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      306
+    ]
+  },
+  "i": {
+    "addendum": "i",
+    "sections_affected_raw": "5.18.4.6",
+    "sections_affected": [
+      "5.18.4.6"
+    ],
+    "description_of_change": "Rearranges the supply fan speed and supply air temperature setpoint sections for Single Zone VAV Air Handling Units to enhance clarify.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      306
+    ]
+  },
+  "j": {
+    "addendum": "j",
+    "sections_affected_raw": "5.2.1",
+    "sections_affected": [
+      "5.2.1"
+    ],
+    "description_of_change": "Separates the ventilation logic for the Single Zone VAV Air Handling Units and VAV terminal units in the generic ventilation zones section.",
+    "ashrae_approval_date": "February 29, 2024",
+    "appendix_c_pdf_pages": [
+      306
+    ]
+  },
+  "l": {
+    "addendum": "l",
+    "sections_affected_raw": "3.1.4.2, 4.6, 5.16.1, 5.16.2, 5.16.4, 5.16.6, 5.16.10, 5.16.11, 5.16.14",
+    "sections_affected": [
+      "3.1.4.2",
+      "4.6",
+      "5.16.1",
+      "5.16.2",
+      "5.16.4",
+      "5.16.6",
+      "5.16.10",
+      "5.16.11",
+      "5.16.14"
+    ],
+    "description_of_change": "Adds options for control of staged fans and economizer dampers to address large air handling systems.",
+    "ashrae_approval_date": "December 3, 2024",
+    "appendix_c_pdf_pages": [
+      306
+    ]
+  },
+  "m": {
+    "addendum": "m",
+    "sections_affected_raw": "5.6.6.5, 5.7.6.6, 5.8.6.6, 5.9.6.6, 5.10.6.6",
+    "sections_affected": [
+      "5.6.6.5",
+      "5.7.6.6",
+      "5.8.6.6",
+      "5.9.6.6",
+      "5.10.6.6"
+    ],
+    "description_of_change": "Revision to the leaking valve alarm for all equipment with hot water valves to reduce nuisance alarms.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      307
+    ]
+  },
+  "n": {
+    "addendum": "n",
+    "sections_affected_raw": "5.7.5.5, 5.8.5.1, 5.8.5.2, 5.9.5.5, 5.10.5.5, 5.18.4.1",
+    "sections_affected": [
+      "5.7.5.5",
+      "5.8.5.1",
+      "5.8.5.2",
+      "5.9.5.5",
+      "5.10.5.5",
+      "5.18.4.1"
+    ],
+    "description_of_change": "Addition to allow fans to cycle off during occupied-standby mode for fan-powered terminal units and single zone VAV air handling units.",
+    "ashrae_approval_date": "August 30, 2024",
+    "appendix_c_pdf_pages": [
+      307
+    ]
+  },
+  "o": {
+    "addendum": "o",
+    "sections_affected_raw": "5.16.5.4",
+    "sections_affected": [
+      "5.16.5.4"
+    ],
+    "description_of_change": "Addresses a typo, which incorrectly disabled minimum outdoor airflow control when the economizer high limit conditions were exceeded.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      307
+    ]
+  },
+  "p": {
+    "addendum": "p",
+    "sections_affected_raw": "5.16.13.5, 5.16.14",
+    "sections_affected": [
+      "5.16.13.5",
+      "5.16.14"
+    ],
+    "description_of_change": "Addresses errors in the AFDD fault condition equations. Adds option to use airflow monitoring stations for fault conditions that calculate %OA.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      307
+    ]
+  },
+  "q": {
+    "addendum": "q",
+    "sections_affected_raw": "3.1.1.3, 5.2.1.3, 5.2.1.4, 5.2.3",
+    "sections_affected": [
+      "3.1.1.3",
+      "5.2.1.3",
+      "5.2.1.4",
+      "5.2.3"
+    ],
+    "description_of_change": "Revises demand controlled ventilation calculations to be consistent with ASHRAE Standard 62.1 and California Title 24.",
+    "ashrae_approval_date": "August 30, 2024",
+    "appendix_c_pdf_pages": [
+      307
+    ]
+  },
+  "r": {
+    "addendum": "r",
+    "sections_affected_raw": "5.20.12.2",
+    "sections_affected": [
+      "5.20.12.2"
+    ],
+    "description_of_change": "Addresses a potential issue where condenser water supply temperature setpoint could get “stuck” if load were to suddenly increase, making it impossible for CWST to achieve setpoint + 0.5°F for hours on end.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      307
+    ]
+  },
+  "s": {
+    "addendum": "s",
+    "sections_affected_raw": "5.1.14.3, 5.16.1.2, 5.16.2.2, 5.17.1.2, 5.17.2.2, 5.20.5.2, 5.20.5.4, 5.21.4.1",
+    "sections_affected": [
+      "5.1.14.3",
+      "5.16.1.2",
+      "5.16.2.2",
+      "5.17.1.2",
+      "5.17.2.2",
+      "5.20.5.2",
+      "5.20.5.4",
+      "5.21.4.1"
+    ],
+    "description_of_change": "Revises the trim and respond resets to direct the designer on how to set the default number of ignored requests for each application, rather than provide a fixed value that will not be appropriate for many applications.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      307
+    ]
+  },
+  "t": {
+    "addendum": "t",
+    "sections_affected_raw": "5.1.14, 5.1.16",
+    "sections_affected": [
+      "5.1.14",
+      "5.1.16"
+    ],
+    "description_of_change": "Revises the location of where requests are defined to recognize that they are used more broadly than indicated by their current definition as a subsection of Trim and Respond Setpoint Requests.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      307
+    ]
+  },
+  "u": {
+    "addendum": "u",
+    "sections_affected_raw": "5.7.6.3, 5.8.6.3, 5.9.6.3, 5.10.6., 5.16.13.2, 5.17.3.2, 5.18.12.2, 5.19.2.2, 5.22.5.2",
+    "sections_affected": [
+      "5.7.6.3",
+      "5.8.6.3",
+      "5.9.6.3",
+      "5.10.6",
+      "5.16.13.2",
+      "5.17.3.2",
+      "5.18.12.2",
+      "5.19.2.2",
+      "5.22.5.2"
+    ],
+    "description_of_change": "Updates all fan and pump alarms to be consistent throughout.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      307
+    ]
+  },
+  "v": {
+    "addendum": "v",
+    "sections_affected_raw": "3.1.1.1, 5.3.2.6, 5.3.2.7",
+    "sections_affected": [
+      "3.1.1.1",
+      "5.3.2.6",
+      "5.3.2.7"
+    ],
+    "description_of_change": "Adds a way to establish different demand limit adjustments to different space types.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      307
+    ]
+  },
+  "w": {
+    "addendum": "w",
+    "sections_affected_raw": "5.5.3, 5.6.3, 5.7.3, 5.8.3, 5.9.3, 5.10.3, 5.11.3, 5.12.3, 5.13.3, 5.14.3, 5.18.2, 5.18.3, 5.19.2.3, 5.20.1, 5.21.1, 5.22.2, 5.22.3",
+    "sections_affected": [
+      "5.5.3",
+      "5.6.3",
+      "5.7.3",
+      "5.8.3",
+      "5.9.3",
+      "5.10.3",
+      "5.11.3",
+      "5.12.3",
+      "5.13.3",
+      "5.14.3",
+      "5.18.2",
+      "5.18.3",
+      "5.19.2.3",
+      "5.20.1",
+      "5.21.1",
+      "5.22.2",
+      "5.22.3"
+    ],
+    "description_of_change": "Removes the need to update list of all parameters and setpoints referenced in each section.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      307
+    ]
+  },
+  "y": {
+    "addendum": "y",
+    "sections_affected_raw": "5.16.4.4, 5.16.5.4",
+    "sections_affected": [
+      "5.16.4.4",
+      "5.16.5.4"
+    ],
+    "description_of_change": "Fixes an error the MZVAV AHUs with separate minimum outdoor air dampers which could cause both the outside air and return air damper to close when the supply air temperature control loop is wound up and minimum outdoor airflow control is enabled.",
+    "ashrae_approval_date": "August 30, 2024",
+    "appendix_c_pdf_pages": [
+      307
+    ]
+  },
+  "z": {
+    "addendum": "z",
+    "sections_affected_raw": "3.1.1.4, 3.1.4.6, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 5.3.6.2,, Section(s) Affected, 5.5.8.3, 5.6.8.5, 5.7.8.5, 5.8.8.5, 5.9.8.5, 5.10.8.5, 5.11.8.6, 5.12.8.6, 5.13.8.6, 5.14.8.6, 5.16.2.2, 5.16.2.3",
+    "sections_affected": [
+      "3.1.1.4",
+      "3.1.4.6",
+      "4.1",
+      "4.2",
+      "4.3",
+      "4.4",
+      "4.5",
+      "4.6",
+      "5.3.6.2",
+      "5.5.8.3",
+      "5.6.8.5",
+      "5.7.8.5",
+      "5.8.8.5",
+      "5.9.8.5",
+      "5.10.8.5",
+      "5.11.8.6",
+      "5.12.8.6",
+      "5.13.8.6",
+      "5.14.8.6",
+      "5.16.2.2",
+      "5.16.2.3"
+    ],
+    "description_of_change": "Adds options for humidity limiting logic. Description of Change",
+    "ashrae_approval_date": "December 3, 2024",
+    "appendix_c_pdf_pages": [
+      307,
+      308
+    ]
+  }
+}

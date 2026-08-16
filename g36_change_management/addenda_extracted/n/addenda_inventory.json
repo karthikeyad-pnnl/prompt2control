@@ -1,0 +1,19 @@
+{
+  "n": {
+    "addendum": "n",
+    "sections_affected_raw": "5.7.5.5, 5.8.5.1, 5.8.5.2, 5.9.5.5, 5.10.5.5, 5.18.4.1",
+    "sections_affected": [
+      "5.7.5.5",
+      "5.8.5.1",
+      "5.8.5.2",
+      "5.9.5.5",
+      "5.10.5.5",
+      "5.18.4.1"
+    ],
+    "description_of_change": "Addition to allow fans to cycle off during occupied-standby mode for fan-powered terminal units and single zone VAV air handling units.",
+    "ashrae_approval_date": "August 30, 2024",
+    "appendix_c_pdf_pages": [
+      307
+    ]
+  }
+}

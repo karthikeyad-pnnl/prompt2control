@@ -1,0 +1,14 @@
+{
+  "d": {
+    "addendum": "d",
+    "sections_affected_raw": "5.6.4",
+    "sections_affected": [
+      "5.6.4"
+    ],
+    "description_of_change": "Addresses an issue with heating control for VAV boxes with hot water reheat coils when Vmin* is zero due to no occupancy indicated by the occupancy sensor in occupied-standby mode.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      306
+    ]
+  }
+}

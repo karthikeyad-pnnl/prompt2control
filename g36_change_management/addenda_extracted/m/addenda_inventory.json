@@ -1,0 +1,18 @@
+{
+  "m": {
+    "addendum": "m",
+    "sections_affected_raw": "5.6.6.5, 5.7.6.6, 5.8.6.6, 5.9.6.6, 5.10.6.6",
+    "sections_affected": [
+      "5.6.6.5",
+      "5.7.6.6",
+      "5.8.6.6",
+      "5.9.6.6",
+      "5.10.6.6"
+    ],
+    "description_of_change": "Revision to the leaking valve alarm for all equipment with hot water valves to reduce nuisance alarms.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      307
+    ]
+  }
+}

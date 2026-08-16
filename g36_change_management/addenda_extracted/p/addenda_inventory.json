@@ -1,0 +1,15 @@
+{
+  "p": {
+    "addendum": "p",
+    "sections_affected_raw": "5.16.13.5, 5.16.14",
+    "sections_affected": [
+      "5.16.13.5",
+      "5.16.14"
+    ],
+    "description_of_change": "Addresses errors in the AFDD fault condition equations. Adds option to use airflow monitoring stations for fault conditions that calculate %OA.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      307
+    ]
+  }
+}

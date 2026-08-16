@@ -1,0 +1,265 @@
+{
+  "addendum": "w",
+  "sections_affected": [
+    "5.5.3",
+    "5.6.3",
+    "5.7.3",
+    "5.8.3",
+    "5.9.3",
+    "5.10.3",
+    "5.11.3",
+    "5.12.3",
+    "5.13.3",
+    "5.14.3",
+    "5.18.2",
+    "5.18.3",
+    "5.19.2.3",
+    "5.20.1",
+    "5.21.1",
+    "5.22.2",
+    "5.22.3"
+  ],
+  "comparison": {
+    "2021": {
+      "5.5.3": {
+        "status": "found",
+        "pdf_pages": [
+          73
+        ],
+        "text": "5.5.3. \nSee Section 3.1.2.1 for zone minimum airflow setpoint Vmin, zone maximum cooling airflow setpoint \nVcool-max, and zone maximum heating airflow setpoint Vheat-max. \nIf the minimum ventilation rate is more than 25% or so of the cooling maximum, or DCV is used, a reheat box is \nrecommended to avoid overcooling. DCV logic is not provided for cooling-only boxes, because doing so results in \nperiods of overcooling, as the CO2 levels due to occupants rises much faster than the cooling load due to occupants \nbecause of thermal mass. \nCooling-only terminal units can provide heating only when the AHU supply air temperature is more than 3°C (5°F) \nabove the room temperature."
+      },
+      "5.6.3": {
+        "status": "found",
+        "pdf_pages": [
+          75
+        ],
+        "text": "5.6.3. \nSee Section 3.1.2.2 for zone minimum airflow setpoints Vmin, zone maximum cooling airflow setpoint \nVcool-max, zone maximum heating airflow setpoint Vheat-max, zone minimum heating airflow setpoint \nVheat-min, and the maximum DAT rise above heating setpoint MaxT."
+      },
+      "5.7.3": {
+        "status": "found",
+        "pdf_pages": [
+          79
+        ],
+        "text": "5.7.3. \nSee Section 3.1.2.3 for zone minimum airflow setpoint Vmin, zone maximum cooling airflow setpoint \nVcool-max, and the maximum DAT rise above heating setpoint MaxT."
+      },
+      "5.8.3": {
+        "status": "found",
+        "pdf_pages": [
+          83
+        ],
+        "text": "5.8.3. \nSee Section 3.1.2.4 for zone minimum airflow setpoint Vmin, zone maximum cooling airflow setpoint \nVcool-max, the parallel fan maximum heating airflow setpoint Pfan-htgmax, and the maximum DAT rise \nabove heating setpoint MaxT. \n5.8.3.1. \nPfan-z is the lowest rate at which the fan will operate when it is turned on but has the lowest \npossible speed signal from the BAS."
+      },
+      "5.9.3": {
+        "status": "found",
+        "pdf_pages": [
+          88
+        ],
+        "text": "5.9.3. \nSee Section 3.1.2.5 for zone minimum airflow setpoints Vmin, zone maximum cooling airflow setpoint \nVcool-max, and the maximum DAT rise above heating setpoint MaxT."
+      },
+      "5.10.3": {
+        "status": "found",
+        "pdf_pages": [
+          91
+        ],
+        "text": "5.10.3. \nSee Section 3.1.2.6 for zone minimum airflow setpoint Vmin, zone maximum cooling airflow setpoint \nVcool-max, the series fan maximum heating airflow Sfan-htgmax, and the maximum DAT rise above \nheating setpoint MaxT."
+      },
+      "5.11.3": {
+        "status": "found",
+        "pdf_pages": [
+          95
+        ],
+        "text": "5.11.3. \nSee Section 3.1.2.7 for zone minimum airflow setpoint Vmin, maximum cooling airflow setpoint \nVcool-max, and the zone maximum heating airflow setpoint Vheat-max."
+      },
+      "5.12.3": {
+        "status": "found",
+        "pdf_pages": [
+          100
+        ],
+        "text": "5.12.3. \nSee Section 3.1.2.7 for zone minimum airflow setpoint Vmin, zone maximum cooling airflow setpoint \nVcool-max, and the zone maximum heating airflow setpoint Vheat-max."
+      },
+      "5.13.3": {
+        "status": "found",
+        "pdf_pages": [
+          104
+        ],
+        "text": "5.13.3. \nSee Section 3.1.2.7 for zone minimum airflow setpoint Vmin, zone maximum cooling airflow setpoint \nVcool-max, and the zone maximum heating airflow setpoint Vheat-max."
+      },
+      "5.14.3": {
+        "status": "found",
+        "pdf_pages": [
+          108
+        ],
+        "text": "5.14.3. \nSee Section 3.1.2.7 for zone minimum airflow setpoint Vmin, zone maximum cooling airflow setpoint \nVcool-max, and the zone maximum heating airflow setpoint Vheat-max."
+      },
+      "5.18.2": {
+        "status": "found",
+        "pdf_pages": [
+          152
+        ],
+        "text": "5.18.2. \nSee Section 3.1.6.1 for Cool_SAT, Heat_SAT, and MaxDPT."
+      },
+      "5.18.3": {
+        "status": "found",
+        "pdf_pages": [
+          152
+        ],
+        "text": "5.18.3. \nSee Section 3.2.2 for MinSpeed, MaxHeatSpeed, MaxCoolSpeed, MinPosMin, MinPosMax, DesPosMin, \nDesPosMax, MinRelief, MaxRelief, and S-R-DIFF."
+      },
+      "5.19.2.3": {
+        "status": "not found",
+        "pdf_pages": [],
+        "text": null
+      },
+      "5.20.1": {
+        "status": "found",
+        "pdf_pages": [
+          172
+        ],
+        "text": "5.20.1. \nSee Section 3.1.7 for CHWSTminX, CWRTdesX, CWSTdesX, CH-LOT, CHW-MinFlowX, CHW-\nDesFlowX, LIFTminX, LIFTmaxX, QchX, PCHWFdesign, SCHWFdesign, MinUnloadCapX, DAHX, \nDTWB, DACT, HXFdesign, and HXDP-Design. See Section 3.2.3 for CHW-DPmax, LocalCHW-DPmax, Cw-\nDesPumpSpdStage, MinCWVlvPos, MinCWPspeed, HxPumpDesSpd, Ch-MaxPriPumpSpdStage, and \nCH-MinPriPumpSpdStage."
+      },
+      "5.21.1": {
+        "status": "found",
+        "pdf_pages": [
+          235
+        ],
+        "text": "5.21.1. \nSee Section 3.1.8 for HWSTmax, HW-LOT, HW-MinFlowX, HW-DesFlowX, QbX, B-FiringMinX, \nPHWFdesign, and SHWFdesign. See Section 3.2.4 for HW-DPmax, LocalHW-DPmax, and B-\nMinPriPumpSpdStage."
+      },
+      "5.22.2": {
+        "status": "found",
+        "pdf_pages": [
+          262,
+          263
+        ],
+        "text": "5.22.2. \nSee Section 3.1.7 for Cool_SAT, Heat_SAT, and DP100. \n© ASHRAE. Per international copyright law, additional reproduction, distribution, or transmission in either \nprint or digital form is not permitted without ASHRAE's prior written permission.\nCopyright American Society of Heating, Refrigerating and Air-Conditioning Engine\nProvided by IHS Markit under license with ASHRAE - Uncontrolled Copy\nLicensee=BATTELLE PACIFIC NW DIVISION/5940137102, User=Devaprasad, Karthikeya\nNot for Resale, 01/27/2022 04:30:51 MST\nNo reproduction or networking permitted without license from IHS Markit\n--`,,,,```,,,`,`,`,`````,,,``,`-`-`,,`,,`,`,,`---\n\n=== PDF page 263 ===\n \nASHRAE Guideline 36-2021 \n261"
+      },
+      "5.22.3": {
+        "status": "found",
+        "pdf_pages": [
+          263
+        ],
+        "text": "5.22.3. \nSee Section 3.2.3 for MinSpeed, DeadbandSpeed, MaxHeatSpeed, and MaxCoolSpeed."
+      }
+    },
+    "2024": {
+      "5.5.3": {
+        "status": "found",
+        "pdf_pages": [
+          83
+        ],
+        "text": "5.5.3. \nSee Sections 3.1.1 and 3.1.2.1 for operating parameters and setpoints. \nIf the minimum ventilation rate is more than 25% or so of the cooling maximum, or DCV is used, a reheat box is \nrecommended to avoid overcooling. DCV logic is not provided for cooling-only boxes, because doing so results in \nperiods of overcooling, as the CO2 levels due to occupants rises much faster than the cooling load due to occupants \nbecause of thermal mass. \nCooling-only terminal units can provide heating only when the AHU supply air temperature is more than 3°C \n(5°F) above the room temperature."
+      },
+      "5.6.3": {
+        "status": "found",
+        "pdf_pages": [
+          86
+        ],
+        "text": "5.6.3. \nSee Sections 3.1.1 and 3.1.2.2 for operating parameters and setpoints."
+      },
+      "5.7.3": {
+        "status": "found",
+        "pdf_pages": [
+          90
+        ],
+        "text": "5.7.3. \nSee Sections 3.1.1 and 3.1.2.3 for operating parameters and setpoints."
+      },
+      "5.8.3": {
+        "status": "found",
+        "pdf_pages": [
+          95
+        ],
+        "text": "5.8.3. \nSee Sections 3.1.1 and 3.1.2.4 for operating parameters and setpoints. \n5.8.3.1. \nPfan-z is the lowest rate at which the fan will operate when it is turned on but has the lowest \npossible speed signal from the BAS."
+      },
+      "5.9.3": {
+        "status": "found",
+        "pdf_pages": [
+          100
+        ],
+        "text": "5.9.3. \nSee Sections 3.1.1 and 3.1.2.5 for operating parameters and setpoints."
+      },
+      "5.10.3": {
+        "status": "found",
+        "pdf_pages": [
+          104
+        ],
+        "text": "5.10.3. See Sections 3.1.1 and 3.1.2.6 for operating parameters and setpoints."
+      },
+      "5.11.3": {
+        "status": "found",
+        "pdf_pages": [
+          109
+        ],
+        "text": "5.11.3. See Sections 3.1.1 and 3.1.2.7 for operating parameters and setpoints."
+      },
+      "5.12.3": {
+        "status": "found",
+        "pdf_pages": [
+          114
+        ],
+        "text": "5.12.3. See Sections 3.1.1 and 3.1.2.7 for operating parameters and setpoints."
+      },
+      "5.13.3": {
+        "status": "found",
+        "pdf_pages": [
+          118
+        ],
+        "text": "5.13.3. See Sections 3.1.1 and 3.1.2.7 for operating parameters and setpoints."
+      },
+      "5.14.3": {
+        "status": "found",
+        "pdf_pages": [
+          122
+        ],
+        "text": "5.14.3. See Sections 3.1.1 and 3.1.2.7 for operating parameters and setpoints."
+      },
+      "5.18.2": {
+        "status": "found",
+        "pdf_pages": [
+          171
+        ],
+        "text": "5.18.2. See Sections 3.1.1 and 3.2.2 for operating parameters and setpoints."
+      },
+      "5.18.3": {
+        "status": "found",
+        "pdf_pages": [
+          171
+        ],
+        "text": "5.18.3. Not Used"
+      },
+      "5.19.2.3": {
+        "status": "found",
+        "pdf_pages": [
+          190
+        ],
+        "text": "5.19.2.3. \nSee Section 5.3.6 for zone temperature alarms."
+      },
+      "5.20.1": {
+        "status": "found",
+        "pdf_pages": [
+          190
+        ],
+        "text": "5.20.1. See Sections 3.1.7 and 3.2.3 for operating parameters and setpoints."
+      },
+      "5.21.1": {
+        "status": "found",
+        "pdf_pages": [
+          255
+        ],
+        "text": "5.21.1. See Sections 3.1.8 and 3.2.4 for operating parameters and setpoints."
+      },
+      "5.22.2": {
+        "status": "found",
+        "pdf_pages": [
+          282
+        ],
+        "text": "5.22.2. See Sections 3.1.7 and 3.2.3 for operating parameters and setpoints."
+      },
+      "5.22.3": {
+        "status": "found",
+        "pdf_pages": [
+          282
+        ],
+        "text": "5.22.3. Not Used"
+      }
+    }
+  }
+}

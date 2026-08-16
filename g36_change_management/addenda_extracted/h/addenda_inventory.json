@@ -1,0 +1,27 @@
+{
+  "h": {
+    "addendum": "h",
+    "sections_affected_raw": "5.5.8.1, 5.6.8, 5.7.8, 5.8.8, 5.9.8, 5.10.8, 5.11.8, 5.12.8, 5.13.8, 5.14.8, 5.16.16, 5.17.6, 5.18.15, 5.22.8,",
+    "sections_affected": [
+      "5.5.8.1",
+      "5.6.8",
+      "5.7.8",
+      "5.8.8",
+      "5.9.8",
+      "5.10.8",
+      "5.11.8",
+      "5.12.8",
+      "5.13.8",
+      "5.14.8",
+      "5.16.16",
+      "5.17.6",
+      "5.18.15",
+      "5.22.8"
+    ],
+    "description_of_change": "Address an issue with the request logic structure, which could cause requests to be generated without its associated loop above 95%.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      306
+    ]
+  }
+}

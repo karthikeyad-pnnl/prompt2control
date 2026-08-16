@@ -1,0 +1,14 @@
+{
+  "g": {
+    "addendum": "g",
+    "sections_affected_raw": "5.16.6.3",
+    "sections_affected": [
+      "5.16.6.3"
+    ],
+    "description_of_change": "Addresses an issue with the minimum outdoor airflow control logic for Multiple Zone VAV Air Handling Units with a single common damper for minimum outdoor air and economizer functions with airflow measurement. Default minimum outdoor airflow control loop erroneously set the AHU to 100% outdoor air during Setback, Setup, Warm-up and Cool-down modes.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      306
+    ]
+  }
+}

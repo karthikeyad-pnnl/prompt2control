@@ -1,0 +1,15 @@
+{
+  "t": {
+    "addendum": "t",
+    "sections_affected_raw": "5.1.14, 5.1.16",
+    "sections_affected": [
+      "5.1.14",
+      "5.1.16"
+    ],
+    "description_of_change": "Revises the location of where requests are defined to recognize that they are used more broadly than indicated by their current definition as a subsection of Trim and Respond Setpoint Requests.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      307
+    ]
+  }
+}

@@ -1,0 +1,303 @@
+{
+  "addendum": "z",
+  "sections_affected": [
+    "3.1.1.4",
+    "3.1.4.6",
+    "4.1",
+    "4.2",
+    "4.3",
+    "4.4",
+    "4.5",
+    "4.6",
+    "5.3.6.2",
+    "5.5.8.3",
+    "5.6.8.5",
+    "5.7.8.5",
+    "5.8.8.5",
+    "5.9.8.5",
+    "5.10.8.5",
+    "5.11.8.6",
+    "5.12.8.6",
+    "5.13.8.6",
+    "5.14.8.6",
+    "5.16.2.2",
+    "5.16.2.3"
+  ],
+  "comparison": {
+    "2021": {
+      "3.1.1.4": {
+        "status": "not found",
+        "pdf_pages": [],
+        "text": null
+      },
+      "3.1.4.6": {
+        "status": "not found",
+        "pdf_pages": [],
+        "text": null
+      },
+      "4.1": {
+        "status": "not found",
+        "pdf_pages": [],
+        "text": null
+      },
+      "4.2": {
+        "status": "not found",
+        "pdf_pages": [],
+        "text": null
+      },
+      "4.3": {
+        "status": "not found",
+        "pdf_pages": [],
+        "text": null
+      },
+      "4.4": {
+        "status": "not found",
+        "pdf_pages": [],
+        "text": null
+      },
+      "4.5": {
+        "status": "not found",
+        "pdf_pages": [],
+        "text": null
+      },
+      "4.6": {
+        "status": "not found",
+        "pdf_pages": [],
+        "text": null
+      },
+      "5.3.6.2": {
+        "status": "not found",
+        "pdf_pages": [],
+        "text": null
+      },
+      "5.5.8.3": {
+        "status": "not found",
+        "pdf_pages": [],
+        "text": null
+      },
+      "5.6.8.5": {
+        "status": "not found",
+        "pdf_pages": [],
+        "text": null
+      },
+      "5.7.8.5": {
+        "status": "not found",
+        "pdf_pages": [],
+        "text": null
+      },
+      "5.8.8.5": {
+        "status": "not found",
+        "pdf_pages": [],
+        "text": null
+      },
+      "5.9.8.5": {
+        "status": "not found",
+        "pdf_pages": [],
+        "text": null
+      },
+      "5.10.8.5": {
+        "status": "not found",
+        "pdf_pages": [],
+        "text": null
+      },
+      "5.11.8.6": {
+        "status": "not found",
+        "pdf_pages": [],
+        "text": null
+      },
+      "5.12.8.6": {
+        "status": "not found",
+        "pdf_pages": [],
+        "text": null
+      },
+      "5.13.8.6": {
+        "status": "not found",
+        "pdf_pages": [],
+        "text": null
+      },
+      "5.14.8.6": {
+        "status": "not found",
+        "pdf_pages": [],
+        "text": null
+      },
+      "5.16.2.2": {
+        "status": "found",
+        "pdf_pages": [
+          112,
+          113,
+          114
+        ],
+        "text": "5.16.2.2. \nSupply Air Temperature Setpoint \nThe default range of outdoor air temperatures [21°C (70°F) –16°C (60°F)] used to reset the Occupied Mode SAT \nsetpoint was chosen to maximize economizer hours. It may be preferable to use a lower range of OATs (e.g., 18°C \n[65°F] – 13°C [55°F]) to minimize fan energy if there is a 24/7 chiller plant that is running anyway; reheat is \nminimized, as in a VAV dual-fan dual-duct system, or the climate severely limits the number of available economizer \nhours. \nIf using this logic, the engineer should oversize interior zones and rooms with high cooling loads (design them to be \nsatisfied by the warmest SAT) so these zones do not drive the T&R block to the minimum SAT setpoint. \na. \nSee Section 3.1.4.1 for Min_ClgSAT, Max_ClgSAT, OAT_Min, and OAT_Max setpoints. \n© ASHRAE. Per international copyright law, additional reproduction, distribution, or transmission in either \nprint or digital form is not permitted without ASHRAE's prior written permission.\nCopyright American Society of Heating, Refrigerating and Air-Conditioning Engine\nProvided by IHS Markit under license with ASHRAE - Uncontrolled Copy\nLicensee=BATTELLE PACIFIC NW DIVISION/5940137102, User=Devaprasad, Karthikeya\nNot for Resale, 01/27/2022 04:30:51 MST\nNo reproduction or networking permitted without license from IHS Markit\n--`,,,,```,,,`,`,`,`````,,,``,`-`-`,,`,,`,`,,`---\n\n=== PDF page 113 ===\n \nASHRAE Guideline 36-2021 \n111 \nb. During Occupied Mode and Setup Mode, setpoint shall be reset from Min_ClgSAT when the \noutdoor air temperature is OAT_Max and above, proportionally up to T-max when the outdoor \nair temperature is OAT_Min and below. \n1. T-max shall be reset using T&R logic (see Section 5.1.14) between Min_ClgSAT and \nMax_ClgSAT. The parameters shown in Table 5.16.2.2 are suggested as a starting place, \nbut they will require adjustment during the commissioning/tuning phase. \nThe T&R reset parameters in Table 5.16.2.2 are suggested as a starting place; they will most likely require \nadjustment during the commissioning/tuning phase. \nTable 5.16.2.2 Trim & Respond Variables \nVariable \nValue \nDevice \nSupply fan \nSP0 \nSPmax \nSPmin \nMin_ClgSAT  \nSPmax \nMax_ClgSAT  \nTd \n10 minutes \nT \n2 minutes \nI \n2 \nR \nZone cooling SAT requests \nSPtrim \n+0.1°C (+0.2°F) \nSPres \n–0.2°C (–0.3°F) \nSPres-max \n–0.6°C (–1.0°F) \n \nThe net result of this SAT reset strategy is depicted in the Figure 5.16.2.2 for Min_ClgSAT = 12°C (55°F), \nMax_ClgSAT = 18°C (65°F), OAT_Max = 21°C (70°F), and OAT_Min = 16°C (60°F). \n \nInformative Figure 5.16.2.2 Example supply air temperature reset diagram. \nT-max \nThe diamond represents \nT-max at 60°F \nSAT Setpoint \nOutdoor Air Temperature \nOAT_Min \n16°C (60°F) \nOAT_Max \n21°C (70°F) \nMin_ClgSAT \n12°C (55°F) \nMax_ClgSAT \n18°C (65°F) \nThe star represents the \nactive supply air \ntemperature setpoint at 65°F \nOAT and T-max of 60°F \nT-max varies between SPmin \nand SPmax based on requests \n© ASHRAE. Per international copyright law, additional reproduction, distribution, or transmission in either \nprint or digital form is not permitted without ASHRAE's prior written permission.\nCopyright American Society of Heating, Refrigerating and Air-Conditioning Engine\nProvided by IHS Markit under license with ASHRAE - Uncontrolled Copy\nLicensee=BATTELLE PACIFIC NW DIVISION/5940137102, User=Devaprasad, Karthikeya\nNot for Resale, 01/27/2022 04:30:51 MST\nNo reproduction or networking permitted without license from IHS Markit\n--`,,,,```,,,`,`,`,`````,,,``,`-`-`,,`,,`,`,,`---\n\n=== PDF page 114 ===\n \n112 \nASHRAE Guideline 36-2021 \nc. \nDuring Cooldown Mode, setpoint shall be Min_ClgSAT. \nd. During Warmup Mode and Setback Mode, setpoint shall be 35°C (95°F). \nRaising the SAT setpoint in warmup will effectively lock out the economizer and cooling coil, which is desirable for \nwarmup even if there is no heating coil at the AHU to meet the higher SAT. \nThis does not apply in the case of a DFDD AHU or if all the zones are equipped with fan-powered boxes such that \nthe AHU is off in warmup and setback."
+      },
+      "5.16.2.3": {
+        "status": "found",
+        "pdf_pages": [
+          114,
+          115,
+          116,
+          117
+        ],
+        "text": "5.16.2.3. \nSupply air temperature shall be controlled to setpoint using a control loop whose output is mapped \nto sequence the heating coil (if applicable), outdoor air damper, return air damper, and cooling coil \nas shown in Figure 5.16.2.3.  \nThe engineer must specify whether the unit has a return fan, relief damper or relief fans. \nIf there is a return fan, keep subsection (a) and delete subsection (b). \nIf there are relief dampers or relief fans, keep subsection (b) and delete subsection (a). \nDelete this flag note after selections have been made. \na. \nFor units with return fans \n1. Return air damper maximum position MaxRA-P is modulated to control minimum outdoor \nair volume (see Sections 5.16.4.4, 5.16.5.4 and 5.16.6.3). \nb. For units with relief dampers or relief fans \n1. Economizer damper minimum position MinOA-P and/or return air damper maximum \nposition MaxRA-P are modulated to control minimum outdoor air volume (see Sections \n5.16.4.4, 5.16.5.4 and 5.16.6.3). \nThe engineer must specify whether minimum outdoor air and economizer functions use separate dedicated \ndampers or a single common damper. \nIf there are separate dedicated dampers, keep subsection (2) and delete subsection (3). \nIf there is a single common damper, keep subsection (3) and delete subsection (2). \nNote that a single common damper requires an outdoor air AFMS. It is not a valid choice if minimum \noutdoor air control is being done by DP (i.e., if  is being used). \nDelete this flag note after selection has been made. \n2. For units with a separate minimum outdoor air damper, economizer damper minimum \nposition MinOA-P is 0%, and return air damper maximum position MaxRA-P is modulated \nto control minimum outdoor air volume (see Sections 5.16.4 and 5.16.5). \n3. For units with a single common minimum outdoor air and economizer damper, return air \ndamper maximum position MaxRA-P and economizer damper minimum position MinOA-P \nare modulated to control minimum outdoor air volume (see Section 5.16.6). Economizer \ndamper maximum position MaxOA-P is limited during minimum outdoor air control (e.g., \neconomizer lockout due to high OAT). \nc. \nThe points of transition along the x-axis shown and described in Figure 5.16.2.3 are \nrepresentative. Separate gains shall be provided for each section of the control map (heating \ncoil, economizer, cooling coil) that is determined by the contractor to provide stable control. \nAlternatively, the contractor shall adjust the precise value of the x-axis thresholds shown in \nFigure 5.16.2.3 to provide stable control. Damper control depends on the type of building \npressure control system. \n© ASHRAE. Per international copyright law, additional reproduction, distribution, or transmission in either \nprint or digital form is not permitted without ASHRAE's prior written permission.\nCopyright American Society of Heating, Refrigerating and Air-Conditioning Engine\nProvided by IHS Markit under license with ASHRAE - Uncontrolled Copy\nLicensee=BATTELLE PACIFIC NW DIVISION/5940137102, User=Devaprasad, Karthikeya\nNot for Resale, 01/27/2022 04:30:51 MST\nNo reproduction or networking permitted without license from IHS Markit\n--`,,,,```,,,`,`,`,`````,,,``,`-`-`,,`,,`,`,,`---\n\n=== PDF page 115 ===\n \nASHRAE Guideline 36-2021 \n113 \nThe engineer must specify whether the AHU has a return fan or relief fan(s)/damper(s), and, if a return fan, \nhow it is controlled. \nIf there are relief fan(s) or damper(s), retain Figure 5.16.2.3-1, and delete Figures 5.16.2.3-2 and 5.16.2.3-3 \nand their associated explanatory notes.  Rename Figure 5.16.2.3-1 as Figure 5.16.2.3 (delete “-1”) to avoid \nconfusion. \nIf there is a return fan controlled by airflow tracking, retain Figure 5.16.2.3-2, and delete Figures 5.16.2.3-1 \nand 5.16.2.3-3 and their associated explanatory notes.  Rename Figure 5.16.2.3-2 as Figure 5.16.2.3 (delete “-\n2”) to avoid confusion. \nIf there is a return fan controlled by direct building pressure, retain Figure 5.16.2.3-3, and delete Figures \n5.16.2.3-1 and 5.16.2.3-2 and their associated explanatory notes.  Rename Figure 5.16.2.3-3 as Figure 5.16.2.3 \n(delete “-3”) to avoid confusion. \nDelete this flag note after selection has been made. \nFor AHUs with relief fans, outdoor air and return air dampers are sequenced rather than complementary (as per \ntraditional sequences) to reduce fan power at part loads. \n \n \nFigure 5.16.2.3-1 SAT loop mapping with relief damper or relief fan. \nFor AHUs with return fans and airflow tracking control, the SAT control loop makes the economizer outdoor air \ndamper open fully whenever the AHU is on, while the return air damper modulates to maintain supply air \ntemperature as shown below.  Relief/exhaust damper position tracks inversely with the return damper position. \nOutdoor air dampers on air handlers with return fans have no impact on the outdoor airflow rate into the mixing \nplenum. Instead, the return-fan and return-damper controls dictate outdoor air flow. See ASHRAE Guideline 16. \nNote that the economizer damper will close (if there is a separate minimum outdoor air damper) or modulate to \nminimum position (if there is a single outdoor air damper) whenever minimum outdoor air control is active.  See \nlogic for Minimum Outdoor Air Control below. \n \nReturn Air \nDamper Position \nHeating Coil \nEconomizer \nOutdoor Air \nDamper \nPosition \nMinOA-P \nMaxRA-P \nMaxOA-P \nEconomizer \nOutdoor Air \nDamper Position \nCooling Coil \nReturn Air \nDamper \nPosition \n100%  \n0%  \nDamper/valve Position, % open \nSupply Air Temperature Control Loop Signal \n© ASHRAE. Per international copyright law, additional reproduction, distribution, or transmission in either \nprint or digital form is not permitted without ASHRAE's prior written permission.\nCopyright American Society of Heating, Refrigerating and Air-Conditioning Engine\nProvided by IHS Markit under license with ASHRAE - Uncontrolled Copy\nLicensee=BATTELLE PACIFIC NW DIVISION/5940137102, User=Devaprasad, Karthikeya\nNot for Resale, 01/27/2022 04:30:51 MST\nNo reproduction or networking permitted without license from IHS Markit\n--`,,,,```,,,`,`,`,`````,,,``,`-`-`,,`,,`,`,,`---\n\n=== PDF page 116 ===\n \n114 \nASHRAE Guideline 36-2021 \n \nFigure 5.16.2.3-2 SAT loop mapping with return-fan control with airflow tracking. \nFor AHUs with return fans and direct building pressure controls, the SAT control loop makes the economizer \noutdoor air damper open fully whenever the AHU is on, while the return air damper modulates to maintain supply \nair temperature as shown below.  Relief/exhaust damper position tracks inversely with the return damper position. \nOutdoor air dampers on air handlers with return fans have no impact on the outdoor airflow rate into the mixing \nplenum. Instead, the return-fan and return-damper controls dictate outdoor air flow. See ASHRAE Guideline 16. \nNote that the economizer damper will close (if there is a separate minimum outdoor air damper) or modulate to \nminimum position (if there is a single outdoor air damper) whenever minimum outdoor air control is active.  See \nlogic for Minimum Outdoor Air Control below. \n \n \nFigure 5.16.2.3-3 SAT loop mapping with return-fan control with direct building pressure controls. \nReturn Air \nDamper Position \nHeating Coil \nMaxRA-P \nEconomizer \nOutdoor Air \nDamper Position \nCooling Coil \n100%  \n0%  \nDamper/valve Position, % open \nSupply Air Temperature Control Loop Signal \nRelief/Exhaust Air \nDamper Position \nReturn Air \nDamper Position \nHeating Coil \nMaxRA-P \nEconomizer \nOutdoor Air \nDamper Position \nCooling Coil \n100%  \n0%  \nDamper/valve Position, % open \nSupply Air Temperature Control Loop Signal \n© ASHRAE. Per international copyright law, additional reproduction, distribution, or transmission in either \nprint or digital form is not permitted without ASHRAE's prior written permission.\nCopyright American Society of Heating, Refrigerating and Air-Conditioning Engine\nProvided by IHS Markit under license with ASHRAE - Uncontrolled Copy\nLicensee=BATTELLE PACIFIC NW DIVISION/5940137102, User=Devaprasad, Karthikeya\nNot for Resale, 01/27/2022 04:30:51 MST\nNo reproduction or networking permitted without license from IHS Markit\n--`,,,,```,,,`,`,`,`````,,,``,`-`-`,,`,,`,`,,`---\n\n=== PDF page 117 ===\n \nASHRAE Guideline 36-2021 \n115"
+      }
+    },
+    "2024": {
+      "3.1.1.4": {
+        "status": "found",
+        "pdf_pages": [
+          8,
+          9
+        ],
+        "text": "3.1.1.4. \nZone Dew Point Temperature (DPT) High Limits \nFor Climate Zones 0A, 1A, 2A, and 3A, ASHRAE Standard 90.1 requires supply air temperature reset to be \nunimpeded by dehumidification controls, thus implying the use of separate outdoor air cooling coil, dedicated \noutdoor air system, etc., all of which are currently outside the scope of ASHRAE Guideline 36.   \nFor all other Climate Zones, ASHRAE Standard 90.1 allows humidity controls to adjust the supply air temperature \nreset in multiple-zone HVAC systems.  ASHRAE Guideline 36 provides a means for this adjustment as described \nbelow.  At the designer’s option, this limit may be imposed based on outdoor air dew point, return air dew point, \nand/or dew point feedback from the zones.  If other energy-conserving dehumidification strategies are included in \nthe design, they should be deployed for humidity control before reducing the supply air temperature.   \nDew point is used as the humidity variable, rather than relative humidity, based on the dew point high limits \nprescribed in Standard 62.1-2022 addendum k, which in turn were largely based on ASHRAE Handbook – \nApplications Chapter 64 Moisture and Mold which recommends controlling dew point temperature (rather than \nrelative humidity) to mitigate mold growth.  It is anticipated that Standard 90.1 will also limit the use of active \nThis\u0003file\u0003is\u0003licensed\u0003to\u0003Karthikeya\u0003Devaprasad\u0003\u0003(karthikeya.devaprasad@pnnl.gov).\u0003Download\u0003Date:\u00031/28/2025\n\n=== PDF page 9 ===\nASHRAE Guideline 36-2024 \n7 \ndehumidification based on dew point temperature to correspond to Standard 62.1 limits.  However, almost all \ncommercial humidity sensors measure relative humidity; to determine dew point temperature, concurrent drybulb \ntemperature must also be measured, and either the sensors must include psychrometric algorithms in firmware to \ngenerate a dew point signal, or psychrometric algorithms residing in the digital control system must make this \nconversion.  Both are readily available although not yet commonly used. \nThe following limits apply to control based on zone dew point.  See Section 3.1.4.6 for humidity limits based on \noutdoor air dew point and return air dew point. \nEvery zone that has a dew point high limit must be equipped with a humidity sensor.   \nFor these humidity control strategies to be effective and efficient, accurate and reliable humidity sensors are \nessential.  High quality sensors are strongly recommended. \nZones with humidity limits participate in a Trim & Respond loop based on the measured zone dew point.  As a \nresult, erroneous humidity sensors can easily create a rogue zone situation that locks the SAT reset loop and \nwastes energy.  It is recommended that the designer set humidity limits only on those zones where it is essential, \neven if all zones are to be equipped with humidity sensors. \nZone Importance factors and the T&R loop Ignore value can be adjusted to ensure that critical zones get an \nimmediate response to high detected high humidity.  However, this strategy makes the creation of rogue zones even \nmore likely. \na. Dew point shall be limited in the following zones and zone types as provided in Table 3.1.1.4. \nTable 3.1.1.4 Dew Point Temperature High Limits for Zones \nZone Tag or Zone Type \nOccupied \nUnoccupied \nRoom #x \n15.6°C (60°F) DPT \n15.6°C (60°F) DPT \nRoom #y \n15.6°C (60°F) DPT \n15.6°C (60°F) DPT \nOperating Room \n11.7°C (53°F) DPT \n15.6°C (60°F) DPT \nb. A dew point high limit value shall not be assigned to the zones not listed above, or to zones which \ndo not have a local humidity sensor."
+      },
+      "3.1.4.6": {
+        "status": "found",
+        "pdf_pages": [
+          16,
+          17
+        ],
+        "text": "3.1.4.6. \nHumidity limits \nFor Climate Zones 0A, 1A, 2A, and 3A, ASHRAE Standard 90.1 requires supply air temperature reset to be \nunimpeded by dehumidification controls, thus implying the use of separate outdoor air cooling coil, dedicated \noutdoor air system, etc., all of which are currently outside the scope of ASHRAE Guideline 36. \nFor all other Climate Zones, ASHRAE Standard 90.1 allows humidity controls to adjust the supply air temperature \nreset in multiple-zone HVAC systems.  ASHRAE Guideline 36 provides a means for this adjustment as described \nbelow.  At the designer’s option, this limit may be imposed based on outdoor air dew point, return air dew point, \nand/or dew point feedback from the zones.  If other energy-conserving dehumidification strategies are included in \nthe design, they should be deployed for humidity control before reducing the supply air temperature.   \nDew point is used as the humidity variable, rather than relative humidity, based on the dew point high limits \nprescribed in Standard 62.1-2022 addendum k, which in turn were largely based on ASHRAE Handbook – \nApplications Chapter 64 Moisture and Mold, which also recommends controlling dew point temperature (rather \nthan relative humidity) to mitigate mold growth.  It is anticipated that Standard 90.1 will also limit the use of active \nThis\u0003file\u0003is\u0003licensed\u0003to\u0003Karthikeya\u0003Devaprasad\u0003\u0003(karthikeya.devaprasad@pnnl.gov).\u0003Download\u0003Date:\u00031/28/2025\n\n=== PDF page 17 ===\nASHRAE Guideline 36-2024 \n15 \ndehumidification based on dew point temperature to correspond to Standard 62.1 limits.  However, almost all \ncommercial humidity sensors measure relative humidity; to measure dew point, concurrent drybulb temperature \nmust also be measured, and either the sensors must include psychrometric algorithms in firmware to generate a \ndew point signal, or psychrometric algorithms residing in the digital control system must make this conversion.  \nBoth are readily available although not yet commonly used. \nThe following setpoints apply to control based on outdoor air dew point and/or return air dew point.  Refer to \nSection 3.1.1.4 for zone humidity-based dew point limits.  Note that using zone humidity sensors is the most direct \nand energy efficient humidity control logic but also has the highest first costs and maintenance costs.   \nFor these humidity control strategies to be effective and efficient, accurate and reliable references for outdoor air \ndew point and return air dew point are required.  High quality sensors are strongly recommended.  For outdoor \nair dew point, another option is to reference the nearest airport or NOAA weather station in place of a local \nsensor. \nRetain the following two parameters for humidity control that limits supply air temperature reset based on \noutside air dew point temperature.  Delete otherwise. \na. OADPT_Min, the lower value of the outdoor air dew point reset range. \nb. OADPT_Max, the higher value of the outdoor air dew point reset range. \nWhen limiting humidity based on outdoor air conditions, OADPT_Min and OADPT_Max define the range of \noutdoor air dew point temperatures used in the humidity-limiting reset logic. \nValues of OADPT_Min = 55°F and OADPT_Max = 60°F are appropriate for typical comfort cooling applications.  \nApplication-specific requirements such as healthcare, pharmaceutical, laboratory, ice rink, or museum exhibit \nspaces may dictate the use of a lower range of values. \nNote that control based on outdoor air dew point will prevent the introduction of large volumes of humid \nventilation air, but will not respond to elevated indoor humidity conditions caused by other latent loads. \nRetain the following two parameters for humidity control that limits supply air temperature reset based on \nreturn air dew point temperature.  Delete otherwise. \nc. RADPT_Min, the lower value of the return air dew point reset range. \nd. RADPT_Max, the higher value of the return air dew point reset range. \nWhen limiting humidity based on return air conditions, RADPT_Min and RADPT_Max define the range of return \nair dew point temperatures used in the humidity-limiting reset logic. \nTypical values are RADPT_Min = 55°F and RADPT_Max = 60°F, though application-specific requirements may \ndictate different values. \nNote that control based on return air only responds to the average condition across the building.  Individual zones \nwith high humidity will most likely not be detected."
+      },
+      "4.1": {
+        "status": "found",
+        "pdf_pages": [
+          3
+        ],
+        "text": "4.1 \nVAV Terminal Unit—Cooling Only ............................................................................. 31"
+      },
+      "4.2": {
+        "status": "found",
+        "pdf_pages": [
+          3
+        ],
+        "text": "4.2 \nVAV Terminal Unit with Reheat ................................................................................... 31"
+      },
+      "4.3": {
+        "status": "found",
+        "pdf_pages": [
+          3
+        ],
+        "text": "4.3 \nFan-Powered Terminal Unit (Series or Parallel, Constant- or Variable-Speed Fan) .... 32"
+      },
+      "4.4": {
+        "status": "found",
+        "pdf_pages": [
+          3
+        ],
+        "text": "4.4 \nDual-Duct Terminal Unit with Inlet Sensors ................................................................. 32"
+      },
+      "4.5": {
+        "status": "found",
+        "pdf_pages": [
+          3
+        ],
+        "text": "4.5 \nDual-Duct Terminal Unit with Discharge Sensor ......................................................... 33"
+      },
+      "4.6": {
+        "status": "found",
+        "pdf_pages": [
+          3
+        ],
+        "text": "4.6 \nMultiple-Zone VAV Air-Handling Unit ........................................................................ 33"
+      },
+      "5.3.6.2": {
+        "status": "found",
+        "pdf_pages": [
+          80
+        ],
+        "text": "5.3.6.2. \nZone Dew Point Alarms \na. See Section 3.1.1.4 for zone dew point high limits. \nb. High dew point alarm \n1. If the zone is less than or equal to 1°C (2°F) above the dew point limit for 6 hours, generate a \nLevel 4 alarm. \n2. If the zone is less than or equal to 1°C (2°F) above the dew point limit for 12 hours, generate a \nLevel 3 alarm. \n3. If the zone is less than or equal to 1°C (2°F) above the dew point limit for 24 hours, generate a \nLevel 2 alarm. \n4. If the zone is greater than 1°C (2°F) above the dew point limit for 2 hours, generate a Level 3 \nalarm. \n5. If the zone is greater than 2°C (4°F) above the dew point limit for 8 hours, generate a Level 2 \nalarm."
+      },
+      "5.5.8.3": {
+        "status": "found",
+        "pdf_pages": [
+          86
+        ],
+        "text": "5.5.8.3. \nFor zones with a humidity sensor and a dew point high limit assigned to the zone per Section \n3.1.1.4, Humidity SAT Limit Requests. \na. If the zone dew point exceeds the limit by 3°C (5°F) for 30 minutes and after suppression period \ndue to setpoint change per Section 5.1.20, send 3 requests. \nb. Else if the zone dew point exceeds the limit by 2°C (3°F) for 30 minutes and after suppression \nperiod due to setpoint change per Section 5.1.20, send 2 requests. \nc. Else if the zone dew point exceeds the limit for 30 minutes and after suppression period due to \nsetpoint change per Section 5.1.20, send 1 request until the zone dew point is less than the zone’s \nhigh limit for 10 minutes. \nd. Else if the zone dew point is less than or equal to the limit, send 0 requests. \nIf the minimum ventilation rate is more than 25% or so of the cooling maximum, or demand-controlled ventilation \nis used, a reheat box is recommended to avoid overcooling."
+      },
+      "5.6.8.5": {
+        "status": "found",
+        "pdf_pages": [
+          90
+        ],
+        "text": "5.6.8.5. \nFor zones with a humidity sensor and a dew point high limit assigned to the zone per Section \n3.1.1.4, Humidity SAT Limit Requests. \na. If the zone dew point exceeds the limit by 3°C (5°F) for 30 minutes and after suppression period \ndue to setpoint change per Section 5.1.20, send 3 requests. \nb. Else if the zone dew point exceeds the limit by 2°C (3°F) for 30 minutes and after suppression \nperiod due to setpoint change per Section 5.1.20, send 2 requests. \nc. Else if the zone dew point exceeds the limit for 30 minutes and after suppression period due to \nsetpoint change per Section 5.1.20, send 1 request until the zone dew point is less than the zone’s \nhigh limit for 10 minutes. \nd. Else if the zone dew point is less than or equal to the limit, send 0 requests."
+      },
+      "5.7.8.5": {
+        "status": "found",
+        "pdf_pages": [
+          94,
+          95
+        ],
+        "text": "5.7.8.5. \nFor zones with a humidity sensor and a dew point high limit assigned to the zone per Section \n3.1.1.4, Humidity SAT Limit Requests. \nThis\u0003file\u0003is\u0003licensed\u0003to\u0003Karthikeya\u0003Devaprasad\u0003\u0003(karthikeya.devaprasad@pnnl.gov).\u0003Download\u0003Date:\u00031/28/2025\n\n=== PDF page 95 ===\nASHRAE Guideline 36-2024 \n93 \na. If the zone dew point exceeds the limit by 3°C (5°F) for 30 minutes and after suppression period \ndue to setpoint change per Section 5.1.20, send 3 requests. \nb. Else if the zone dew point exceeds the limit by 2°C (3°F) for 30 minutes and after suppression \nperiod due to setpoint change per Section 5.1.20, send 2 requests. \nc. Else if the zone dew point exceeds the limit for 30 minutes and after suppression period due to \nsetpoint change per Section 5.1.20, send 1 request until the zone dew point is less than the zone’s \nhigh limit for 10 minutes. \nd. Else if the zone dew point is less than or equal to the limit, send 0 requests."
+      },
+      "5.8.8.5": {
+        "status": "found",
+        "pdf_pages": [
+          100
+        ],
+        "text": "5.8.8.5. \nFor zones with a humidity sensor and a dew point high limit assigned to the zone per Section \n3.1.1.4, Humidity SAT Limit Requests. \na. If the zone dew point exceeds the limit by 3°C (5°F) for 30 minutes and after suppression period \ndue to setpoint change per Section 5.1.20, send 3 requests. \nb. Else if the zone dew point exceeds the limit by 2°C (3°F) for 30 minutes and after suppression \nperiod due to setpoint change per Section 5.1.20, send 2 requests. \nc. Else if the zone dew point exceeds the limit for 30 minutes and after suppression period due to \nsetpoint change per Section 5.1.20, send 1 request until the zone dew point is less than the zone’s \nhigh limit for 10 minutes. \nd. Else if the zone dew point is less than or equal to the limit, send 0 requests."
+      },
+      "5.9.8.5": {
+        "status": "found",
+        "pdf_pages": [
+          104
+        ],
+        "text": "5.9.8.5. \nFor zones with a humidity sensor and a dew point high limit assigned to the zone per Section \n3.1.1.4, Humidity SAT Limit Requests. \na. If the zone dew point exceeds the limit by 3°C (5°F) for 30 minutes and after suppression period \ndue to setpoint change per Section 5.1.20, send 3 requests. \nb. Else if the zone dew point exceeds the limit by 2°C (3°F) for 30 minutes and after suppression \nperiod due to setpoint change per Section 5.1.20, send 2 requests. \nc. Else if the zone dew point exceeds the limit for 30 minutes and after suppression period due to \nsetpoint change per Section 5.1.20, send 1 request until the zone dew point is less than the zone’s \nhigh limit for 10 minutes. \nd. Else if the zone dew point is less than or equal to the limit, send 0 requests."
+      },
+      "5.10.8.5": {
+        "status": "found",
+        "pdf_pages": [
+          108,
+          109
+        ],
+        "text": "5.10.8.5. \nFor zones with a humidity sensor and a dew point high limit assigned to the zone per Section \n3.1.1.4, Humidity SAT Limit Requests. \na. If the zone dew point exceeds the limit by 3°C (5°F) for 30 minutes and after suppression period \ndue to setpoint change per Section 5.1.20, send 3 requests. \nb. Else if the zone dew point exceeds the limit by 2°C (3°F) for 30 minutes and after suppression \nperiod due to setpoint change per Section 5.1.20, send 2 requests. \nc. Else if the zone dew point exceeds the limit for 30 minutes and after suppression period due to \nsetpoint change per Section 5.1.20, send 1 request until the zone dew point is less than the zone’s \nhigh limit for 10 minutes. \nd. Else if the zone dew point is less than or equal to the limit, send 0 requests. \nThis\u0003file\u0003is\u0003licensed\u0003to\u0003Karthikeya\u0003Devaprasad\u0003\u0003(karthikeya.devaprasad@pnnl.gov).\u0003Download\u0003Date:\u00031/28/2025\n\n=== PDF page 109 ===\nASHRAE Guideline 36-2024 \n107"
+      },
+      "5.11.8.6": {
+        "status": "found",
+        "pdf_pages": [
+          114
+        ],
+        "text": "5.11.8.6. \nFor zones with a humidity sensor and a dew point high limit assigned to the zone per Section \n3.1.1.4, Humidity SAT Limit Requests. \na. If the zone dew point exceeds the limit by 3°C (5°F) for 30 minutes and after suppression period \ndue to setpoint change per Section 5.1.20, send 3 requests. \nb. Else if the zone dew point exceeds the limit by 2°C (3°F) for 30 minutes and after suppression \nperiod due to setpoint change per Section 5.1.20, send 2 requests. \nc. Else if the zone dew point exceeds the limit for 30 minutes and after suppression period due to \nsetpoint change per Section 5.1.20, send 1 request until the zone dew point is less than the zone’s \nhigh limit for 10 minutes. \nd. Else if the zone dew point is less than or equal to the limit, send 0 requests."
+      },
+      "5.12.8.6": {
+        "status": "found",
+        "pdf_pages": [
+          117,
+          118
+        ],
+        "text": "5.12.8.6. \nFor zones with a humidity sensor and a dew point high limit assigned to the zone per Section \n3.1.1.4, Humidity SAT Limit Requests. \nThis\u0003file\u0003is\u0003licensed\u0003to\u0003Karthikeya\u0003Devaprasad\u0003\u0003(karthikeya.devaprasad@pnnl.gov).\u0003Download\u0003Date:\u00031/28/2025\n\n=== PDF page 118 ===\n116 \nASHRAE Guideline 36-2024 \na. If the zone dew point exceeds the limit by 3°C (5°F) for 30 minutes and after suppression period \ndue to setpoint change per Section 5.1.20, send 3 requests. \nb. Else if the zone dew point exceeds the limit by 2°C (3°F) for 30 minutes and after suppression \nperiod due to setpoint change per Section 5.1.20, send 2 requests. \nc. Else if the zone dew point exceeds the limit for 30 minutes and after suppression period due to \nsetpoint change per Section 5.1.20, send 1 request until the zone dew point is less than the zone’s \nhigh limit for 10 minutes. \nd. Else if the zone dew point is less than or equal to the limit, send 0 requests."
+      },
+      "5.13.8.6": {
+        "status": "found",
+        "pdf_pages": [
+          121,
+          122
+        ],
+        "text": "5.13.8.6. \nFor zones with a humidity sensor and a dew point high limit assigned to the zone per Section \n3.1.1.4, Humidity SAT Limit Requests. \nThis\u0003file\u0003is\u0003licensed\u0003to\u0003Karthikeya\u0003Devaprasad\u0003\u0003(karthikeya.devaprasad@pnnl.gov).\u0003Download\u0003Date:\u00031/28/2025\n\n=== PDF page 122 ===\n120 \nASHRAE Guideline 36-2024 \na. If the zone dew point exceeds the limit by 3°C (5°F) for 30 minutes and after suppression period \ndue to setpoint change per Section 5.1.20, send 3 requests. \nb. Else if the zone dew point exceeds the limit by 2°C (3°F) for 30 minutes and after suppression \nperiod due to setpoint change per Section 5.1.20, send 2 requests. \nc. Else if the zone dew point exceeds the limit for 30 minutes and after suppression period due to \nsetpoint change per Section 5.1.20, send 1 request until the zone dew point is less than the zone’s \nhigh limit for 10 minutes. \nd. Else if the zone dew point is less than or equal to the limit, send 0 requests."
+      },
+      "5.14.8.6": {
+        "status": "found",
+        "pdf_pages": [
+          125,
+          126
+        ],
+        "text": "5.14.8.6. \nFor zones with a humidity sensor and a dew point high limit assigned to the zone per Section \n3.1.1.4, Humidity SAT Limit Requests. \na. If the zone dew point exceeds the limit by 3°C (5°F) for 30 minutes and after suppression period \ndue to setpoint change per Section 5.1.20, send 3 requests. \nThis\u0003file\u0003is\u0003licensed\u0003to\u0003Karthikeya\u0003Devaprasad\u0003\u0003(karthikeya.devaprasad@pnnl.gov).\u0003Download\u0003Date:\u00031/28/2025\n\n=== PDF page 126 ===\n124 \nASHRAE Guideline 36-2024 \nb. Else if the zone dew point exceeds the limit by 2°C (3°F) for 30 minutes and after suppression \nperiod due to setpoint change per Section 5.1.20, send 2 requests. \nc. Else if the zone dew point exceeds the limit for 30 minutes and after suppression period due to \nsetpoint change per Section 5.1.20, send 1 request until the zone dew point is less than the zone’s \nhigh limit for 10 minutes. \nd. Else if the zone dew point is less than or equal to the limit, send 0 requests."
+      },
+      "5.16.2.2": {
+        "status": "found",
+        "pdf_pages": [
+          128,
+          129,
+          130
+        ],
+        "text": "5.16.2.2. \nSupply Air Temperature Setpoint \nThe default range of outdoor air temperatures [21°C (70°F) –16°C (60°F)] used to reset the Occupied Mode SAT \nsetpoint was chosen to maximize economizer hours. It may be preferable to use a lower range of OATs (e.g., 18°C \n[65°F] – 13°C [55°F]) to minimize fan energy if there is a 24/7 chiller plant that is running anyway; reheat is \nminimized, as in a VAV dual-fan dual-duct system, or the climate severely limits the number of available \neconomizer hours. This lower range also can be used to indirectly limit zone humidity in humid climates, e.g. \nsetting both Max_ClgSAT and OAT_Max to 16°C (60°F) ensures that supply air dew point temperature is always \nbelow 16°C (60°F), effectively maintaining space dew point temperature below that limit in zones with low latent \nloads such as offices.  See Section 5.16.2.3 for other more direct ways to limit zone humidity.   \nIf using this logic, the engineer should oversize interior zones and rooms with high cooling loads (design them to \nbe satisfied by the warmest SAT) so these zones do not drive the T&R block to the minimum SAT setpoint. \na. See Section 3.1.4.1 for Min_ClgSAT, Max_ClgSAT, OAT_Min, and OAT_Max setpoints. \nb. During Occupied Mode and Setup Mode, setpoint shall be reset from Min_ClgSAT when the \noutdoor air temperature is OAT_Max and above, proportionally up to T-max when the outdoor air \ntemperature is OAT_Min and below. \n1. T-max shall be reset using T&R logic (see Section 5.1.14) between Min_ClgSAT and \nMax_ClgSAT. \nThe T&R reset parameters in Table 5.16.2.2 are suggested as a starting place; they will most likely require \nadjustment during the commissioning/tuning phase. \nThis\u0003file\u0003is\u0003licensed\u0003to\u0003Karthikeya\u0003Devaprasad\u0003\u0003(karthikeya.devaprasad@pnnl.gov).\u0003Download\u0003Date:\u00031/28/2025\n\n=== PDF page 129 ===\nASHRAE Guideline 36-2024 \n127 \nTable 5.16.2.2 Trim & Respond Variables \nVariable \nValue \nDevice \nSupply fan \nSP0 \nSPmax \nSPmin \nMin_ClgSAT  \nSPmax \nMax_ClgSAT  \nTd \n10 minutes \nT \n2 minutes \nI \nSee note \nR \nZone cooling SAT \nrequests \nSPtrim \n+0.1°C (+0.2°F) \nSPres \n–0.2°C (–0.3°F) \nSPres-max \n–0.6°C (–1.0°F) \nInformative note: The number of ignored requests can be \nadjusted to balance responsiveness to demand (fewer \nignores) vs energy efficiency (more ignores). The value \nthat is set should be considered as a function of the total \nnumber of downstream zones or systems that can send \nrequests. As a default, set the number of ignored requests \nto 10% of the total downstream zones or systems, rounded \nto the nearest integer. \n \nThe net result of this SAT reset strategy is depicted in Figure 5.16.2.2 for Min_ClgSAT = 12°C (55°F), \nMax_ClgSAT = 18°C (65°F), OAT_Max = 21°C (70°F), and OAT_Min = 16°C (60°F). \n \nInformative Figure 5.16.2.2 Example supply air temperature reset diagram. \nc. During Cooldown Mode, setpoint shall be Min_ClgSAT. \nNote that the supply air temperature setpoint determined above for Occupied, Setup, and Cooldown Modes can be \nlowered by the humidity control logic in Section 5.16.2.3. \nd. During Warmup Mode and Setback Mode, setpoint shall be 35°C (95°F). \nRaising the SAT setpoint in warmup will effectively lock out the economizer and cooling coil, which is desirable for \nwarmup even if there is no heating coil at the AHU to meet the higher SAT. \nT-max \nThe diamond represents \nT-max at 60°F \nSAT Setpoint \nOutdoor Air Temperature \nOAT_Min \n16°C (60°F) \nOAT_Max \n21°C (70°F) \nMin_ClgSAT \n12°C (55°F) \nMax_ClgSAT \n18°C (65°F) \nThe star represents the \nactive supply air \ntemperature setpoint at 65°F \nOAT and T-max of 60°F \nT-max varies between SPmin \nand SPmax based on requests \nThis\u0003file\u0003is\u0003licensed\u0003to\u0003Karthikeya\u0003Devaprasad\u0003\u0003(karthikeya.devaprasad@pnnl.gov).\u0003Download\u0003Date:\u00031/28/2025\n\n=== PDF page 130 ===\n128 \nASHRAE Guideline 36-2024 \nThis does not apply in the case of a DFDD AHU or if all the zones are equipped with fan-powered boxes such that \nthe AHU is off in warmup and setback. \nThe engineer must specify the basis, if any, on which SAT setpoint is to be limited to control zone humidity. \nIf SAT setpoint is not to be limited based on humidity, delete Section 5.16.2.3. \nIf SAT is to be limited based on outdoor air dew point, retain Section 5.16.2.3.a.1. \nIf SAT is to be limited based on return air dew point, retain Section 5.16.2.3.a.2. \nIf SAT is to be limited based on requests from zones, retain Section 5.16.2.3.a.3. \nDelete any subsections that do not apply."
+      },
+      "5.16.2.3": {
+        "status": "found",
+        "pdf_pages": [
+          130,
+          131
+        ],
+        "text": "5.16.2.3. \nSupply Air Temperature Setpoint Limit for Humidity Control \na. The Humidity_SAT_Limit shall be the lowest value dictated by the following strategies: \nNote that control based on outdoor air dew point will prevent the introduction of large volumes of humid \nventilation air, but will not respond to elevated indoor humidity conditions. \n1. Based on outdoor air dew point temperature \ni. See Sections 3.1.4.6 for OADPT_Min and OADPT_Max. \nii. Humidity_SAT_Limit shall be reset from Min_ClgSAT when the outdoor air dew point is \nOADPT_Max and above, proportionally up to Max_ClgSAT when the outdoor air dew \npoint is OADPT_Min and below. \nNote that control based on return air dew point only responds to the average condition across the building.  \nIndividual zones with high relative humidity due to high zone latent loads will most likely not be detected. \n2. Based on return air dew point temperature \ni. See Sections 3.1.4.6 for RADPT_Min and RADPT_Max. \nii. Humidity_SAT_Limit shall be reset from Min_ClgSAT when the return air dew point is \nRADPT_Max and above, proportionally up to Max_ClgSAT when the return air dew point \nis RADPT_Min and below. \nLimiting SAT based on zone requests has a high potential to create rogue zones and consequent ongoing energy \nwaste.  Use high quality humidity sensors and only use zone feedback where it is necessary to limit the potential for \nmoisture related problems. \nZone importance multipliers can be adjusted to ensure that critical zones get an immediate response to high \nhumidity, but doing so further increases the risk of rogue zones. \n3. Based on zone requests \ni. See Section 3.1.1.4 for zone dew point high limits. \nii. Humidity_SAT_Limit shall be reset using T&R logic (see Section 5.1.14) between \nMin_ClgSAT and Max_ClgSAT based on Zone Humidity SAT Limit Requests. \nThe T&R reset parameters in Table 5.16.2.3 are suggested as a staring place; they will most likely require \nadjustment during the commissioning/tuning phase. \nTable 5.16.2.3 Trim & Respond Variables \nVariable \nValue \nDevice \nSupply fan \nThis\u0003file\u0003is\u0003licensed\u0003to\u0003Karthikeya\u0003Devaprasad\u0003\u0003(karthikeya.devaprasad@pnnl.gov).\u0003Download\u0003Date:\u00031/28/2025\n\n=== PDF page 131 ===\nASHRAE Guideline 36-2024 \n129 \nSP0 \nSPmax \nSPmin \nMin_ClgSAT  \nSPmax \nMax_ClgSAT  \nTd \n10 minutes \nT \n2 minutes \nI \nSee note \nR \nZone Humidity SAT \nLimit Requests \nSPtrim \n+0.1°C (+0.2°F) \nSPres \n–0.2°C (–0.3°F) \nSPres-max \n–0.6°C (–1.0°F) \nInformative note: The number of ignored requests can be \nadjusted to balance responsiveness to demand (fewer \nignores) vs energy efficiency (more ignores). The value \nthat is set should be considered as a function of the total \nnumber of downstream zones or systems that can send \nrequests. As a default, set the number of ignored requests \nto 10% of the total downstream zones or systems, rounded \nto the nearest integer. \nb. During all Modes except Warmup Mode and Setback Mode, the supply air temperature setpoint \ndetermined in Section 5.16.2.2 shall be limited to no greater than the Humidity_SAT_Limit."
+      }
+    }
+  }
+}

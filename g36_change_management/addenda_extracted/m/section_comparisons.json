@@ -1,0 +1,87 @@
+{
+  "addendum": "m",
+  "sections_affected": [
+    "5.6.6.5",
+    "5.7.6.6",
+    "5.8.6.6",
+    "5.9.6.6",
+    "5.10.6.6"
+  ],
+  "comparison": {
+    "2021": {
+      "5.6.6.5": {
+        "status": "found",
+        "pdf_pages": [
+          78
+        ],
+        "text": "5.6.6.5. \nLeaking Valve. If the valve position is 0% for 15 minutes, DAT is above AHU SAT by 3°C (5°F), \nand the fan serving the zone is proven ON, generate a Level 4 alarm."
+      },
+      "5.7.6.6": {
+        "status": "found",
+        "pdf_pages": [
+          82
+        ],
+        "text": "5.7.6.6. \nLeaking Valve. If the valve position is 0% for 15 minutes, DAT is above AHU SAT by 3°C (5°F), \nand the fan serving the zone is proven ON, generate a Level 4 alarm."
+      },
+      "5.8.6.6": {
+        "status": "found",
+        "pdf_pages": [
+          86
+        ],
+        "text": "5.8.6.6. \nLeaking Valve. If the valve position is 0% for 15 minutes, and DAT is above AHU SAT by 3°C \n(5°F), generate a Level 4 alarm."
+      },
+      "5.9.6.6": {
+        "status": "found",
+        "pdf_pages": [
+          90
+        ],
+        "text": "5.9.6.6. \nLeaking Valve. If the valve position is 0% for 15 minutes, and DAT is above AHU SAT by 3°C \n(5°F), generate a Level 4 alarm."
+      },
+      "5.10.6.6": {
+        "status": "found",
+        "pdf_pages": [
+          94
+        ],
+        "text": "5.10.6.6. \nLeaking Valve. If the valve position is 0% for 15 minutes, and DAT is above AHU SAT by 3°C \n(5°F), generate a Level 4 alarm."
+      }
+    },
+    "2024": {
+      "5.6.6.5": {
+        "status": "found",
+        "pdf_pages": [
+          88,
+          89
+        ],
+        "text": "5.6.6.5. \nLeaking Valve. If all of the following are true for 15 minutes, generate a Level 4 alarm. \na. Valve position is 0%; and \nb. DAT is above AHU SAT by 3°C (5°F); and \nThis\u0003file\u0003is\u0003licensed\u0003to\u0003Karthikeya\u0003Devaprasad\u0003\u0003(karthikeya.devaprasad@pnnl.gov).\u0003Download\u0003Date:\u00031/28/2025\n\n=== PDF page 89 ===\nASHRAE Guideline 36-2024 \n87 \nc. Damper position is greater than 0% and the AHU supply fan serving the zone is proven ON."
+      },
+      "5.7.6.6": {
+        "status": "found",
+        "pdf_pages": [
+          93
+        ],
+        "text": "5.7.6.6. \nLeaking Valve. If all of the following are true for 15 minutes, generate a Level 4 alarm. \na. Valve position is 0%; and \nb. DAT is above AHU SAT by 3°C (5°F); and \nc. DAT is above room temperature by 3°C (5°F); and \nd. Damper position is greater than 0% and the AHU supply fan or the parallel fan serving the zone is \nproven ON."
+      },
+      "5.8.6.6": {
+        "status": "found",
+        "pdf_pages": [
+          98
+        ],
+        "text": "5.8.6.6. \nLeaking Valve. If all of the following are true for 15 minutes, generate a Level 4 alarm. \na. Valve position is 0%; and \nb. DAT is above AHU SAT by 3°C (5°F); and \nc. DAT is above room temperature by 3°C (5°F); and \nd. Damper position is greater than 0% and the AHU supply fan or the parallel fan serving the zone is \nproven ON."
+      },
+      "5.9.6.6": {
+        "status": "found",
+        "pdf_pages": [
+          103
+        ],
+        "text": "5.9.6.6. \nLeaking Valve. If all of the following are true for 15 minutes, generate a Level 4 alarm. \na. Valve position is 0%; and \nb. DAT is above AHU SAT by 3°C (5°F); and \nc. DAT is above room temperature by 3°C (5°F); and  \nd. Series fan serving the zone is proven ON."
+      },
+      "5.10.6.6": {
+        "status": "found",
+        "pdf_pages": [
+          107
+        ],
+        "text": "5.10.6.6. \nLeaking Valve. If all of the following are true for 15 minutes, generate a Level 4 alarm. \na. Valve position is 0%; and \nb. DAT is above AHU SAT by 3°C (5°F); and \nc. DAT is above room temperature by 3°C (5°F); and \nd. Series fan serving the zone is proven ON."
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "l": {
+    "addendum": "l",
+    "sections_affected_raw": "3.1.4.2, 4.6, 5.16.1, 5.16.2, 5.16.4, 5.16.6, 5.16.10, 5.16.11, 5.16.14",
+    "sections_affected": [
+      "3.1.4.2",
+      "4.6",
+      "5.16.1",
+      "5.16.2",
+      "5.16.4",
+      "5.16.6",
+      "5.16.10",
+      "5.16.11",
+      "5.16.14"
+    ],
+    "description_of_change": "Adds options for control of staged fans and economizer dampers to address large air handling systems.",
+    "ashrae_approval_date": "December 3, 2024",
+    "appendix_c_pdf_pages": [
+      306
+    ]
+  }
+}

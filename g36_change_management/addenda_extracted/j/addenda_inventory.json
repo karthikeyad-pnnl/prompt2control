@@ -1,0 +1,14 @@
+{
+  "j": {
+    "addendum": "j",
+    "sections_affected_raw": "5.2.1",
+    "sections_affected": [
+      "5.2.1"
+    ],
+    "description_of_change": "Separates the ventilation logic for the Single Zone VAV Air Handling Units and VAV terminal units in the generic ventilation zones section.",
+    "ashrae_approval_date": "February 29, 2024",
+    "appendix_c_pdf_pages": [
+      306
+    ]
+  }
+}

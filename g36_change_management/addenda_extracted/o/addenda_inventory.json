@@ -1,0 +1,14 @@
+{
+  "o": {
+    "addendum": "o",
+    "sections_affected_raw": "5.16.5.4",
+    "sections_affected": [
+      "5.16.5.4"
+    ],
+    "description_of_change": "Addresses a typo, which incorrectly disabled minimum outdoor airflow control when the economizer high limit conditions were exceeded.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      307
+    ]
+  }
+}

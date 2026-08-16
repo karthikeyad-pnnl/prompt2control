@@ -1,0 +1,14 @@
+{
+  "b": {
+    "addendum": "b",
+    "sections_affected_raw": "5.1.14.2",
+    "sections_affected": [
+      "5.1.14.2"
+    ],
+    "description_of_change": "Revision to the Request-hours calculation to prevent Cumulative%-Request-Hours total from exceeding 100%.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      306
+    ]
+  }
+}

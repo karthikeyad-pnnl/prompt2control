@@ -1,0 +1,16 @@
+{
+  "v": {
+    "addendum": "v",
+    "sections_affected_raw": "3.1.1.1, 5.3.2.6, 5.3.2.7",
+    "sections_affected": [
+      "3.1.1.1",
+      "5.3.2.6",
+      "5.3.2.7"
+    ],
+    "description_of_change": "Adds a way to establish different demand limit adjustments to different space types.",
+    "ashrae_approval_date": "March 14, 2024",
+    "appendix_c_pdf_pages": [
+      307
+    ]
+  }
+}
