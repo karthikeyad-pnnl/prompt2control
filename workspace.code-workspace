@@ -1,12 +1,23 @@
 {
 	"folders": [
 		{
+			"name": "modelica-buildings",
+			"path": "../modelica-buildings"
+		},
+		{
+			"name": "G36PilotStudy",
+			"path": "../G36PilotStudy"
+		},
+		{
+			"name": "EnergyPlus-MCP",
+			"path": "../EnergyPlus-MCP"
+		},
+		{
+			"name": "prompt2control",
 			"path": "."
 		},
 		{
-			"path": "../../buildings_library/modelica-buildings"
-		},
-		{
+			"name": "QuarterlyUpdatesSlides",
 			"path": "../../Users/deva713/OneDrive - PNNL/Control-Related-Projects - General/QuarterlyUpdatesSlides"
 		}
 	],

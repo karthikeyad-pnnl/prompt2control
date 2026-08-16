@@ -1,0 +1,417 @@
+specification:
+  title: \"ASHRAE Guideline 36 Addenda Impact Matrix\"
+  version: \"1.0\"
+  purpose: >
+    Create a traceable table of the addenda incorporated into ASHRAE
+    Guideline 36-2024, preserving the original Appendix C fields and adding
+    system-impact, functional-category, and 2021-to-2024 textual-comparison
+    fields.
+
+  source_documents:
+    primary:
+      title: \"ASHRAE Guideline 36-2024\"
+      sections:
+        - \"Informative Appendix C\"
+        - \"Table C-1 Addenda Description Table\"
+      fields_available:
+        - \"Addendum\"
+        - \"Section(s) Affected\"
+        - \"Description of Change\"
+        - \"ASHRAE Approval Date\"
+      citation: \"[1]\"
+
+    comparison:
+      title: \"ASHRAE Guideline 36-2021\"
+      purpose: >
+        Baseline document for identifying the actual wording and sequence
+        changes introduced by each addendum.
+      citation: \"[2]\"
+
+    supporting:
+      title: \"ASHRAE Guideline 36-2024 Index\"
+      purpose: >
+        Source for mapping affected sections to broad HVAC system categories.
+
+  output:
+    primary_format:
+      type: \"impact_matrix\"
+      required_columns:
+        - name: \"Addendum\"
+          source: \"2024 Appendix C Table C-1\"
+          required: true
+
+        - name: \"Section(s) Affected\"
+          source: \"2024 Appendix C Table C-1\"
+          required: true
+
+        - name: \"Description of Change\"
+          source: \"2024 Appendix C Table C-1\"
+          required: true
+
+        - name: \"ASHRAE Approval Date\"
+          source: \"2024 Appendix C Table C-1\"
+          required: true
+
+        - name: \"Systems Impacted\"
+          source: \"2024 Index and affected sections\"
+          required: true
+
+        - name: \"Functional Category\"
+          source: \"Analysis of affected text\"
+          required: true
+
+        - name: \"Actual Change from 2021\"
+          source: \"Comparison of 2021 and 2024 text\"
+          required: true
+
+        - name: \"2021 Reference\"
+          source: \"2021 document\"
+          required: true
+
+        - name: \"2024 Reference\"
+          source: \"2024 document\"
+          required: true
+
+        - name: \"Comparison Status\"
+          source: \"Comparison workflow\"
+          required: true
+
+        - name: \"Quality Level\"
+          source: \"Validation workflow\"
+          required: true
+
+        - name: \"Reviewer Notes\"
+          source: \"Manual review\"
+          required: false
+
+    secondary_formats:
+      - type: \"markdown_report\"
+        required_sections:
+          - \"Methodology\"
+          - \"Assumptions\"
+          - \"System-category mapping\"
+          - \"Functional-category definitions\"
+          - \"Detailed change summaries\"
+          - \"Exceptions and unresolved items\"
+
+      - type: \"yaml_metadata\"
+        required: true
+
+      - type: \"detailed_redline_appendix\"
+        required: false
+
+      - type: \"validation_report\"
+        required: true
+
+  taxonomy:
+    systems_impacted:
+      description: >
+        Broad system categories derived from the index and validated against
+        the affected sections.
+      allowed_values:
+        - \"Air handling units\"
+        - \"Multiple-zone VAV air handling units\"
+        - \"Single-zone VAV air handling units\"
+        - \"Fan-powered terminal units\"
+        - \"VAV terminal units\"
+        - \"Dual-duct systems\"
+        - \"Chilled-water plants\"
+        - \"Hot-water plants\"
+        - \"Condenser-water systems\"
+        - \"Hydronic distribution systems\"
+        - \"Ventilation systems\"
+        - \"Economizer systems\"
+        - \"Indoor-air-quality and outdoor-air-pollution control systems\"
+        - \"Humidity-control systems\"
+        - \"Central plants\"
+        - \"Generic sequences or cross-system functions\"
+        - \"Cross-system\"
+
+    functional_categories:
+      primary:
+        - \"Alarm\"
+        - \"Setpoint generation\"
+        - \"Process control\"
+        - \"Mode or state logic\"
+        - \"Ventilation control\"
+        - \"Outdoor-air control\"
+        - \"Economizer control\"
+        - \"Humidity control\"
+        - \"Demand-controlled ventilation\"
+        - \"Fault detection and diagnostics\"
+        - \"Equipment enable/disable\"
+        - \"Scheduling and occupancy\"
+        - \"Airflow control\"
+        - \"Temperature control\"
+        - \"Hydronic control\"
+        - \"Plant optimization\"
+        - \"Sensor validation or calibration\"
+        - \"Documentation or editorial correction\"
+
+      secondary:
+        same_as_primary: true
+
+    change_types:
+      - \"Added requirement or sequence logic\"
+      - \"Removed requirement or sequence logic\"
+      - \"Modified calculation\"
+      - \"Modified threshold or limit\"
+      - \"Modified timing or delay\"
+      - \"Modified alarm level\"
+      - \"Modified equipment enable/disable behavior\"
+      - \"Modified operating mode\"
+      - \"Modified sensor or measurement logic\"
+      - \"Modified setpoint reset logic\"
+      - \"Modified fault-detection logic\"
+      - \"Typographical or editorial correction\"
+      - \"Clarification without apparent behavioral change\"
+
+    comparison_status:
+      - \"Complete\"
+      - \"Partial\"
+      - \"Unavailable\"
+
+    quality_level:
+      - \"Verified\"
+      - \"Partially verified\"
+      - \"Provisional\"
+
+  classification_rules:
+    systems:
+      - \"Use broad categories from the index.\"
+      - \"Assign multiple categories when multiple system types are affected.\"
+      - \"Use Cross-system when no single system category is dominant.\"
+      - \"Do not infer a category solely from the Appendix C summary if the index provides more precise information.\"
+      - \"Record the index term used for each assignment.\"
+
+    functional:
+      - \"Classify the operational behavior changed rather than only the equipment affected.\"
+      - \"Use Alarm for alarm thresholds, delays, priorities, suppression, or generation.\"
+      - \"Use Setpoint generation for calculations, resets, limits, or selection of setpoints.\"
+      - \"Use Process control for sequencing, control-loop behavior, valve or damper commands, or state logic.\"
+      - \"Use multiple categories when more than one control function is materially affected.\"
+      - \"Use Documentation or editorial correction only when control behavior is unchanged.\"
+
+  actual_change_method:
+    required_steps:
+      - \"Extract the affected 2021 text.\"
+      - \"Extract the corresponding 2024 text.\"
+      - \"Align content by section, subsection, paragraph, and item lettering.\"
+      - \"Identify additions, deletions, substitutions, relocations, and changed numerical values.\"
+      - \"Summarize the operational effect.\"
+      - \"Retain sufficient text for auditability.\"
+      - \"Classify the change type.\"
+
+    cell_template:
+      section: \"5.x.x\"
+      2021_text: \"Relevant 2021 wording or concise excerpt\"
+      2024_text: \"Relevant 2024 wording or concise excerpt\"
+      change: \"Specific textual difference\"
+      operational_effect: \"Effect on sequence or control behavior\"
+      change_types:
+        - \"Modified threshold or limit\"
+
+  workflow:
+    - step: 1
+      name: \"Extract addenda inventory\"
+      action: >
+        Extract every addendum row from 2024 Informative Appendix C,
+        Table C-1, including rows continued across page breaks.
+
+    - step: 2
+      name: \"Normalize section references\"
+      action:
+        - \"Remove line-break and OCR artifacts.\"
+        - \"Standardize punctuation.\"
+        - \"Separate multiple section numbers.\"
+        - \"Preserve subsection precision.\"
+        - \"Detect continuation rows.\"
+
+    - step: 3
+      name: \"Map sections to systems\"
+      action:
+        - \"Search the 2024 index.\"
+        - \"Identify broad system categories.\"
+        - \"Resolve multiple matches.\"
+        - \"Record index terms.\"
+        - \"Assign confidence where needed.\"
+
+    - step: 4
+      name: \"Assign functional categories\"
+      action:
+        - \"Review the Appendix C summary.\"
+        - \"Review affected 2021 and 2024 text.\"
+        - \"Assign one primary category.\"
+        - \"Assign secondary categories where appropriate.\"
+        - \"Record ambiguity.\"
+
+    - step: 5
+      name: \"Compare 2021 and 2024 text\"
+      action:
+        - \"Locate the 2021 baseline.\"
+        - \"Locate the 2024 revised text.\"
+        - \"Perform section-level comparison.\"
+        - \"Identify exact modifications.\"
+        - \"Summarize operational impact.\"
+        - \"Record unavailable comparisons.\"
+
+    - step: 6
+      name: \"Validate results\"
+      checks:
+        - \"Every 2024 addendum is represented.\"
+        - \"Every affected section is represented.\"
+        - \"Every row has a system category.\"
+        - \"Every row has a functional category.\"
+        - \"Every row has a comparison status.\"
+        - \"Approval dates match Appendix C.\"
+        - \"Section numbers match the source.\"
+        - \"Numerical values, units, delays, and alarm levels were manually checked.\"
+        - \"No page-continuation artifacts caused duplication or omission.\"
+
+  row_schema:
+    addendum:
+      type: \"string\"
+      example: \"m\"
+
+    sections_affected:
+      type: \"array\"
+      items: \"string\"
+      example:
+        - \"5.6.6.5\"
+        - \"5.7.6.6\"
+        - \"5.8.6.6\"
+        - \"5.9.6.6\"
+        - \"5.10.6.6\"
+
+    description_of_change:
+      type: \"string\"
+
+    ashrae_approval_date:
+      type: \"date\"
+      format: \"Month DD, YYYY\"
+
+    systems_impacted:
+      type: \"array\"
+      items: \"taxonomy.systems_impacted\"
+
+    functional_category:
+      type: \"object\"
+      properties:
+        primary:
+          type: \"taxonomy.functional_categories.primary\"
+        secondary:
+          type: \"array\"
+          items: \"taxonomy.functional_categories.secondary\"
+        confidence:
+          type: \"string\"
+          allowed_values:
+            - \"High\"
+            - \"Medium\"
+            - \"Low\"
+
+    actual_change_from_2021:
+      type: \"array\"
+      items:
+        type: \"object\"
+        properties:
+          section:
+            type: \"string\"
+          2021_text:
+            type: \"string\"
+          2024_text:
+            type: \"string\"
+          change:
+            type: \"string\"
+          operational_effect:
+            type: \"string\"
+          change_types:
+            type: \"array\"
+            items: \"taxonomy.change_types\"
+
+    references:
+      type: \"object\"
+      properties:
+        2021_reference:
+          type: \"string\"
+        2024_reference:
+          type: \"string\"
+        index_reference:
+          type: \"string\"
+
+    comparison_status:
+      type: \"taxonomy.comparison_status\"
+
+    quality_level:
+      type: \"taxonomy.quality_level\"
+
+    reviewer_notes:
+      type: \"string\"
+      required: false
+
+  example_row:
+    addendum: \"m\"
+    sections_affected:
+      - \"5.6.6.5\"
+      - \"5.7.6.6\"
+      - \"5.8.6.6\"
+      - \"5.9.6.6\"
+      - \"5.10.6.6\"
+    description_of_change: >
+      Revision to the leaking valve alarm for all equipment with hot water
+      valves to reduce nuisance alarms.
+    ashrae_approval_date: \"March 14, 2024\"
+    systems_impacted:
+      - \"VAV terminal units\"
+      - \"Hydronic heating systems\"
+    functional_category:
+      primary: \"Alarm\"
+      secondary:
+        - \"Sensor validation or calibration\"
+      confidence: \"Medium\"
+    actual_change_from_2021:
+      - section: \"5.6.6.5 and related sections\"
+        2021_text: \"To be extracted from the 2021 document.\"
+        2024_text: \"To be extracted from the 2024 document.\"
+        change: >
+          To be determined through a full-text comparison of alarm criteria,
+          thresholds, timing, and alarm level.
+        operational_effect: >
+          Expected to reduce nuisance leaking-valve alarms; exact behavior
+          requires verification against both editions.
+        change_types:
+          - \"Modified alarm level\"
+          - \"Modified timing or delay\"
+    references:
+      2021_reference: \"Pending full-text extraction\"
+      2024_reference: \"Appendix C, Table C-1; affected sections listed above\"
+      index_reference: \"Pending index verification\"
+    comparison_status: \"Partial\"
+    quality_level: \"Partially verified\"
+    reviewer_notes: >
+      The 2024 appendix identifies this addendum as a leaking-valve alarm
+      revision, but the complete 2021 and 2024 section text is required to
+      document the exact wording change.
+
+  limitations:
+    - >
+      The supplied excerpts do not contain the complete text of every affected
+      2021 and 2024 section.
+    - >
+      The supplied excerpts do not provide the complete index needed to verify
+      every system-category assignment.
+    - >
+      Exact textual changes must not be claimed until both corresponding
+      section texts have been extracted and compared.
+    - >
+      Appendix C summaries may be used as preliminary descriptions but are not
+      substitutes for a full redline comparison.
+
+  acceptance_criteria:
+    - \"All addenda listed in 2024 Appendix C are included.\"
+    - \"Original Appendix C columns are preserved.\"
+    - \"Systems Impacted is populated and traceable to the index.\"
+    - \"Functional Category is populated consistently.\"
+    - \"Actual Change from 2021 is documented where source text is available.\"
+    - \"Unavailable or partial comparisons are explicitly marked.\"
+    - \"Approval dates and section numbers match the source documents.\"
+    - \"The output is suitable for engineering review and future maintenance.\"
